@@ -1,0 +1,17 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <text>
+        你好，@User.Identity.Name
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm"}))
+        {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()">注销</a>
+        }
+    </text>
+}
+else
+{
+    <ul>
+        <li>@Html.ActionLink("登录", "Login", "Account", routeValues: null, htmlAttributes: new {id = "loginLink"})</li>
+    </ul>
+}

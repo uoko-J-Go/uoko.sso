@@ -1,0 +1,119 @@
+* About UOKO.SSO
+
+  see here for more info => [[http://lust4life.github.io/tech/authentication-authoriztion.html#sec-5]]
+
+** how can i use it
+
+   1. deploy the sso server site
+   2. client site (relying party) reference sso.client package
+   3. do some configuration
+
+*** about configuration
+
+    in global.asax.cs file:
+
+    #+BEGIN_SRC csharp
+      public override void Init()
+      {
+          base.Init();
+
+          this.AuthenticateRequest += OnAuthenticateRequest;
+      }
+
+      private void OnAuthenticateRequest(object sender, EventArgs eventArgs)
+      {
+          var ctx = new HttpContextWrapper(this.Context);
+          var principal = RelyingPartyClient.GeneratePrincipalForAuthRequest(ctx);
+          this.Context.User = principal;
+      }
+    #+END_SRC
+
+    add filter in global
+
+    #+BEGIN_SRC csharp
+      public class FilterConfig
+      {
+          public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+          {
+              filters.Add(new CommonAuthorize()); // here is the filter for authorize
+              filters.Add(new HandleErrorAttribute());
+          }
+      }
+    #+END_SRC
+
+
+
+    in your logoff action
+
+    #+BEGIN_SRC csharp
+      /// <summary>
+      /// 如果是第三方则,调用 relying party client 进行自身的 LogOff
+      /// 否者调用 sso logoff
+      /// </summary>
+      /// <returns></returns>
+      public ActionResult LogOff()
+      {
+          // 可以指定相应的 returnUrl 进行跳转
+          var returnUrl = "http://one.uoko.com/home/anonymous";
+
+          // 如果需要使用 returnUrl 需要保证这是一个绝对 url,不是相对路径
+          var ssoLogOffUrl = RelyingPartyClient.GetLogOutUrl(returnUrl);
+          return Redirect(ssoLogOffUrl);
+      }
+    #+END_SRC
+
+    if your client site is from other domain, logoff should be like this:
+
+    #+BEGIN_SRC csharp
+      /// <summary>
+      /// 如果是第三方则,调用 relying party client 进行自身的 LogOff
+      /// 否者调用 sso logoff
+      /// </summary>
+      /// <returns></returns>
+      public ActionResult LogOff()
+      {
+          RelyingPartyClient.RemoveLocalCookie();
+
+          // 可以指定相应的 returnUrl 进行跳转
+          var ssoLogOffUrl = RelyingPartyClient.GetLogOutUrl();
+          return Redirect(ssoLogOffUrl);
+      }
+    #+END_SRC
+
+    finally add some appsettings
+
+    #+BEGIN_SRC xml
+      <appSettings>
+        <add key="sso.appKey" value="other-domain-client-site" />
+        <add key="sso.serverUrl" value="http://sso.uoko.com" />
+        <add key="identity.cookieName" value="my-personal-identity" />
+      </appSettings>
+    #+END_SRC
+
+    appkey can be anything,but should be allocate from sso server.
+
+    serverurl is the sso server site url
+
+    cookieName can be optional if your site domain is under(same as) sso site domain
+
+** where can i get the identity info
+
+   use Current class to get the UserIdentity
+
+   #+BEGIN_SRC csharp
+     [Authorize]
+     public class HomeController : Controller
+     {
+
+         public ActionResult Index()
+         {
+             // here to get basic identity info
+             var userAlias = Current.UserIdentity.UserAlias;
+             var appList = UserBiz.GetUserAppInfo(userAlias);
+
+             ViewBag.AppList = appList;
+             return View();
+         }
+
+     }
+   #+END_SRC

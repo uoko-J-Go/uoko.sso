@@ -1,0 +1,36 @@
+﻿@using System.Collections.Generic
+@using UOKO.SSO.Models
+@{
+    ViewBag.Title = "系统资源列表";
+
+    var appList = ViewBag.AppList as List<AppInfo> ?? new List<AppInfo>();
+    
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>以下是您所能访问的系统:</h1>
+            </hgroup>
+        </div>
+    </section>
+}
+
+
+<ol class="round">
+
+    @{
+
+        foreach (var app in appList)
+        {
+            <a href="@app.Url">
+                <li class="one">
+                    <h5>@app.Name</h5>
+                    @app.Description
+                </li>
+            </a>
+        }
+
+    }
+
+</ol>
