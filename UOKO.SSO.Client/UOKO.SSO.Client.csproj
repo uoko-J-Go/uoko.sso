@@ -82,8 +82,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UOKO.SSO.Core, Version=1.0.5632.23911, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UOKO.SSO.Core.1.0.5632.23911\lib\net45\UOKO.SSO.Core.dll</HintPath>
+    <Reference Include="UOKO.SSO.Core, Version=1.0.5632.27224, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UOKO.SSO.Core.1.0.5632.27224\lib\net45\UOKO.SSO.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
