@@ -120,8 +120,8 @@ namespace UOKO.SSO.Core
             }
         }
 
-        private static readonly byte[] AesKey = Encoding.UTF8.GetBytes("f3cfe0fd9c904f83965441ee");
-        private static readonly byte[] AesIV = Encoding.UTF8.GetBytes("uokoiviv");
+        private static readonly byte[] AesKey = Encoding.UTF8.GetBytes("0711af0d77644dcf873dee02");
+        private static readonly byte[] AesIV = Encoding.UTF8.GetBytes("ivivuoko");
 
         private static string DecryptSSOCookieValue(string cookieValue)
         {
