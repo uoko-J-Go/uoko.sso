@@ -17,21 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D0BDA0
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://172.16.1.90:8080/tfs/newuoko
-		SccProjectUniqueName0 = UOKO.SSO\\UOKO.SSO.csproj
-		SccProjectName0 = UOKO.SSO
-		SccLocalPath0 = UOKO.SSO
-		SccProjectUniqueName1 = UOKO.SSO.Client\\UOKO.SSO.Client.csproj
-		SccProjectName1 = UOKO.SSO.Client
-		SccLocalPath1 = UOKO.SSO.Client
-		SccLocalPath2 = .
-		SccProjectUniqueName3 = UOKO.SSO.Core\\UOKO.SSO.Core.csproj
-		SccProjectName3 = UOKO.SSO.Core
-		SccLocalPath3 = UOKO.SSO.Core
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

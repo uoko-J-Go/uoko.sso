@@ -53,20 +53,24 @@ namespace UOKO.SSO.Core
             return principal;
         }
 
-        public static void SetAuthCookie(SSOCookieInfo cookieInfo, string cookieName, string cookieDomain = null)
+        /// <summary>
+        /// 设置 cookie
+        /// </summary>
+        /// <param name="cookieInfo"></param>
+        /// <param name="cookieName"></param>
+        /// <param name="cookieDomain">默认是本域名</param>
+        /// <param name="cookieTimeoutMinutes"></param>
+        public static void SetAuthCookie(SSOCookieInfo cookieInfo, string cookieName, string cookieDomain = null,
+                                         int cookieTimeoutMinutes = 20)
         {
             var cookieValue = EncryptSSOCookieValue(cookieInfo);
 
             var cookie = new HttpCookie(cookieName, cookieValue)
                          {
                              HttpOnly = true,
-                             Expires = DateTime.Now.AddMinutes(ServerConfigs.CookieTimeoutMinutes),
+                             Expires = DateTime.Now.AddMinutes(cookieTimeoutMinutes),
+                             Domain = cookieDomain
                          };
-
-            if (!string.IsNullOrWhiteSpace(cookieDomain))
-            {
-                cookie.Domain = ServerConfigs.CookieDomain;
-            }
 
             if (CurrentResponse != null)
             {
@@ -90,14 +94,12 @@ namespace UOKO.SSO.Core
         }
 
 
-
-
         /// <summary>
         /// remove sso cookie
         /// </summary>
-        public static void SignOut()
+        public static void SignOut(string cookieDomain)
         {
-            RemoveCookie(ServerConfigs.CookieName, ServerConfigs.CookieDomain);
+            RemoveCookie(ServerConfig.CookieName,cookieDomain);
         }
 
         private static HttpResponse CurrentResponse

@@ -38,11 +38,11 @@ namespace UOKO.SSO.Controllers
                     // 如果存在 returnUrl 进行判断
                     // 如果这是一个非同域, 那么需要生成token附加链接,
                     // 否者直接跳转进行到同域进行认证登陆.
-                    var sameDomain = new Uri(returnUrl).Host.EndsWith(ServerConfigs.CookieDomain);
+                    var sameDomain = new Uri(returnUrl).Host.EndsWith(ServerConfig.CookieDomain);
                     if (!sameDomain)
                     {
                         // issue token
-                        var ticket = new CasTicket()
+                        var ticket = new CasTicket
                                      {
                                          AppKey = appKey,
                                          UserAlias = Current.UserIdentity.UserAlias,
@@ -87,7 +87,7 @@ namespace UOKO.SSO.Controllers
 
             // 验证通过
             var cookieInfo = new SSOCookieInfo() {Alias = userInfo.Alias, Name = userInfo.Name};
-            SSOAuthentication.SetAuthCookie(cookieInfo, ServerConfigs.CookieName, ServerConfigs.CookieDomain);
+            SSOAuthentication.SetAuthCookie(cookieInfo, ServerConfig.CookieName, ServerConfig.CookieDomain);
 
             if (string.IsNullOrWhiteSpace(returnUrl))
             {
@@ -105,7 +105,7 @@ namespace UOKO.SSO.Controllers
                 var sameDomain = true;
                 try
                 {
-                    sameDomain = new Uri(returnUrl).Host.EndsWith(ServerConfigs.CookieDomain);
+                    sameDomain = new Uri(returnUrl).Host.EndsWith(ServerConfig.CookieDomain);
                 }
                 catch
                 {
@@ -134,7 +134,7 @@ namespace UOKO.SSO.Controllers
         [AllowAnonymous]
         public ActionResult LogOff(string returnUrl)
         {
-            SSOAuthentication.SignOut();
+            SSOAuthentication.SignOut(ServerConfig.CookieDomain);
             if (!string.IsNullOrEmpty(returnUrl))
             {
                 return Redirect(returnUrl);
@@ -166,13 +166,13 @@ namespace UOKO.SSO.Controllers
         /// <returns></returns>
         public static string GetValidateTokenUrl(string returnUrl, string ticketToken)
         {
-            if (returnUrl.Contains(ServerConfigs.TokenParamName))
+            if (returnUrl.Contains(ServerConfig.TokenParamName))
             {
                 // remove token param
-                var regex = new Regex(string.Format(@"{0}=.*?(&|$)", ServerConfigs.TokenParamName),
+                var regex = new Regex(string.Format(@"{0}=.*?(&|$)", ServerConfig.TokenParamName),
                                       RegexOptions.IgnoreCase);
                 returnUrl = regex.Replace(returnUrl,
-                                          string.Format(@"{0}={1}", ServerConfigs.TokenParamName, ticketToken));
+                                          string.Format(@"{0}={1}", ServerConfig.TokenParamName, ticketToken));
                 return returnUrl;
             }
             else
@@ -182,7 +182,7 @@ namespace UOKO.SSO.Controllers
 
                 var redirectUrl = string.Format(@"{0}{1}{2}={3}", returnUrl,
                                                 connectorChar,
-                                                ServerConfigs.TokenParamName,
+                                                ServerConfig.TokenParamName,
                                                 ticketToken);
                 return redirectUrl;
             }

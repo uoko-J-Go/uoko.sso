@@ -25,7 +25,7 @@ namespace UOKO.SSO.Client
 
             var alias = identity.UserAlias;
 
-            var permissions = PermissionService.GetPermissionsFromCache(alias, ClientConfigs.AppKey)
+            var permissions = PermissionService.GetPermissionsFromCache(alias, RelyingPartyClient.ClientInfo.AppKey)
                               ?? new List<string>();
             var hasPermission = permissions.Any(item => string.Equals(item, code, StringComparison.OrdinalIgnoreCase));
             return hasPermission;

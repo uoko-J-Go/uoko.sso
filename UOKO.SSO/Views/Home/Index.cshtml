@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "系统资源列表";
 
-    var appList = ViewBag.AppList as List<AppInfo> ?? new List<AppInfo>();
+    var appList = ViewBag.AppList as IEnumerable<AppInfo> ?? new List<AppInfo>();
     
 }
 @section featured {
@@ -20,17 +20,15 @@
 <ol class="round">
 
     @{
-
         foreach (var app in appList)
         {
             <a href="@app.Url">
                 <li class="one">
                     <h5>@app.Name</h5>
-                    @app.Description
+                    @(app.Description ?? app.Name)
                 </li>
             </a>
         }
-
     }
 
 </ol>

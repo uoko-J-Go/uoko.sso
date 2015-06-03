@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Security.Principal;
+using System.Threading;
 using System.Web;
 using UOKO.SSO.Core;
 
@@ -9,8 +10,16 @@ namespace UOKO.SSO.Client
 {
     public class RelyingPartyClient
     {
+        public static ClientConfig ClientInfo { get; private set; }
+
+        public static void Config(ClientConfig config)
+        {
+            ClientInfo = config;
+        }
+
+
         public static Func<HttpContextBase, IPrincipal> GeneratePrincipalFromLocalCookieFunc;
-        public static Action<HttpContextBase,SSOCookieInfo> SetLocalCookieFunc;
+        public static Action<HttpContextBase, SSOCookieInfo> SetLocalCookieFunc;
 
         /// <summary>
         /// 构造身份信息，相当于是 AuthenticateRequest 方法。
@@ -44,7 +53,7 @@ namespace UOKO.SSO.Client
                     return null;
                 }
 
-                var sameDomain = request.Url.Host.EndsWith(ServerConfigs.CookieDomain);
+                var sameDomain = request.Url.Host.EndsWith(ClientInfo.ServerCookieDomain);
 
                 principal = sameDomain
                                 ? GeneratePrincipalForSameDomain()
@@ -58,12 +67,32 @@ namespace UOKO.SSO.Client
             return principal;
         }
 
+
+        /// <summary>
+        /// 在这里构造身份信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="eventArgs"></param>
+        public static void OnAuthenticateRequest(object sender, EventArgs eventArgs)
+        {
+            var application = sender as HttpApplication;
+            if (application == null || application.Context == null)
+            {
+                return;
+            }
+            var ctx = new HttpContextWrapper(application.Context);
+
+            var principal = GeneratePrincipalForAuthRequest(ctx);
+            ctx.User = principal;
+            Thread.CurrentPrincipal = principal;
+        }
+
         /// <summary>
         /// Logoff
         /// </summary>
         public static void RemoveLocalCookie()
         {
-            SSOAuthentication.RemoveCookie(ClientConfigs.CookieName);
+            SSOAuthentication.RemoveCookie(ClientInfo.LocalCookieName);
         }
 
         #region For views
@@ -81,8 +110,8 @@ namespace UOKO.SSO.Client
                 returnUrl = ctx.Server.UrlEncode(returnUrl);
             }
             var logOnUrl = string.Format("{0}/Account/Login?appKey={1}&returnUrl={2}",
-                                         ClientConfigs.ServerUrl,
-                                         Uri.EscapeDataString(ClientConfigs.AppKey??string.Empty),
+                                         ClientInfo.ServerUrl,
+                                         Uri.EscapeDataString(ClientInfo.AppKey ?? string.Empty),
                                          returnUrl);
             return logOnUrl;
         }
@@ -104,15 +133,15 @@ namespace UOKO.SSO.Client
             }
 
             var logOffUrl = string.Format("{0}/Account/LogOff?appKey={1}&returnUrl={2}",
-                                          ClientConfigs.ServerUrl,
-                                          Uri.EscapeDataString(ClientConfigs.AppKey ?? string.Empty),
+                                          ClientInfo.ServerUrl,
+                                          Uri.EscapeDataString(ClientInfo.AppKey ?? string.Empty),
                                           returnUrl);
 
             var identity = Current.UserIdentity;
             if (identity != null)
             {
                 var alias = identity.UserAlias;
-                PermissionService.RefreshCachePermissions(alias, ClientConfigs.AppKey);
+                PermissionService.RefreshCachePermissions(alias, ClientInfo.AppKey);
             }
 
             return logOffUrl;
@@ -125,7 +154,7 @@ namespace UOKO.SSO.Client
         private static IPrincipal GeneratePrincipalForSameDomain()
         {
             IPrincipal userInfo = null;
-            var cookieInfo = SSOAuthentication.GetAuthCookieInfo(ServerConfigs.CookieName);
+            var cookieInfo = SSOAuthentication.GetAuthCookieInfo(ServerConfig.CookieName);
             if (cookieInfo != null && !string.IsNullOrWhiteSpace(cookieInfo.Alias))
             {
                 userInfo = SSOAuthentication.GenerateClaimsPrincipal(cookieInfo);
@@ -147,7 +176,7 @@ namespace UOKO.SSO.Client
                 return null;
             }
 
-            var validateToken = request.QueryString[ServerConfigs.TokenParamName];
+            var validateToken = request.QueryString[ServerConfig.TokenParamName];
             if (!string.IsNullOrWhiteSpace(validateToken))
             {
                 // 有 token 进行 sso 服务端校验获取身份信息
@@ -167,12 +196,12 @@ namespace UOKO.SSO.Client
 
         private static IPrincipal GetPrincipalInfoFromServer(HttpContextBase ctx, string token)
         {
-            var requestUrl = ClientConfigs.ServerUrl + "/Account/ValidateToken";
+            var requestUrl = ClientInfo.ServerUrl + "/Account/ValidateToken";
             var client = new HttpClient();
             var dic = new Dictionary<string, string>()
                       {
                           {"token", token},
-                          {"appKey", ClientConfigs.AppKey}
+                          {"appKey", ClientInfo.AppKey}
                       };
             var sendInfo = new FormUrlEncodedContent(dic);
 
@@ -232,7 +261,7 @@ namespace UOKO.SSO.Client
             }
 
             IPrincipal userInfo = null;
-            var localCookieInfo = SSOAuthentication.GetAuthCookieInfo(ClientConfigs.CookieName);
+            var localCookieInfo = SSOAuthentication.GetAuthCookieInfo(ClientInfo.LocalCookieName);
             if (localCookieInfo != null && !string.IsNullOrWhiteSpace(localCookieInfo.Alias))
             {
                 // 有身份信息,构建基础身份信息
@@ -249,7 +278,7 @@ namespace UOKO.SSO.Client
                 return;
             }
 
-            SSOAuthentication.SetAuthCookie(cookieInfo, ClientConfigs.CookieName);
+            SSOAuthentication.SetAuthCookie(cookieInfo, ClientInfo.LocalCookieName);
         }
 
         #endregion
