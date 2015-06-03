@@ -29,7 +29,9 @@ namespace UOKO.SSO.Service
                 }
                 else
                 {
-                    throw new Exception(result.Message);
+                    // 吞掉异常... 哎 code smell
+                    // throw new Exception(result.Message);
+                    return null;
                 }
             }
             else
@@ -60,13 +62,16 @@ namespace UOKO.SSO.Service
                                                                  Description = item.Remark,
                                                              };
                                                          return appInfo;
-                                                     });
+                                                     })
+                                        .ToList();
 
                     return appList;
                 }
                 else
                 {
-                    throw new Exception(result.Message);
+                    // 吞掉异常... 哎 code smell
+                    //throw new Exception(result.Message);
+                    return null;
                 }
             }
             else
