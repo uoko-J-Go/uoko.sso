@@ -4,11 +4,21 @@
 
 ** how can i use it
 
-   1. deploy the sso server site
-   2. client site (relying party) reference sso.client package
+   1. deploy the sso server site: assign a domain in iis (e.g: sso.uoko.com)
+   2. client site (relying party) reference sso.client & sso.core package
    3. do some configuration
 
-*** about configuration
+*** about server configuration
+
+    in sso server web.config , add setting:
+
+    #+BEGIN_SRC xml
+      <add key="sso.cookieDomain" value="uoko.com" />
+    #+END_SRC
+
+    the value need to be the domain of your sso server site url. all done.
+
+*** about client configuration
 
     in global.asax.cs file:
 
@@ -17,84 +27,61 @@
       {
           base.Init();
 
-          this.AuthenticateRequest += OnAuthenticateRequest;
-      }
+          RelyingPartyClient.Config(new ClientConfig("appKey", "ssoServerUrl", "ssoCookieDomain"));
 
-      private void OnAuthenticateRequest(object sender, EventArgs eventArgs)
-      {
-          var ctx = new HttpContextWrapper(this.Context);
-          var principal = RelyingPartyClient.GeneratePrincipalForAuthRequest(ctx);
-          this.Context.User = principal;
+          //  if your client site is from other domain, add your own cookieName to config
+          //  RelyingPartyClient.Config(new ClientConfig("appKey", "ssoServerUrl", "ssoCookieDomain","yourOwnCookieName"));
+
+          this.AuthenticateRequest += RelyingPartyClient.OnAuthenticateRequest;
       }
     #+END_SRC
 
-    add filter in global
+    appkey can be anything,but should be allocate from sso server.
+
+    ssoServerUrl is the sso server site url
+
+    ssoCookieDomain is the sso server url domain,need to be the same as the setting(sso.cookieDomain) in sso server web.config
+
+    yourOwnCookieName can be optional if your site domain is under(same as) sso site domain
+
+
+    add auth filter in global or add auth attribute in controller you want to auth
 
     #+BEGIN_SRC csharp
       public class FilterConfig
       {
           public static void RegisterGlobalFilters(GlobalFilterCollection filters)
           {
-              filters.Add(new CommonAuthorize()); // here is the filter for authorize
+              filters.Add(new CommonAuthorize()); // here is the global filter for authorize
               filters.Add(new HandleErrorAttribute());
           }
       }
     #+END_SRC
 
-
-
     in your logoff action
 
     #+BEGIN_SRC csharp
-      /// <summary>
-      /// 如果是第三方则,调用 relying party client 进行自身的 LogOff
-      /// 否者调用 sso logoff
-      /// </summary>
-      /// <returns></returns>
-      public ActionResult LogOff()
-      {
-          // 可以指定相应的 returnUrl 进行跳转
-          var returnUrl = "http://one.uoko.com/home/anonymous";
+         /// <summary>
+         /// 如果是第三方则,调用 relying party client 进行自身的 LogOff
+         /// 否者调用 sso logoff
+         /// </summary>
+         /// <returns></returns>
+         public ActionResult LogOff()
+         {
 
-          // 如果需要使用 returnUrl 需要保证这是一个绝对 url,不是相对路径
-          var ssoLogOffUrl = RelyingPartyClient.GetLogOutUrl(returnUrl);
-          return Redirect(ssoLogOffUrl);
-      }
+             // if your client site is from other domain, add this to remove your local cookie
+             // RelyingPartyClient.RemoveLocalCookie();
+
+
+             // 可以指定相应的 returnUrl 进行跳转
+             var returnUrl = "http://one.uoko.com/home/anonymous";
+
+             // 如果需要使用 returnUrl 需要保证这是一个绝对 url,不是相对路径
+             var ssoLogOffUrl = RelyingPartyClient.GetLogOutUrl(returnUrl);
+             return Redirect(ssoLogOffUrl);
+         }
     #+END_SRC
 
-    if your client site is from other domain, logoff should be like this:
-
-    #+BEGIN_SRC csharp
-      /// <summary>
-      /// 如果是第三方则,调用 relying party client 进行自身的 LogOff
-      /// 否者调用 sso logoff
-      /// </summary>
-      /// <returns></returns>
-      public ActionResult LogOff()
-      {
-          RelyingPartyClient.RemoveLocalCookie();
-
-          // 可以指定相应的 returnUrl 进行跳转
-          var ssoLogOffUrl = RelyingPartyClient.GetLogOutUrl();
-          return Redirect(ssoLogOffUrl);
-      }
-    #+END_SRC
-
-    finally add some appsettings
-
-    #+BEGIN_SRC xml
-      <appSettings>
-        <add key="sso.appKey" value="other-domain-client-site" />
-        <add key="sso.serverUrl" value="http://sso.uoko.com" />
-        <add key="identity.cookieName" value="my-personal-identity" />
-      </appSettings>
-    #+END_SRC
-
-    appkey can be anything,but should be allocate from sso server.
-
-    serverurl is the sso server site url
-
-    cookieName can be optional if your site domain is under(same as) sso site domain
 
 ** where can i get the identity info
 
