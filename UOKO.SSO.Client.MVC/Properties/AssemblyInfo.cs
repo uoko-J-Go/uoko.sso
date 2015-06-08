@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("UOKO.SSO.Client.MVC")]
 [assembly: AssemblyDescription("for mvc project")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("UOKO.COM")]
 [assembly: AssemblyProduct("UOKO.SSO.Client.MVC")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]

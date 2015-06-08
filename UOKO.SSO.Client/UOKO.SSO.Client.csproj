@@ -54,6 +54,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UOKO.SSO.Core, Version=1.0.5637.31392, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UOKO.SSO.Core.1.0.5637.31392\lib\net45\UOKO.SSO.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PermissionService.cs" />
@@ -63,12 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UOKO.SSO.Core\UOKO.SSO.Core.csproj">
-      <Project>{6e2956f2-2c9f-4fee-9b9e-097e7e4522f2}</Project>
-      <Name>UOKO.SSO.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
