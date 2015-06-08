@@ -10,7 +10,7 @@ namespace UOKO.SSO.Client.MVC
     /// <summary>
     /// 做授权用,跳转为 403 
     /// </summary>
-    public class SSOAuthorize : AuthorizeAttribute
+    public class SSOAuthorizeAttribute : AuthorizeAttribute
     {
 
         /// <summary>

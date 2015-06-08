@@ -70,7 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SSOAuthorize.cs" />
+    <Compile Include="SSOAuthorizeAttribute.cs" />
     <Compile Include="SSOAuthenticationAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
