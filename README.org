@@ -5,7 +5,7 @@
 ** how can i use it
 
    1. deploy the sso server site: assign a domain in iis (e.g: sso.uoko.com)
-   2. client site (relying party) reference sso.client & sso.core package
+   2. client site (relying party) reference sso.client.mvc package (through [[http://lust4life.github.io/work/nuget-package-uoko.html][uoko nuget package server]]) if your project is mvc project
    3. do some configuration
 
 *** about server configuration
