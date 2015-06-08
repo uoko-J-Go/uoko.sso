@@ -14,6 +14,7 @@
 
     #+BEGIN_SRC xml
       <add key="sso.cookieDomain" value="uoko.com" />
+      <add key="permission.api.url" value="http://api.permission.uoko.cn" />
     #+END_SRC
 
     the value need to be the domain of your sso server site url. all done.
@@ -23,36 +24,50 @@
     in global.asax.cs file:
 
     #+BEGIN_SRC csharp
-      public override void Init()
+      protected void Application_Start()
       {
-          base.Init();
 
-          RelyingPartyClient.Config(new ClientConfig("appKey", "ssoServerUrl", "ssoCookieDomain"));
+          // config relying party client
+          // self-cookie could be optional if your site domain is under sso server domain
+          RelyingPartyClient.Config(new ClientConfig("test-demo-site",
+                                                     "http://sso.uoko.com",
+                                                     "uoko.com",
+                                                     "http://172.16.1.17:8038",
+                                                     "self-cookie"));
 
-          //  if your client site is from other domain, add your own cookieName to config
-          //  RelyingPartyClient.Config(new ClientConfig("appKey", "ssoServerUrl", "ssoCookieDomain","yourOwnCookieName"));
-
-          this.AuthenticateRequest += RelyingPartyClient.OnAuthenticateRequest;
+          AreaRegistration.RegisterAllAreas();
+          FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+          RouteConfig.RegisterRoutes(RouteTable.Routes);
+          BundleConfig.RegisterBundles(BundleTable.Bundles);
       }
     #+END_SRC
 
-    appkey can be anything,but should be allocate from sso server.
+    *ClientConfig params description*
 
-    ssoServerUrl is the sso server site url
+    "test-demo-site" is appkey, can be anything,but should be allocate from sso server.
 
-    ssoCookieDomain is the sso server url domain,need to be the same as the setting(sso.cookieDomain) in sso server web.config
+    "http://sso.uoko.com" is ssoServerUrl, is the sso server site url.
 
-    yourOwnCookieName can be optional if your site domain is under(same as) sso site domain
+    "uoko.com" is ssoCookieDomain ,is the sso server url domain,need to be the same as the setting(sso.cookieDomain) in sso server web.config.
 
+    "http://172.16.1.17:8038" is the permission api url. your permision data needs from here.
 
-    add auth filter in global or add auth attribute in controller you want to auth
+    "self-coolie" is yourOwnCookieName, can be optional if your site domain is under(same as) sso site domain.
+
+    add auth filter in global or add put in controller/action you want to auth
 
     #+BEGIN_SRC csharp
       public class FilterConfig
       {
           public static void RegisterGlobalFilters(GlobalFilterCollection filters)
           {
-              filters.Add(new CommonAuthorize()); // here is the global filter for authorize
+              // UnAuthroized is the view name of forbidden result
+              // SSOAuthenticationAttribute for authrication (login)
+              filters.Add(new SSOAuthenticationAttribute("UnAuthroized"));
+
+              // SSOAuthorizeAttribute for access control
+              filters.Add(new SSOAuthorizeAttribute());
+
               filters.Add(new HandleErrorAttribute());
           }
       }
@@ -95,10 +110,8 @@
          public ActionResult Index()
          {
              // here to get basic identity info
-             var userAlias = Current.UserIdentity.UserAlias;
-             var appList = UserBiz.GetUserAppInfo(userAlias);
+             var userAlias = SSOInfo.UserIdentity.UserAlias;
 
-             ViewBag.AppList = appList;
              return View();
          }
 
