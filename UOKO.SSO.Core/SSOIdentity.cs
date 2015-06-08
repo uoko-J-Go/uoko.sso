@@ -5,11 +5,11 @@ namespace UOKO.SSO.Core
     /// <summary>
     /// 方便获取 alias 这个唯一用户标识
     /// </summary>
-    public class CommonIdentity
+    public class SSOIdentity
     {
         public ClaimsIdentity ClaimsIdentity { get; private set; }
 
-        public CommonIdentity(ClaimsIdentity claimsIdentity)
+        public SSOIdentity(ClaimsIdentity claimsIdentity)
         {
             ClaimsIdentity = claimsIdentity;
         }

@@ -11,6 +11,7 @@ namespace UOKO.SSO.Controllers
 
         public ActionResult Login(string userName,string pwd)
         {
+
             if (userName != pwd)
             {
                 return Json(new {success = false, errorMsg = "用户名/密码不正确"});

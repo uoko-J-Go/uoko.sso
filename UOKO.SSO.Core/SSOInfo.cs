@@ -3,10 +3,9 @@ using System.Web;
 
 namespace UOKO.SSO.Core
 {
-    public static class Current
+    public static class SSOInfo
     {
-
-        public static CommonIdentity UserIdentity
+        public static SSOIdentity UserIdentity
         {
             get
             {
@@ -16,7 +15,7 @@ namespace UOKO.SSO.Core
                     return null;
                 }
 
-                CommonIdentity commonIdentity = null;
+                SSOIdentity commonIdentity = null;
 
                 if (context.User != null)
                 {
@@ -24,7 +23,7 @@ namespace UOKO.SSO.Core
                     if (claimsIdentity != null
                         && claimsIdentity.IsAuthenticated)
                     {
-                        commonIdentity = new CommonIdentity(claimsIdentity);
+                        commonIdentity = new SSOIdentity(claimsIdentity);
                     }
                 }
 
@@ -33,5 +32,4 @@ namespace UOKO.SSO.Core
         }
 
     }
-
 }

@@ -46,7 +46,7 @@ namespace UOKO.SSO.Service
             var client = new HttpClient { Timeout = TimeSpan.FromSeconds(5) };
             var getAppInfoApiUrl = string.Format("{0}/AppSystem/GetAppSystemByAlias/{1}", PermissApiUrl, alias);
             var result =
-                client.GetAsync(getAppInfoApiUrl).Result.Content.ReadAsAsync<ApiResult<List<AppSystemInfo>>>().Result;
+                client.GetAsync(getAppInfoApiUrl).Result.Content.ReadAsAsync<ApiResult<IEnumerable<AppSystemInfo>>>().Result;
             if (result != null)
             {
                 if (result.Code == "200" && result.Data != null)

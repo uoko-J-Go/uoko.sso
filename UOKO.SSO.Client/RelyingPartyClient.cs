@@ -137,7 +137,7 @@ namespace UOKO.SSO.Client
                                           Uri.EscapeDataString(ClientInfo.AppKey ?? string.Empty),
                                           returnUrl);
 
-            var identity = Current.UserIdentity;
+            var identity = SSOInfo.UserIdentity;
             if (identity != null)
             {
                 var alias = identity.UserAlias;

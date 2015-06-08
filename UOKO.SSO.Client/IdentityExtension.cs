@@ -16,7 +16,7 @@ namespace UOKO.SSO.Client
         /// <param name="code"></param>
         /// <returns></returns>
 
-        public static bool HasPermission(this CommonIdentity identity, string code)
+        public static bool HasPermission(this SSOIdentity identity, string code)
         {
             if (identity == null || string.IsNullOrEmpty(code))
             {

@@ -15,12 +15,15 @@ namespace UOKO.SSO.Core
         /// <param name="appKey"></param>
         /// <param name="ssoServerUrl"></param>
         /// <param name="serverCookieDomain"></param>
+        /// <param name="permissApiUrl">权限系统 api 地址</param>
         /// <param name="localCookieName">如果是跨域应用,需要指定本地 cookieName </param>
-        public ClientConfig(string appKey, string ssoServerUrl, string serverCookieDomain, string localCookieName = null)
+        public ClientConfig(string appKey, string ssoServerUrl, string serverCookieDomain, string permissApiUrl,
+                            string localCookieName = null)
         {
             AppKey = appKey;
             ServerUrl = ssoServerUrl;
             ServerCookieDomain = serverCookieDomain;
+            PermissApiUrl = permissApiUrl;
 
             LocalCookieName = HashName(localCookieName);
         }
@@ -57,6 +60,10 @@ namespace UOKO.SSO.Core
                                            .Select(item => item.ToString("X")));
             return hashName;
         }
+
+
+
+        public string PermissApiUrl { get; private set; }
 
     }
 }

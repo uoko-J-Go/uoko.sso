@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Caching;
+using UOKO.SSO.Core;
 
 namespace UOKO.SSO.Client
 {
@@ -28,6 +31,8 @@ namespace UOKO.SSO.Client
                 if (permissions == null)
                 {
                     permissions = GetPermissions(userAlias, appCode);
+
+                    // 这里默认为 8h 的缓存, 如果要刷新, 通过退出重新登陆实现缓存刷新.(在退出的时候,清空缓存)
                     ctx.Cache.Add(cacheKey, permissions, null, DateTime.Now.AddHours(8), Cache.NoSlidingExpiration,
                                   CacheItemPriority.Normal, null);
                 }
@@ -45,7 +50,27 @@ namespace UOKO.SSO.Client
             var permission = new List<string>();
 
             // todo: 调用 api 获取权限信息
+            var client = new HttpClient { Timeout = TimeSpan.FromSeconds(5) };
+            var getUserInfoApiUrl = string.Format("{0}/Funcation/GetPermissionByAliasAppCode/{1}/{2}", RelyingPartyClient.ClientInfo.PermissApiUrl, userAlias, appCode);
+            var result = client.GetAsync(getUserInfoApiUrl).Result.Content.ReadAsAsync<ApiResult<IEnumerable<PermissionInfo>>>().Result;
 
+            if (result != null)
+            {
+                if (result.Code == "200" && result.Data != null)
+                {
+                    permission = result.Data.Select(item => item.Url).ToList();
+                }
+                else
+                {
+                    // 吞掉异常... 哎 code smell
+                    // throw new Exception(result.Message);
+                    return permission;
+                }
+            }
+            else
+            {
+                throw new Exception("api return null");
+            }
 
             return permission;
         }
@@ -73,6 +98,18 @@ namespace UOKO.SSO.Client
         {
             var cacheKey = string.Format("alias-{0}-appcode-{1}", userAlias, appCode);
             return cacheKey;
+        }
+
+        private class ApiResult<T>
+        {
+            public string Message { get; set; }
+            public string Code { get; set; }
+            public T Data { get; set; }
+        }
+
+        private class PermissionInfo
+        {
+            public string Url { get; set; } 
         }
     }
 }
