@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Security.Claims;
 using System.Threading;
 using System.Web;
@@ -60,7 +61,7 @@ namespace UOKO.SSO.Server
             }
             catch (Exception ex)
             {
-                // todo: log exception
+                Trace.WriteLine(ex, ex.GetType().ToString());
             }
         }
     }

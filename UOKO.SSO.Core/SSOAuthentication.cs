@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -29,7 +30,7 @@ namespace UOKO.SSO.Core
             }
             catch (Exception ex)
             {
-                // todo: log exception
+                Trace.WriteLine(ex, ex.GetType().ToString());
             }
 
             return cookieInfo;

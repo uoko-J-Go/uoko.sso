@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Security.Principal;
 using System.Threading;
@@ -61,7 +62,7 @@ namespace UOKO.SSO.Client
             }
             catch (Exception ex)
             {
-                // todo: log exception
+                Trace.WriteLine(ex, ex.GetType().ToString());
             }
 
             return principal;
@@ -214,7 +215,7 @@ namespace UOKO.SSO.Client
             }
             catch (Exception ex)
             {
-                // todo : log exception   
+                Trace.WriteLine(ex, ex.GetType().ToString());
             }
 
             if (ticket == null)

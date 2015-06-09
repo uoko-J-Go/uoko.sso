@@ -49,7 +49,6 @@ namespace UOKO.SSO.Client
         {
             var permission = new List<string>();
 
-            // todo: 调用 api 获取权限信息
             var client = new HttpClient { Timeout = TimeSpan.FromSeconds(5) };
             var getUserInfoApiUrl = string.Format("{0}/Funcation/GetPermissionByAliasAppCode/{1}/{2}", RelyingPartyClient.ClientInfo.PermissApiUrl, userAlias, appCode);
             var result = client.GetAsync(getUserInfoApiUrl).Result.Content.ReadAsAsync<ApiResult<IEnumerable<PermissionInfo>>>().Result;

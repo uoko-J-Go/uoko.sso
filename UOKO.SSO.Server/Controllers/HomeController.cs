@@ -1,11 +1,12 @@
-﻿using System.Web.Mvc;
+﻿using System.Diagnostics;
+using System.Web.Mvc;
 using UOKO.SSO.Core;
 using UOKO.SSO.Server.Service;
 
 namespace UOKO.SSO.Server.Controllers
 {
     [Authorize]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
 
         public ActionResult Index()
@@ -16,6 +17,5 @@ namespace UOKO.SSO.Server.Controllers
             ViewBag.AppList = appList;
             return View();
         }
-
     }
 }

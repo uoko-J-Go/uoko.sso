@@ -9,7 +9,7 @@ using UOKO.SSO.Server.Utils;
 namespace UOKO.SSO.Server.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         /// <summary>
         /// 检验用户身份认证状态, 如果用户身份已经登陆
@@ -155,7 +155,7 @@ namespace UOKO.SSO.Server.Controllers
         {
             var casTicket = CacheTickets.ValidateToken(token, appKey);
 
-            return Json(casTicket);
+            return CustomerJson(casTicket);
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace UOKO.SSO.Server.Controllers
         /// <param name="returnUrl"></param>
         /// <param name="ticketToken"></param>
         /// <returns></returns>
-        public static string GetValidateTokenUrl(string returnUrl, string ticketToken)
+        private static string GetValidateTokenUrl(string returnUrl, string ticketToken)
         {
             if (returnUrl.Contains(ServerConfig.TokenParamName))
             {
