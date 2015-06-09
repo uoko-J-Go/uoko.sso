@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOKO.SSO", "UOKO.SSO\UOKO.SSO.csproj", "{A46DD7D0-4897-462B-9247-B93FA97E67F4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOKO.SSO.Core", "UOKO.SSO.Core\UOKO.SSO.Core.csproj", "{6E2956F2-2C9F-4FEE-9B9E-097E7E4522F2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOKO.SSO.Client", "UOKO.SSO.Client\UOKO.SSO.Client.csproj", "{80AD3EBB-D0B5-4841-82F3-553D9B81D794}"
@@ -20,16 +18,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOKO.SSO.Client.MVC", "UOKO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOKO.SSO.SiteDemo", "UOKO.SSO.SiteDemo\UOKO.SSO.SiteDemo.csproj", "{14CBDCA7-EE60-4DA9-A149-7E6A13BAEC56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOKO.SSO.Server", "UOKO.SSO.Server\UOKO.SSO.Server.csproj", "{177FF651-01B1-4D89-9134-81B6A42B55ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{64F5EB4E-1767-4620-9516-CD8063A32621}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A46DD7D0-4897-462B-9247-B93FA97E67F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A46DD7D0-4897-462B-9247-B93FA97E67F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A46DD7D0-4897-462B-9247-B93FA97E67F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A46DD7D0-4897-462B-9247-B93FA97E67F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6E2956F2-2C9F-4FEE-9B9E-097E7E4522F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6E2956F2-2C9F-4FEE-9B9E-097E7E4522F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E2956F2-2C9F-4FEE-9B9E-097E7E4522F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -46,6 +44,14 @@ Global
 		{14CBDCA7-EE60-4DA9-A149-7E6A13BAEC56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14CBDCA7-EE60-4DA9-A149-7E6A13BAEC56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14CBDCA7-EE60-4DA9-A149-7E6A13BAEC56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{177FF651-01B1-4D89-9134-81B6A42B55ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{177FF651-01B1-4D89-9134-81B6A42B55ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{177FF651-01B1-4D89-9134-81B6A42B55ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{177FF651-01B1-4D89-9134-81B6A42B55ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64F5EB4E-1767-4620-9516-CD8063A32621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64F5EB4E-1767-4620-9516-CD8063A32621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64F5EB4E-1767-4620-9516-CD8063A32621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64F5EB4E-1767-4620-9516-CD8063A32621}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
