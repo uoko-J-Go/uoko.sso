@@ -43,5 +43,44 @@ namespace UOKO.SSO.Client
             return claim == null ? null : claim.Value;
         }
 
+        /// <summary>
+        /// 获取用户所拥有的权限信息
+        /// </summary>
+        /// <param name="identity"></param>
+        /// <returns></returns>
+        public static IEnumerable<string> GetPermissions(this SSOIdentity identity)
+        {
+            if (identity == null)
+            {
+                return new List<string>();
+            }
+
+            var alias = identity.UserAlias;
+
+            var permissions = PermissionService.GetPermissionsFromCache(alias, RelyingPartyClient.ClientInfo.AppKey)
+                              ?? new List<string>();
+            return permissions;
+        }
+
+
+        /// <summary>
+        /// 获取用户所拥有的权限信息
+        /// </summary>
+        /// <param name="identity"></param>
+        /// <returns></returns>
+
+        public static IEnumerable<string> RefreshPermissions(this SSOIdentity identity)
+        {
+            if (identity == null)
+            {
+                return new List<string>();
+            }
+
+            var alias = identity.UserAlias;
+
+            var permissions = PermissionService.RefreshCachePermissions(alias, RelyingPartyClient.ClientInfo.AppKey)
+                              ?? new List<string>();
+            return permissions;
+        }
     }
 }

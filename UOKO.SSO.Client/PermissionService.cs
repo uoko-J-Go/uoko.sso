@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Web;
 using System.Web.Caching;
-using UOKO.SSO.Core;
 
 namespace UOKO.SSO.Client
 {
@@ -79,7 +78,7 @@ namespace UOKO.SSO.Client
         /// </summary>
         /// <param name="userAlias"></param>
         /// <param name="appCode"></param>
-        public static void RefreshCachePermissions(string userAlias, string appCode)
+        public static IEnumerable<string> RefreshCachePermissions(string userAlias, string appCode)
         {
             var permissions = GetPermissions(userAlias, appCode);
 
@@ -91,6 +90,8 @@ namespace UOKO.SSO.Client
                 ctx.Cache.Add(cacheKey, permissions, null, DateTime.Now.AddHours(8), Cache.NoSlidingExpiration,
                               CacheItemPriority.Normal, null);
             }
+
+            return permissions;
         }
 
         private static string GenerateCacheKey(string userAlias, string appCode)
