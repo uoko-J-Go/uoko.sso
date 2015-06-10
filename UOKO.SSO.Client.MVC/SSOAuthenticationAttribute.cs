@@ -34,6 +34,12 @@ namespace UOKO.SSO.Client.MVC
                 return;
             }
 
+            if (filterContext.ActionDescriptor.IsDefined(typeof (AllowAnonymousAttribute), true)
+                || filterContext.ActionDescriptor.ControllerDescriptor.IsDefined(typeof (AllowAnonymousAttribute), true))
+            {
+                return;
+            }
+
             var user = RelyingPartyClient.GeneratePrincipalForAuthRequest(filterContext.HttpContext);
             if (user == null || user.Identity == null || !user.Identity.IsAuthenticated)
             {
