@@ -29,10 +29,10 @@
 
           // config relying party client
           // self-cookie could be optional if your site domain is under sso server domain
-          RelyingPartyClient.Config(new ClientConfig("test-demo-site",
-                                                     "http://sso.uoko.com",
-                                                     "uoko.com",
-                                                     "http://172.16.1.17:8038",
+          RelyingPartyClient.Config(new ClientConfig("app-code",
+                                                     "http://sso.uoko.ioc",
+                                                     "uoko.ioc",
+                                                     "http://api.permission.uoko.ioc",
                                                      "self-cookie"));
 
           AreaRegistration.RegisterAllAreas();
@@ -44,13 +44,13 @@
 
     *ClientConfig params description*
 
-    "test-demo-site" is appkey, can be anything,but should be allocate from sso server.
+    "app-code" is appkey, can be anything,but should be allocate from sso server [目前是权限系统分配].
 
-    "http://sso.uoko.com" is ssoServerUrl, is the sso server site url.
+    "http://sso.uoko.ioc" is ssoServerUrl, is the sso server site url.
 
-    "uoko.com" is ssoCookieDomain ,is the sso server url domain,need to be the same as the setting(sso.cookieDomain) in sso server web.config.
+    "uoko.ioc" is ssoCookieDomain ,is the sso server url domain,need to be the same as the setting(sso.cookieDomain) in sso server web.config.
 
-    "http://172.16.1.17:8038" is the permission api url. your permision data needs from here.
+    "http://api.permission.uoko.ioc" is the permission api url. your permision data needs from here.
 
     "self-coolie" is yourOwnCookieName, can be optional if your site domain is under(same as) sso site domain.
 
@@ -61,7 +61,7 @@
       {
           public static void RegisterGlobalFilters(GlobalFilterCollection filters)
           {
-              // UnAuthroized is the view name of forbidden result
+              // UnAuthroized is the view name of forbidden result. Can be optional that will result a 403 forbidden response
               // SSOAuthenticationAttribute for authrication (login)
               filters.Add(new SSOAuthenticationAttribute("UnAuthroized"));
 
