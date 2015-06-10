@@ -14,9 +14,9 @@ namespace UOKO.SSO.SiteDemo
 
             // config relying party client
             RelyingPartyClient.Config(new ClientConfig("test-demo-site",
-                                                       "http://sso.uoko.cn",
-                                                       "uoko.cn",
-                                                       "http://api.permission.uoko.cn/",
+                                                       "http://sso.uoko.ioc",
+                                                       "uoko.ioc",
+                                                       "http://api.permission.uoko.ioc/",
                                                        "self-cookie"));
 
             AreaRegistration.RegisterAllAreas();

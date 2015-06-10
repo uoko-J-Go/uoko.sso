@@ -155,7 +155,7 @@ namespace UOKO.SSO.Server.Controllers
         {
             var casTicket = CacheTickets.ValidateToken(token, appKey);
 
-            return CustomerJson(casTicket);
+            return Json(casTicket);
         }
 
         /// <summary>
