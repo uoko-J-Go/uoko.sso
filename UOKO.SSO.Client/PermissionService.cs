@@ -87,7 +87,7 @@ namespace UOKO.SSO.Client
             var ctx = HttpContext.Current;
             if (ctx != null)
             {
-                ctx.Cache.Add(cacheKey, permissions, null, DateTime.Now.AddHours(8), Cache.NoSlidingExpiration,
+                ctx.Cache.Insert(cacheKey, permissions, null, DateTime.Now.AddHours(8), Cache.NoSlidingExpiration,
                               CacheItemPriority.Normal, null);
             }
 
