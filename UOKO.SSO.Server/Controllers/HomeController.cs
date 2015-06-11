@@ -1,5 +1,5 @@
-﻿using System.Diagnostics;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using RequireJsNet;
 using UOKO.SSO.Core;
 using UOKO.SSO.Server.Service;
 
@@ -10,6 +10,17 @@ namespace UOKO.SSO.Server.Controllers
     {
 
         public ActionResult Index()
+        {
+            var userAlias = SSOInfo.UserIdentity.UserAlias;
+            var appList = UserBiz.GetUserAppInfo(userAlias);
+             
+            RequireJsOptions.Add("appList", appList);
+
+            return View();
+        }
+
+
+        public ActionResult Test()
         {
             var userAlias = SSOInfo.UserIdentity.UserAlias;
             var appList = UserBiz.GetUserAppInfo(userAlias);

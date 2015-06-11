@@ -1,44 +1,18 @@
 {
     "paths": {
-        "jquery": "jquery-1.10.2",
-        "jquery-validate": "jquery.validate",
-        "jquery-validate-unobtrusive": "jquery.validate.unobtrusive",
-        "bootstrap": "bootstrap",
-        "respond": "respond",
-        "i18n": "Components/RequireJS/i18n",
-        "text": "Components/RequireJS/text",
-        "menu-module" : "Controllers/Common/menu-module"
+        "bootstrap": "bootstrap.min",
+        "jquery": "jquery-1.10.2.min",
+        "lodash": "utils/lodash/lodash",
+        "angular": "utils/angular/angular",
+        "commonModule": "Modules/angular/commonModule"
     },
     "shim": {
-        "jquery-validate": {
+        "bootstrap": {
             "deps": [ "jquery" ]
         },
-        "jquery-validate-unobtrusive": {
-            "deps": [ "jquery", "jquery-validate" ]
-        },
-        "bootstrap": { 
-            "deps":  ["jquery"]
-        }
-    },
-    "autoBundles": {
-        "main-app": {
-            "outputPath": "Scripts/Bundles/",
-            "include": [
-                {
-                    "directory": "Controllers/Root"
-                }
-            ]
-        },
-        "require-plugins": {
-            "outputPath": "Scripts/Bundles/",
-            "include": [
-                {
-                    "file": "Components/RequireJS/i18n"
-                },
-                {
-                    "file": "Components/RequireJS/text"
-                }
-            ]
+
+        "angular": {
+            "exports": "angular"
         }
     }
 }

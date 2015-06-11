@@ -1,0 +1,29 @@
+﻿@using RequireJsNet
+@using UOKO.SSO.Server.Utils
+
+@{
+    Layout = "_Layout.cshtml";
+}
+
+@section head
+{
+    @RenderSection("head", false)
+}
+
+@RenderBody()
+
+
+@section scripts
+{
+
+    @Html.RenderRequireJsSetup(new RequireRendererConfiguration
+                               {
+                                   RequireJsUrl = Url.Content("~/Scripts/Utils/RequireJS/require.js"),
+                                   BaseUrl = Url.Content("~/Scripts/"),
+                                   ConfigurationFiles = new[] {"~/RequireJS.json"},
+                                   EntryPointRoot = "~/Scripts/",
+                                   UrlArgs = RenderHelper.RenderAppVersion()
+                               })
+
+    @RenderSection("scripts", false)
+}
