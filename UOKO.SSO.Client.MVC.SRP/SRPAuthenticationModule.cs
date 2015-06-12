@@ -8,14 +8,15 @@ namespace UOKO.SSO.Client.MVC.SRP
     /// 需要设置这个 module 的 preCondition="managedHandler"
     /// 这样可以省去对其他静态资源文件的处理
     /// </summary>
-    public class SRPAuthenticationModule:IHttpModule
+    public class SRPAuthenticationModule : IHttpModule
     {
         public void Init(HttpApplication context)
         {
-            context.AuthenticateRequest += context_AuthenticateRequest;
+            context.AuthenticateRequest += context_AuthenticateRequest; 
         }
+         
 
-        void context_AuthenticateRequest(object sender, EventArgs e)
+        private void context_AuthenticateRequest(object sender, EventArgs e)
         {
             var ctx = new HttpContextWrapper(((HttpApplication) sender).Context);
 
@@ -40,6 +41,9 @@ namespace UOKO.SSO.Client.MVC.SRP
                 ctx.Response.Redirect(logOnUrl);
             }
         }
+
+
+
 
         public void Dispose()
         {

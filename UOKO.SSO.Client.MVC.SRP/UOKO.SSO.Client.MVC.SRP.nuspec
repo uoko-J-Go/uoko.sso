@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+	<metadata>
+		<id>UOKO.SSO.Client.MVC.SRP</id>
+		<version>$version$</version>
+		<title>UOKO.SSO.Client.MVC.SRP</title>
+		<authors>UOKO</authors>
+		<owners>UOKO</owners>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>SRP : 适用于前后端分离站点的 sso 集成</description>
+		<copyright>Copyright © 2015</copyright>
+		<dependencies>
+			<dependency id="UOKO.SSO.Client.MVC" version="1.0.5639.31053" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="web.config.install.xdt" target="\content\" />
+	</files>
+</package>
