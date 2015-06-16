@@ -5,12 +5,16 @@ using System.Net.Http;
 using System.Security.Principal;
 using System.Threading;
 using System.Web;
+using NLog;
 using UOKO.SSO.Core;
 
 namespace UOKO.SSO.Client
 {
     public class RelyingPartyClient
     {
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
+
         public static ClientConfig ClientInfo { get; private set; }
 
         public static void Config(ClientConfig config)
@@ -62,7 +66,7 @@ namespace UOKO.SSO.Client
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex, ex.GetType().ToString());
+                _logger.Log(LogLevel.Error, ex, "构造身份信息(IPrincipal)失败");
             }
 
             return principal;
@@ -215,7 +219,7 @@ namespace UOKO.SSO.Client
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex, ex.GetType().ToString());
+                _logger.Log(LogLevel.Error, ex, "ValidateToken from server (http) failed");
             }
 
             if (ticket == null)

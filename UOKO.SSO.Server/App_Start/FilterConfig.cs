@@ -7,8 +7,8 @@ namespace UOKO.SSO.Server
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new CustomerErrorHandleAttribute());
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new CustomerErrorHandleAttribute());
         }
     }
 }

@@ -7,7 +7,9 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using NLog.Config;
 using UOKO.SSO.Core;
+using UOKO.SSO.Server.Utils;
 
 namespace UOKO.SSO.Server
 {
@@ -18,6 +20,9 @@ namespace UOKO.SSO.Server
     {
         protected void Application_Start()
         {
+            ConfigurationItemFactory.Default.Targets
+                                    .RegisterDefinition("UOKOFrameworkLog", typeof (UOKOFrameworkLogTarget));
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -41,27 +46,20 @@ namespace UOKO.SSO.Server
         /// <param name="eventArgs"></param>
         private void OnAuthenticateRequest(object sender, EventArgs eventArgs)
         {
-            try
-            {
-                var cookieInfo = SSOAuthentication.GetAuthCookieInfo(ServerConfig.CookieName);
+            var cookieInfo = SSOAuthentication.GetAuthCookieInfo(ServerConfig.CookieName);
 
-                if (cookieInfo != null
-                    && !string.IsNullOrWhiteSpace(cookieInfo.Alias))
+            if (cookieInfo != null
+                && !string.IsNullOrWhiteSpace(cookieInfo.Alias))
+            {
+                // 有身份信息,构建基础身份信息
+                var userInfo = SSOAuthentication.GenerateClaimsPrincipal(cookieInfo);
+
+                if (this.Context != null)
                 {
-                    // 有身份信息,构建基础身份信息
-                    var userInfo = SSOAuthentication.GenerateClaimsPrincipal(cookieInfo);
-
-                    if (this.Context != null)
-                    {
-                        this.Context.User = userInfo;
-                    }
-
-                    Thread.CurrentPrincipal = userInfo;
+                    this.Context.User = userInfo;
                 }
-            }
-            catch (Exception ex)
-            {
-                Trace.WriteLine(ex, ex.GetType().ToString());
+
+                Thread.CurrentPrincipal = userInfo;
             }
         }
     }

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using Newtonsoft.Json;
+using NLog;
 
 namespace UOKO.SSO.Core
 {
@@ -15,6 +15,8 @@ namespace UOKO.SSO.Core
     /// </summary>
     public sealed class SSOAuthentication
     {
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
         public static SSOCookieInfo GetAuthCookieInfo(string cookieName)
         {
             SSOCookieInfo cookieInfo = null;
@@ -30,7 +32,7 @@ namespace UOKO.SSO.Core
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex, ex.GetType().ToString());
+                _logger.Log(LogLevel.Error, ex, "身份 cookie 获取解析失败");
             }
 
             return cookieInfo;

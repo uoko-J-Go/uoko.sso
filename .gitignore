@@ -158,3 +158,6 @@ $RECYCLE.BIN/
 
 # nuget package
 *.nupkg
+
+# framework log dir
+UOKO.SSO.Server/Logs/

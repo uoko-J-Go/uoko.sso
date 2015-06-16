@@ -1,7 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using RequireJsNet;
+using UOKO.Framework.Core.Logging;
 using UOKO.SSO.Core;
 using UOKO.SSO.Server.Service;
+using UOKO.SSO.Server.Utils;
 
 namespace UOKO.SSO.Server.Controllers
 {
@@ -25,8 +28,40 @@ namespace UOKO.SSO.Server.Controllers
             var userAlias = SSOInfo.UserIdentity.UserAlias;
             var appList = UserBiz.GetUserAppInfo(userAlias);
 
+            var ex = new Exception("just a test log error");
+            Logger.Log("title-jiajun-test",LogLevel.Error, ex.ToString());
+
+            NLog.LogManager.GetCurrentClassLogger().Log(NLog.LogLevel.Error, ex);
+
             ViewBag.AppList = appList;
             return View();
+        }
+
+        public ActionResult TestUIException()
+        {
+            ExceptionThrow();
+            return Content("ah ha, exception handled");
+        }
+
+        public ActionResult TestUnHandleException()
+        {
+            string t = null;
+            t.ToString();
+            return Content("ah ha, exception handled");
+        }
+
+
+        private void ExceptionThrow()
+        {
+            try
+            {
+                string t = null;
+                t.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new UITipException("我只是一个可怜的UI异常...", ex);
+            }
         }
     }
 }
