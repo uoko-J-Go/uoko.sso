@@ -36,7 +36,7 @@ namespace UOKO.SSO.Server
         {
             base.Init();
 
-            this.AuthenticateRequest += OnAuthenticateRequest;
+            //this.AuthenticateRequest += OnAuthenticateRequest;
         }
 
         /// <summary>
