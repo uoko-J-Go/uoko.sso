@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Data.Entity;
+using System.Linq;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity.EntityFramework;
 using RequireJsNet;
 using UOKO.Framework.Core.Logging;
 using UOKO.SSO.Core;
@@ -62,6 +65,52 @@ namespace UOKO.SSO.Server.Controllers
             {
                 throw new UITipException("我只是一个可怜的UI异常...", ex);
             }
+        }
+
+
+        public ActionResult GetUser()
+        {
+            using (var db = new TestDbContext())
+            {
+                var users = db.User.Where(item => item.Age > 10).ToList();
+
+                return CustomerJson(users, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult AddUser(UserInfo user)
+        {
+            using (var db = new TestDbContext())
+            {
+                db.User.Add(user);
+                db.SaveChanges();
+            }
+
+            return Content("GetUser");
+        }
+
+
+        public class TestDbContext : DbContext
+        {
+            public TestDbContext()
+                : base("DefaultConnection")
+            {
+            }
+
+            public IDbSet<UserInfo> User { get; set; }
+
+
+            protected override void OnModelCreating(DbModelBuilder builder)
+            {
+                base.OnModelCreating(builder);
+            }
+        }
+
+        public class UserInfo
+        {
+            public int Id { get; set; }
+            public string Name { get; set; } 
+            public int Age { get; set; } 
         }
     }
 }

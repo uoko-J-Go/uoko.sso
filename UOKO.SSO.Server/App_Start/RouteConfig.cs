@@ -7,6 +7,8 @@ namespace UOKO.SSO.Server
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(

@@ -1,12 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Owin;
-using Microsoft.Owin.Infrastructure;
-using Microsoft.Owin.Logging;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.DataHandler;
-using Microsoft.Owin.Security.Infrastructure;
+using Microsoft.Owin.Extensions;
 using Owin;
 using UOKO.SSO.Core;
 
@@ -18,6 +13,7 @@ namespace UOKO.SSO.Server
         public void ConfigureAuth(IAppBuilder app)
         {
             app.UseSSOAuth();
+            app.UseStageMarker(PipelineStage.Authenticate);
         }
     }
 
@@ -42,8 +38,7 @@ namespace UOKO.SSO.Server
         {
             var cookieInfo = SSOAuthentication.GetAuthCookieInfo(ServerConfig.CookieName);
 
-            if (cookieInfo != null
-                && !string.IsNullOrWhiteSpace(cookieInfo.Alias))
+            if (cookieInfo != null && !string.IsNullOrWhiteSpace(cookieInfo.Alias))
             {
                 // 有身份信息,构建基础身份信息
                 var userInfo = SSOAuthentication.GenerateClaimsPrincipal(cookieInfo);

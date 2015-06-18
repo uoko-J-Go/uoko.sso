@@ -4,12 +4,15 @@ using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using Newtonsoft.Json;
+using NLog;
 using UOKO.SSO.Models;
 
 namespace UOKO.SSO.Server.Service
 {
     public class UserBiz
     {
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
         public static UserInfo GetUserInfo(string userName, string pwd)
         {
             var client = new HttpClient {Timeout = TimeSpan.FromSeconds(5)};
@@ -32,6 +35,7 @@ namespace UOKO.SSO.Server.Service
                 {
                     // 吞掉异常... 哎 code smell
                     // throw new Exception(result.Message);
+                    _logger.Log(LogLevel.Error, new Exception(result.Message));
                     return null;
                 }
             }
@@ -76,6 +80,8 @@ namespace UOKO.SSO.Server.Service
                 {
                     // 吞掉异常... 哎 code smell
                     //throw new Exception(result.Message);
+                    _logger.Log(LogLevel.Error,new Exception(result.Message));
+
                     return null;
                 }
             }

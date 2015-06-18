@@ -4,11 +4,14 @@ using System.Linq;
 using System.Net.Http;
 using System.Web;
 using System.Web.Caching;
+using NLog;
 
 namespace UOKO.SSO.Client
 {
     public static class PermissionService
     {
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
         /// <summary>
         /// 获取用户相应系统下所有权限
         /// 目前使用 http runtime cache
@@ -62,6 +65,7 @@ namespace UOKO.SSO.Client
                 {
                     // 吞掉异常... 哎 code smell
                     // throw new Exception(result.Message);
+                    _logger.Log(LogLevel.Error, new Exception(result.Message));
                     return permission;
                 }
             }
