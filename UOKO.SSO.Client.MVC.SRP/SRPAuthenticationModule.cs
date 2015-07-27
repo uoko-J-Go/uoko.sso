@@ -26,7 +26,7 @@ namespace UOKO.SSO.Client.MVC.SRP
                 return;
             }
 
-            // 回来到这里的,只有对但也运用的 app 静态页面, 这类页面不受 mvc filter 的控制,因为使用的是 iis 的 url rewrite
+            // 会来到这里的,只有单页应用的 app 静态页面, 这类页面不受 mvc filter 的控制,因为使用的是 iis 的 url rewrite
             // 所以这类页面的 sso 跳转登陆 需要通过 module 来单独做
             var user = RelyingPartyClient.GeneratePrincipalForAuthRequest(ctx);
             if (user == null || user.Identity == null || !user.Identity.IsAuthenticated)
