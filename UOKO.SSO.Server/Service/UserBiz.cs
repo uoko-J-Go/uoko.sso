@@ -12,6 +12,11 @@ namespace UOKO.SSO.Server.Service
     {
         public static UserInfo GetUserInfo(string userName, string pwd)
         {
+            return new UserInfo()
+                   {
+                       Alias = "1",
+                       Name = "admin"
+                   };
             var client = new HttpClient {Timeout = TimeSpan.FromSeconds(5)};
             var getUserInfoApiUrl = string.Format("{0}/User/GetUserDtoByLogin/{1}/{2}", PermissApiUrl, userName, pwd);
             var result = JsonConvert.DeserializeObject<ApiResult<UserData>>(client.GetAsync(getUserInfoApiUrl).Result.Content.ReadAsStringAsync().Result);
@@ -44,6 +49,16 @@ namespace UOKO.SSO.Server.Service
 
         public static IEnumerable<AppInfo> GetUserAppInfo(string alias)
         {
+            return new List<AppInfo>()
+                   {
+                       new AppInfo()
+                       {
+                           Name = "UOKO-波多野结1号",
+                           Url = "http://etadmin.uoko.cn/",
+                           Description = "优客逸家会员登录系统"
+                       }
+                   };
+
             var client = new HttpClient { Timeout = TimeSpan.FromSeconds(5) };
             var getAppInfoApiUrl = string.Format("{0}/AppSystem/GetAppSystemByAlias/{1}", PermissApiUrl, alias);
             var result =

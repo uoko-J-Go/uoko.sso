@@ -8,7 +8,7 @@ namespace UOKO.SSO.Client.MVC
     /// <summary>
     /// 做 认证 用,跳转为 401
     /// </summary>
-    public class SSOAuthenticationAttribute : IAuthenticationFilter
+    public class SSOAuthenticationAttribute : FilterAttribute, IAuthenticationFilter
     {
         private readonly string _forbiddenName;
 
