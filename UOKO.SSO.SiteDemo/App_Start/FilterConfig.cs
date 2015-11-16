@@ -10,10 +10,10 @@ namespace UOKO.SSO.SiteDemo
         {
             // UnAuthroized is the view name of forbidden result
             // SSOAuthenticationAttribute for authrication (login)
-            filters.Add(new SSOAuthenticationAttribute("UnAuthroized"));
+            //filters.Add(new SSOAuthenticationAttribute("UnAuthroized"));
 
             // SSOAuthorizeAttribute for access control
-            filters.Add(new SSOAuthorizeAttribute());
+            //filters.Add(new SSOAuthorizeAttribute());
 
             filters.Add(new HandleErrorAttribute());
         }

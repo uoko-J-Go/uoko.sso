@@ -66,68 +66,68 @@ namespace UOKO.SSO.Server
             });
 
 
-            app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
-            {
-                Authority = "http://sso.domain.com/identity",
+            //app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
+            //{
+            //    Authority = "http://sso.domain.com/identity",
 
-                ClientId = "mvc",
-                Scope = "openid profile roles sampleApi",
-                ResponseType = "id_token token",
-                RedirectUri = "http://sso.domain.com/",
+            //    ClientId = "mvc",
+            //    Scope = "openid profile roles sampleApi",
+            //    ResponseType = "id_token token",
+            //    RedirectUri = "http://sso.domain.com/",
 
-                SignInAsAuthenticationType = "Cookies",
-                UseTokenLifetime = false,
+            //    SignInAsAuthenticationType = "Cookies",
+            //    UseTokenLifetime = false,
 
-                Notifications = new OpenIdConnectAuthenticationNotifications
-                {
-                    SecurityTokenValidated = async n =>
-                    {
-                        var nid = new ClaimsIdentity(
-                            n.AuthenticationTicket.Identity.AuthenticationType,
-                            Constants.ClaimTypes.GivenName,
-                            Constants.ClaimTypes.Role);
+            //    Notifications = new OpenIdConnectAuthenticationNotifications
+            //    {
+            //        SecurityTokenValidated = async n =>
+            //        {
+            //            var nid = new ClaimsIdentity(
+            //                n.AuthenticationTicket.Identity.AuthenticationType,
+            //                Constants.ClaimTypes.GivenName,
+            //                Constants.ClaimTypes.Role);
 
-                        // get userinfo data
-                        var userInfoClient = new UserInfoClient(
-                        new Uri(n.Options.Authority + "/connect/userinfo"),
-                        n.ProtocolMessage.AccessToken);
+            //            // get userinfo data
+            //            var userInfoClient = new UserInfoClient(
+            //            new Uri(n.Options.Authority + "/connect/userinfo"),
+            //            n.ProtocolMessage.AccessToken);
 
-                        var userInfo = await userInfoClient.GetAsync();
-                        userInfo.Claims.ToList().ForEach(ui => nid.AddClaim(new Claim(ui.Item1, ui.Item2)));
+            //            var userInfo = await userInfoClient.GetAsync();
+            //            userInfo.Claims.ToList().ForEach(ui => nid.AddClaim(new Claim(ui.Item1, ui.Item2)));
 
-                        // keep the id_token for logout
-                        nid.AddClaim(new Claim("id_token", n.ProtocolMessage.IdToken));
+            //            // keep the id_token for logout
+            //            nid.AddClaim(new Claim("id_token", n.ProtocolMessage.IdToken));
 
-                        // add access token for sample API
-                        nid.AddClaim(new Claim("access_token", n.ProtocolMessage.AccessToken));
+            //            // add access token for sample API
+            //            nid.AddClaim(new Claim("access_token", n.ProtocolMessage.AccessToken));
 
-                        // keep track of access token expiration
-                        nid.AddClaim(new Claim("expires_at", DateTimeOffset.Now.AddSeconds(int.Parse(n.ProtocolMessage.ExpiresIn)).ToString()));
+            //            // keep track of access token expiration
+            //            nid.AddClaim(new Claim("expires_at", DateTimeOffset.Now.AddSeconds(int.Parse(n.ProtocolMessage.ExpiresIn)).ToString()));
 
-                        // add some other app specific claim
-                        nid.AddClaim(new Claim("app_specific", "some data"));
+            //            // add some other app specific claim
+            //            nid.AddClaim(new Claim("app_specific", "some data"));
 
-                        n.AuthenticationTicket = new AuthenticationTicket(
-                            nid,
-                            n.AuthenticationTicket.Properties);
-                    },
+            //            n.AuthenticationTicket = new AuthenticationTicket(
+            //                nid,
+            //                n.AuthenticationTicket.Properties);
+            //        },
 
-                    RedirectToIdentityProvider = n =>
-                    {
-                        if (n.ProtocolMessage.RequestType == OpenIdConnectRequestType.LogoutRequest)
-                        {
-                            var idTokenHint = n.OwinContext.Authentication.User.FindFirst("id_token");
+            //        RedirectToIdentityProvider = n =>
+            //        {
+            //            if (n.ProtocolMessage.RequestType == OpenIdConnectRequestType.LogoutRequest)
+            //            {
+            //                var idTokenHint = n.OwinContext.Authentication.User.FindFirst("id_token");
 
-                            if (idTokenHint != null)
-                            {
-                                n.ProtocolMessage.IdTokenHint = idTokenHint.Value;
-                            }
-                        }
+            //                if (idTokenHint != null)
+            //                {
+            //                    n.ProtocolMessage.IdTokenHint = idTokenHint.Value;
+            //                }
+            //            }
 
-                        return Task.FromResult(0);
-                    }
-                }
-            });
+            //            return Task.FromResult(0);
+            //        }
+            //    }
+            //});
         }
 
         X509Certificate2 LoadCertificate()
