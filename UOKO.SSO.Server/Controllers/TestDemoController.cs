@@ -8,11 +8,21 @@ namespace UOKO.SSO.Server.Controllers
 {
     public class TestDemoController : Controller
     {
-        [Authorize]
-        // GET: TestDemo
         public ActionResult Index()
         {
             return View();
         }
+
+        [Authorize]
+        public ActionResult Login()
+        {
+            return View();
+        }
+        public ActionResult Logout()
+        {
+            Request.GetOwinContext().Authentication.SignOut();
+            return Redirect("/");
+        }
+        
     }
 }

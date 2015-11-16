@@ -20,6 +20,7 @@ using IdentityServer3.Core.Services.InMemory;
 using IdentityServer3.Core.Services;
 using UOKO.SSO.Server;
 using SSO.Domain.IdentityServer;
+using UOKO.SSO.Server.IdentityServer.CustomService;
 
 [assembly: OwinStartup(typeof(Startup))]
 namespace UOKO.SSO.Server
@@ -39,6 +40,7 @@ namespace UOKO.SSO.Server
             app.Map("/identity", idsrvApp =>
             {
                 var factory = new IdentityServerServiceFactory();
+                factory.ViewService = new Registration<IViewService>(typeof(UOKOViewService));
                 factory.ClientStore = new Registration<IClientStore>(new InMemoryClientStore(Clients.Get()));
                 factory.UserService = new Registration<IUserService>(new InMemoryUserService(Users.Get()));
                 factory.ScopeStore = new Registration<IScopeStore>(new InMemoryScopeStore(Scopes.Get()));
@@ -46,7 +48,7 @@ namespace UOKO.SSO.Server
 
                 idsrvApp.UseIdentityServer(new IdentityServerOptions
                 {
-                    SiteName = "Embedded IdentityServer",
+                    SiteName = "UOKO SSO",
                     SigningCertificate = LoadCertificate(),
                     RequireSsl = false,
                     Factory = factory,
@@ -132,8 +134,7 @@ namespace UOKO.SSO.Server
 
         X509Certificate2 LoadCertificate()
         {
-            return new X509Certificate2(
-                string.Format(@"{0}\bin\identityServer\idsrv3test.pfx", AppDomain.CurrentDomain.BaseDirectory), "idsrv3test");
+            return new X509Certificate2(string.Format(@"{0}\bin\identityServer\idsrv3test.pfx", AppDomain.CurrentDomain.BaseDirectory), "idsrv3test");
         }
     }
 }
