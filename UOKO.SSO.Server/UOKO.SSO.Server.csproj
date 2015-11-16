@@ -85,7 +85,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="IdentityServer3, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\IdentityServer3.2.1.0.0\lib\net45\IdentityServer3.dll</HintPath>
+      <HintPath>..\packages\IdentityServer3-uoko.2.1.1\lib\net45\IdentityServer3.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
@@ -325,9 +325,7 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="IdentityServer\idsrv3test.pfx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="IdentityServer\idsrv3test.pfx" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -378,29 +376,6 @@
     <Content Include="Scripts\Utils\requirejs\require.js" />
     <Content Include="RequireJs.json" />
     <None Include="Scripts\_references.js" />
-    <Content Include="Services\DefaultViewService\HttpAssets\app\app.css" />
-    <Content Include="Services\DefaultViewService\HttpAssets\app\app.js" />
-    <Content Include="Services\DefaultViewService\HttpAssets\app\app.min.css" />
-    <Content Include="Services\DefaultViewService\HttpAssets\app\crypto.js" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\angular\angular-csp.css" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\angular\angular.1.3.15.js" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\angular\angular.1.3.15.min.js" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\bootstrap\css\bootstrap-theme.css" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\bootstrap\css\bootstrap-theme.min.css" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\bootstrap\css\bootstrap.css" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\bootstrap\css\bootstrap.min.css" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\bootstrap\custom.css" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\bootstrap\custom.min.css" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\bootstrap\js\bootstrap.js" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\bootstrap\js\bootstrap.min.js" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\bootstrap\less\bootstrap.css" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\bootstrap\less\bootstrap.min.css" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\encoder\encoder.js" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\encoder\encoder.min.js" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\jquery\jquery-1.11.0.js" />
-    <Content Include="Services\DefaultViewService\HttpAssets\libs\jquery\jquery-1.11.0.min.js" />
-    <Content Include="Services\DefaultViewService\HttpAssets\scripts.2.0.0.min.js" />
-    <Content Include="Services\DefaultViewService\HttpAssets\styles.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
