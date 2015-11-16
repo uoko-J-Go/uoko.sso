@@ -20,15 +20,14 @@ namespace UOKO.SSO.Server
     {
         protected void Application_Start()
         {
-            ConfigurationItemFactory.Default.Targets
-                                    .RegisterDefinition("UOKOFrameworkLog", typeof (UOKOFrameworkLogTarget));
+            //ConfigurationItemFactory.Default.Targets.RegisterDefinition("UOKOFrameworkLog", typeof (UOKOFrameworkLogTarget));
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;
+            //AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;
         }
 
 
