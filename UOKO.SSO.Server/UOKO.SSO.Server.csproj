@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AntiXssLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\AntiXssLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
       <Private>True</Private>
@@ -78,6 +82,10 @@
     </Reference>
     <Reference Include="Glimpse.NLog, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Glimpse.NLog.1.6.1\lib\net45\Glimpse.NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlSanitizationLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="IdentityModel.Net45, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -301,6 +309,7 @@
       </SubType>
     </Compile>
     <Compile Include="IdentityServer\Clients.cs" />
+    <Compile Include="IdentityServer\CustomService\UOKOViewService.cs" />
     <Compile Include="IdentityServer\Scopes.cs" />
     <Compile Include="IdentityServer\Users.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -315,6 +324,14 @@
     <Compile Include="Utils\CacheTickets.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\app\app.css" />
+    <Content Include="Content\app\app.js" />
+    <Content Include="Content\app\consent.html" />
+    <Content Include="Content\app\error.html" />
+    <Content Include="Content\app\loggedOut.html" />
+    <Content Include="Content\app\login.html" />
+    <Content Include="Content\app\logout.html" />
+    <Content Include="Content\app\permissions.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -325,7 +342,9 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="IdentityServer\idsrv3test.pfx" />
+    <Content Include="IdentityServer\idsrv3test.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -333,6 +352,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Controllers\Root\Home\index.js" />
+    <Content Include="Scripts\Utils\encoder\encoder.js" />
+    <Content Include="Scripts\Utils\encoder\encoder.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -439,13 +460,13 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>11982</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:11982/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
+          <UseCustomServer>True</UseCustomServer>
           <CustomServerUrl>http://sso.domain.com/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
