@@ -57,6 +57,28 @@ namespace SSO.Domain.IdentityServer
             };
             #endregion
         }
+
+        public static List<CustomUser> GetCustomUser()
+        {
+            #region 静态配置
+            return new List<CustomUser>
+            {
+                new CustomUser
+                {
+                    LoginName = "admin",
+                    Password = "111111",
+                    Subject = "1",
+                    Claims = new List<Claim>()
+                    {
+                        new Claim(Constants.ClaimTypes.GivenName, "Bob"),
+                        new Claim(Constants.ClaimTypes.FamilyName, "Smith"),
+                        new Claim(Constants.ClaimTypes.Role, "Geek"),
+                        new Claim(Constants.ClaimTypes.Role, "Foo")
+                    }
+                }
+            };
+            #endregion
+        }
         private static string SystemApiUrl
         {
             get
@@ -66,24 +88,27 @@ namespace SSO.Domain.IdentityServer
             }
         }
 
-        public class UserInfo
+        public class CustomUser
         {
+            public string Subject { get; set; }
             public string LoginName { get; set; }
             public string Password { get; set; }
+
+            public List<Claim> Claims { get; set; }
         }
 
         /// <summary>
         /// 获取CF_User表的所有用户信息
         /// </summary>
         /// <returns></returns>
-        private static List<UserInfo> GetUserAll()
+        private static List<CustomUser> GetUserAll()
         {
             var client = new HttpClient { Timeout = TimeSpan.FromSeconds(5) };
-            var getUserInfoApiUrl = string.Format("{0}/UserOld", SystemApiUrl);
+            var getCustomUserApiUrl = string.Format("{0}/UserOld", SystemApiUrl);
 
-            var result11 = client.GetAsync(getUserInfoApiUrl).Result.Content.ReadAsStringAsync().Result;
+            var result11 = client.GetAsync(getCustomUserApiUrl).Result.Content.ReadAsStringAsync().Result;
 
-            var result = JsonConvert.DeserializeObject<List<UserInfo>>(client.GetAsync(getUserInfoApiUrl).Result.Content.ReadAsStringAsync().Result);
+            var result = JsonConvert.DeserializeObject<List<CustomUser>>(client.GetAsync(getCustomUserApiUrl).Result.Content.ReadAsStringAsync().Result);
             return result;
         }
     }

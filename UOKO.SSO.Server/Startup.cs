@@ -42,7 +42,10 @@ namespace UOKO.SSO.Server
                 var factory = new IdentityServerServiceFactory();
                 factory.ViewService = new Registration<IViewService>(typeof(UOKOViewService));
                 factory.ClientStore = new Registration<IClientStore>(new InMemoryClientStore(Clients.Get()));
-                factory.UserService = new Registration<IUserService>(new InMemoryUserService(Users.Get()));
+
+                //var userService = new InMemoryUserService(Users.Get());
+                var userService = new UOKOUserService();
+                factory.UserService = new Registration<IUserService>(resolver=> userService);
                 factory.ScopeStore = new Registration<IScopeStore>(new InMemoryScopeStore(Scopes.Get()));
                
 
