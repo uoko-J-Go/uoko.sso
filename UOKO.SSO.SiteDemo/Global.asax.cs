@@ -13,11 +13,11 @@ namespace UOKO.SSO.SiteDemo
         {
 
             // config relying party client
-            RelyingPartyClient.Config(new ClientConfig("test-demo-site",
-                                                       "http://sso.uoko.ioc",
-                                                       "uoko.ioc",
-                                                       "http://api.permission.uoko.ioc/",
-                                                       "self-cookie"));
+            //RelyingPartyClient.Config(new ClientConfig("test-demo-site",
+            //                                           "http://sso.uoko.ioc",
+            //                                           "uoko.ioc",
+            //                                           "http://api.permission.uoko.ioc/",
+            //                                           "self-cookie"));
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
