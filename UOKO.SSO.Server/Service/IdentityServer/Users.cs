@@ -1,16 +1,9 @@
-﻿using IdentityServer3.Core;
-using IdentityServer3.Core.Services.InMemory;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+using IdentityServer3.Core;
+using IdentityServer3.Core.Services.InMemory;
 
-namespace SSO.Domain.IdentityServer
+namespace UOKO.SSO.Server.Service.IdentityServer
 {
     public static class Users
     {

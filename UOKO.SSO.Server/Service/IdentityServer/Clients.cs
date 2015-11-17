@@ -1,11 +1,7 @@
-﻿using IdentityServer3.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using IdentityServer3.Core.Models;
 
-namespace SSO.Domain.IdentityServer
+namespace UOKO.SSO.Server.Service.IdentityServer
 {
     public class Clients
     {
