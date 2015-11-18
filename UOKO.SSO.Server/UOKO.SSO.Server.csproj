@@ -304,6 +304,7 @@
     <Compile Include="Utils\JsonCustomerResult.cs" />
     <Compile Include="Utils\CustomerErrorHandleAttribute.cs" />
     <Compile Include="Utils\CacheTickets.cs" />
+    <Compile Include="Utils\WebApiProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\app\app.css" />

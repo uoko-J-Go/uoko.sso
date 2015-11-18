@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Claims;
+using IdentityServer3.Core;
 using Newtonsoft.Json;
 using UOKO.SSO.Models;
+using UOKO.SSO.Server.Service.IdentityServer;
+using UOKO.SSO.Server.Utils;
 
 namespace UOKO.SSO.Server.Service
 {
@@ -97,6 +101,53 @@ namespace UOKO.SSO.Server.Service
             else
             {
                 throw new Exception("api return null");
+            }
+        }
+
+        public static CustomUser CheckLogin(string userName, string password)
+        {
+            var url = ConfigurationManager.AppSettings["system.api.url"];
+            var getCustomUserApiUrl = string.Format("{0}/User/{1}/{2}", url, Uri.EscapeUriString(userName), Uri.EscapeUriString(password));
+            var result = new WebApiProvider().PostAsync(getCustomUserApiUrl, default(HttpResponseMessage)).Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var user = result.Content.ReadAsAsync<CustomUser>().Result;
+                HandleUserClaims(user);
+                return user;
+            }
+            return null;
+        }
+        public static CustomUser GetUserInfoById(string userId)
+        {
+            var url = ConfigurationManager.AppSettings["system.api.url"];
+            var getCustomUserApiUrl = string.Format("{0}/UserOld/{1}", url, Uri.EscapeUriString(userId));
+            var result = new WebApiProvider().GetAsync(getCustomUserApiUrl).Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var user = result.Content.ReadAsAsync<CustomUser>().Result;
+                HandleUserClaims(user);
+                return user;
+            }
+            return null;
+        }
+
+        private static void HandleUserClaims(CustomUser user)
+        {
+            if (user != null)
+            {
+                if (user.Claims == null)
+                {
+                    user.Claims = new List<Claim>()
+                        {
+                            new Claim(Constants.ClaimTypes.Name, user.LoginName),
+                            new Claim(Constants.ClaimTypes.Role, "admin")
+                        };
+                }
+                else
+                {
+                    user.Claims.Add(new Claim(Constants.ClaimTypes.Name, user.LoginName));
+                    user.Claims.Add(new Claim(Constants.ClaimTypes.Role, "admin"));
+                }
             }
         }
 
