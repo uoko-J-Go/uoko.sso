@@ -447,7 +447,7 @@
           <IISUrl>http://localhost:11982/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>True</UseCustomServer>
-          <CustomServerUrl>http://sso.domain.com/</CustomServerUrl>
+          <CustomServerUrl>http://sso.uoko.ioc/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
