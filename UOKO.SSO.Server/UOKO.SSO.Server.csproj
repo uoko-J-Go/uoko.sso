@@ -323,7 +323,6 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="idsrv3test.pfx" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
