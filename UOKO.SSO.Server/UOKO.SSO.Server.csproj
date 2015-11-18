@@ -304,6 +304,7 @@
     <Compile Include="Utils\JsonCustomerResult.cs" />
     <Compile Include="Utils\CustomerErrorHandleAttribute.cs" />
     <Compile Include="Utils\CacheTickets.cs" />
+    <Compile Include="Utils\WebApiProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\app\app.css" />
@@ -446,7 +447,7 @@
           <IISUrl>http://localhost:11982/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>True</UseCustomServer>
-          <CustomServerUrl>http://sso.domain.com/</CustomServerUrl>
+          <CustomServerUrl>http://sso.uoko.ioc/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
