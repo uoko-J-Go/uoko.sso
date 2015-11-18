@@ -45,7 +45,7 @@ namespace UOKO.SSO.Server
 
                 idsrvApp.UseIdentityServer(new IdentityServerOptions
                 {
-                    SiteName = "UOKO SSO",
+                    SiteName = "UOKO-SSO",
                     SigningCertificate = Cert.Load(),
                     RequireSsl = false,
                     Factory = factory,

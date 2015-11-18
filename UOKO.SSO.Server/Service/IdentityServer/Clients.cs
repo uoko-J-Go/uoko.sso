@@ -11,17 +11,19 @@ namespace UOKO.SSO.Server.Service.IdentityServer
             {
                 new Client
                 {
-                    ClientName = "MVC Client",
-                    ClientId = "mvc",
+                    
+                    ClientName = "波多系统",
+                    ClientId = "etadmin",
                     Flow = Flows.Implicit,
                     RequireConsent=false,
                     RedirectUris = new List<string>
                     {
-                        "http://sso.domain.com/",
+                        "http://etadmin.uoko.ioc",
                         "http://sso.one.com/",
                         "http://two.domain.com/",
                         "http://sso.three.com/",
                     },
+
                     PostLogoutRedirectUris = new List<string>
                     {
                         "http://sso.domain.com/",
@@ -29,12 +31,7 @@ namespace UOKO.SSO.Server.Service.IdentityServer
                         "http://two.domain.com/",
                         "http://sso.three.com/",
                     },
-                    //AllowedCorsOrigins = new List<string>
-                    //{
-                    //    "http://sso.domain.com/",
-                    //    "http://sso.one.com/",
-                    //    "http://two.domain.com/",
-                    //},
+                    
                     AllowedScopes = new List<string>
                     {
                         "openid",
