@@ -18,7 +18,7 @@ namespace UOKO.SSO.Server.Service.IdentityServer
                     RequireConsent=false,
                     RedirectUris = new List<string>
                     {
-                        "http://etadmin.uoko.ioc",
+                        "http://etadmin.uoko.ioc/",
                         "http://sso.one.com/",
                         "http://two.domain.com/",
                         "http://sso.three.com/",
