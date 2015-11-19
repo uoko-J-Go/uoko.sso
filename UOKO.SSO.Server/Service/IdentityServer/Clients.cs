@@ -19,17 +19,18 @@ namespace UOKO.SSO.Server.Service.IdentityServer
                     RedirectUris = new List<string>
                     {
                         "http://etadmin.uoko.ioc/",
-                        "http://sso.one.com/",
-                        "http://two.domain.com/",
-                        "http://sso.three.com/",
+                        "http://sso.one.ioc/",
+                        "http://two.uoko.ioc/",
+                        "http://sso.three.ioc/",
                     },
 
                     PostLogoutRedirectUris = new List<string>
                     {
-                        "http://sso.domain.com/",
-                        "http://sso.one.com/",
-                        "http://two.domain.com/",
-                        "http://sso.three.com/",
+                        "http://sso.uoko.ioc/",
+                        "http://sso.one.ioc/",
+                        "http://two.uoko.ioc/",
+                        "http://sso.three.ioc/",
+                        "http://etadmin.uoko.ioc/",
                     },
                     
                     AllowedScopes = new List<string>
