@@ -1,0 +1,94 @@
+[
+    {
+        "Enabled": true,
+        "ClientId": "etadmin",
+        "ClientSecrets": [],
+        "ClientName": "波多系统",
+        "ClientUri": null,
+        "LogoUri": null,
+        "RequireConsent": false,
+        "AllowRememberConsent": true,
+        "Flow": 1,
+        "AllowClientCredentialsOnly": false,
+        "RedirectUris": [
+            "http://etadmin.uoko.ioc/",
+            "http://sso.one.com/",
+            "http://two.domain.com/",
+            "http://sso.three.com/"
+        ],
+        "PostLogoutRedirectUris": [
+            "http://sso.domain.com/",
+            "http://sso.one.com/",
+            "http://two.domain.com/",
+            "http://sso.three.com/"
+        ],
+        "AllowAccessToAllScopes": false,
+        "AllowedScopes": [
+            "openid",
+            "profile",
+            "roles",
+            "sampleApi"
+        ],
+        "IdentityTokenLifetime": 300,
+        "AccessTokenLifetime": 3600,
+        "AuthorizationCodeLifetime": 300,
+        "AbsoluteRefreshTokenLifetime": 2592000,
+        "SlidingRefreshTokenLifetime": 1296000,
+        "RefreshTokenUsage": 0,
+        "UpdateAccessTokenClaimsOnRefresh": false,
+        "RefreshTokenExpiration": 1,
+        "AccessTokenType": 0,
+        "EnableLocalLogin": true,
+        "IdentityProviderRestrictions": [],
+        "IncludeJwtId": false,
+        "Claims": [],
+        "AlwaysSendClientClaims": false,
+        "PrefixClientClaims": true,
+        "AllowAccessToAllCustomGrantTypes": false,
+        "AllowedCustomGrantTypes": [],
+        "AllowedCorsOrigins": []
+    },
+    {
+        "Enabled": true,
+        "ClientId": "mvc_service",
+        "ClientSecrets": [
+            {
+                "Description": null,
+                "Value": "K7gNU3sdo+OL0wNhqoVWhr3g6s1xYv72ol/pe/Unols=",
+                "Expiration": null,
+                "Type": "SharedSecret"
+            }
+        ],
+        "ClientName": "MVC Client (service communication)",
+        "ClientUri": null,
+        "LogoUri": null,
+        "RequireConsent": true,
+        "AllowRememberConsent": true,
+        "Flow": 3,
+        "AllowClientCredentialsOnly": false,
+        "RedirectUris": [],
+        "PostLogoutRedirectUris": [],
+        "AllowAccessToAllScopes": false,
+        "AllowedScopes": [
+            "sampleApi"
+        ],
+        "IdentityTokenLifetime": 300,
+        "AccessTokenLifetime": 3600,
+        "AuthorizationCodeLifetime": 300,
+        "AbsoluteRefreshTokenLifetime": 2592000,
+        "SlidingRefreshTokenLifetime": 1296000,
+        "RefreshTokenUsage": 1,
+        "UpdateAccessTokenClaimsOnRefresh": false,
+        "RefreshTokenExpiration": 1,
+        "AccessTokenType": 0,
+        "EnableLocalLogin": true,
+        "IdentityProviderRestrictions": [],
+        "IncludeJwtId": false,
+        "Claims": [],
+        "AlwaysSendClientClaims": false,
+        "PrefixClientClaims": true,
+        "AllowAccessToAllCustomGrantTypes": false,
+        "AllowedCustomGrantTypes": [],
+        "AllowedCorsOrigins": []
+    }
+]

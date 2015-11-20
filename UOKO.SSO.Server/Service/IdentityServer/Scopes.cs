@@ -1,38 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Web;
 using IdentityServer3.Core.Models;
+using UOKO.SSO.Server.Utils;
 
 namespace UOKO.SSO.Server.Service.IdentityServer
 {
     public static class Scopes
     {
+        private static string configPath = HttpContext.Current.Server.MapPath("~/Configs/IdentityServer/ScopesConfig.json");
         public static IEnumerable<Scope> Get()
         {
-            var scopes = new List<Scope>
-            {
-               new Scope
-                {
-                    Enabled = true,
-                    Name = "roles",
-                    Type = ScopeType.Identity,
-                    Claims = new List<ScopeClaim>
-                    {
-                        new ScopeClaim("role")
-                    }
-                },
-                new Scope
-                {
-                    Enabled = true,
-                    DisplayName = "Sample API",
-                    Name = "sampleApi",
-                    Description = "Access to a sample API",
-                    Type = ScopeType.Resource,
-
-                    Claims = new List<ScopeClaim>
-                    {
-                        new ScopeClaim("role")
-                    }
-                }
-            };
+            var scopes = JsonConfigHelper<List<Scope>>.Load(configPath);
             scopes.AddRange(StandardScopes.All);
             return scopes;
         }
