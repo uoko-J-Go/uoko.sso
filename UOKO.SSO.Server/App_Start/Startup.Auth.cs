@@ -31,39 +31,41 @@ namespace UOKO.SSO.Server
             AntiForgeryConfig.UniqueClaimTypeIdentifier = Constants.ClaimTypes.Subject;
             JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
 
-            app.Map("/identity", idsrvApp =>
-            {
-                var factory = new IdentityServerServiceFactory();
-                factory.ViewService = new Registration<IViewService>(typeof(UOKOViewService));
-                factory.ClientStore = new Registration<IClientStore>(new InMemoryClientStore(Clients.Get()));
-
-                //var userService = new InMemoryUserService(Users.Get());
-                var userService = new UOKOUserService();
-                factory.UserService = new Registration<IUserService>(resolver => userService);
-                factory.ScopeStore = new Registration<IScopeStore>(new InMemoryScopeStore(Scopes.Get()));
-
-
-                idsrvApp.UseIdentityServer(new IdentityServerOptions
-                {
-                    SiteName = "UOKO-SSO",
-                    SigningCertificate = Cert.Load(),
-                    RequireSsl = false,
-                    Factory = factory,
-
-                    AuthenticationOptions = new AuthenticationOptions
+            app.Map("/identity",
+                    idsrvApp =>
                     {
-                        EnablePostSignOutAutoRedirect = true,
-                        //IdentityProviders = ConfigureIdentityProviders
-                    }
-                });
-            });
+                        var factory = new IdentityServerServiceFactory()
+                            .UseInMemoryClients(Clients.Get())
+                            .UseInMemoryScopes(Scopes.Get());
+
+                        factory.ViewService = new Registration<IViewService>(typeof (UOKOViewService));
+
+                        //var userService = new InMemoryUserService(Users.Get());
+                        var userService = new UOKOUserService();
+                        factory.UserService = new Registration<IUserService>(resolver => userService);
+
+
+                        idsrvApp.UseIdentityServer(new IdentityServerOptions
+                                                   {
+                                                       SiteName = "UOKO-SSO",
+                                                       SigningCertificate = Cert.Load(),
+                                                       RequireSsl = false,
+                                                       Factory = factory,
+
+                                                       AuthenticationOptions = new AuthenticationOptions
+                                                                               {
+                                                                                   EnablePostSignOutAutoRedirect = true,
+                                                                                   //IdentityProviders = ConfigureIdentityProviders
+                                                                               }
+                                                   });
+                    });
 
             // app.UseResourceAuthorization(new AuthorizationManager());
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = "Cookies"
-            });
+                                        {
+                                            AuthenticationType = "Cookies"
+                                        });
 
 
             //app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
@@ -131,9 +133,11 @@ namespace UOKO.SSO.Server
         }
 
 
-        X509Certificate2 LoadCertificate()
+        private X509Certificate2 LoadCertificate()
         {
-            return new X509Certificate2(string.Format(@"{0}\bin\idsrv3test.pfx", AppDomain.CurrentDomain.BaseDirectory), "idsrv3test");
+            return new X509Certificate2(
+                string.Format(@"{0}\bin\idsrv3test.pfx", AppDomain.CurrentDomain.BaseDirectory),
+                "idsrv3test");
         }
     }
 

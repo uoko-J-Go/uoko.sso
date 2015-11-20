@@ -42,17 +42,13 @@ namespace UOKO.SSO.Server.Service.IdentityServer
                 },
                 new Client
                 {
-                    ClientName = "MVC Client (service communication)",
-                    ClientId = "mvc_service",
+                    ClientName = "系统配置权限系统",
+                    ClientId = "systemset",
                     Flow = Flows.ClientCredentials,
 
                     ClientSecrets = new List<Secret>
                     {
-                        new Secret("secret".Sha256())
-                    },
-                    AllowedScopes = new List<string>
-                    {
-                        "sampleApi"
+                        new Secret("secret-for-systemset".Sha256())
                     }
                 }
             };
