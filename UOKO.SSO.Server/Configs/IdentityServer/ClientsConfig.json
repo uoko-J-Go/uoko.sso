@@ -17,7 +17,7 @@
             "http://sso.three.com/"
         ],
         "PostLogoutRedirectUris": [
-            "http://sso.domain.com/",
+            "http://etadmin.uoko.ioc/",
             "http://sso.one.com/",
             "http://two.domain.com/",
             "http://sso.three.com/"

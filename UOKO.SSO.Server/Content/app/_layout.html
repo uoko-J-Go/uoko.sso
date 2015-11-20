@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html ng-app="app" ng-controller="LayoutCtrl">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{siteName}</title>
+    <link href="/content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Scripts/Utils/angular/angular-csp.css" rel="stylesheet" />
+    <link href="/content/app/app.css" rel="stylesheet">
+</head>
+<body lang="zh-cn">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <span class="navbar-brand">{siteName}</span>
+        </div>
+        <ul class="nav navbar-nav" ng-show="model.currentUser" ng-cloak>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{model.currentUser}} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{model.logoutUrl}}">退出</a></li>
+                    <li class="divider" ng-show="model.loginWithDifferentAccountUrl"></li>
+                    <li><a href="{{model.loginWithDifferentAccountUrl}}" ng-show="model.loginWithDifferentAccountUrl">更换账号</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class='container page-{pageName}' ng-cloak>
+        {pageContent}
+    </div>
+    <script id='modelJson' type='application/json'>
+        {model}
+    </script>
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/Utils/angular/angular.min.js"></script>
+    <script src="/Scripts/Utils/encoder/encoder.min.js"></script>
+    <script src="/content/app/app.js"></script>
+</body>
+</html>
+

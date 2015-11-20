@@ -57,11 +57,13 @@ namespace UOKO.SSO.Server.IdentityServer.CustomService
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(model, Newtonsoft.Json.Formatting.None, new Newtonsoft.Json.JsonSerializerSettings() { ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver() });
 
             string html = LoadHtml(page);
+            html = LoadLayoutWithContent(html);
             html = Replace(html, new
             {
                 siteName = Microsoft.Security.Application.Encoder.HtmlEncode(model.SiteName),
                 model = Microsoft.Security.Application.Encoder.HtmlEncode(json),
-                clientName = clientName
+                clientName = clientName,
+                pageName= page
             });
 
             return Task.FromResult(StringToStream(html));
@@ -72,6 +74,11 @@ namespace UOKO.SSO.Server.IdentityServer.CustomService
             var file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"content\app");
             file = Path.Combine(file, name + ".html");
             return File.ReadAllText(file);
+        }
+        private  string LoadLayoutWithContent(string content)
+        {
+            var layout = LoadHtml("_layout");
+            return Replace(layout, new { pageContent = content });
         }
 
         string Replace(string value, IDictionary<string, object> values)
