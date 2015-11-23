@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Web;
 using System.Web.Mvc;
 using UOKO.SSO.Core;
 using UOKO.SSO.Models;
@@ -134,6 +135,7 @@ namespace UOKO.SSO.Server.Controllers
         [AllowAnonymous]
         public ActionResult LogOff(string returnUrl)
         {
+            HttpContext.Request.GetOwinContext().Authentication.SignOut();
             SSOAuthentication.SignOut(ServerConfig.CookieDomain);
             if (!string.IsNullOrEmpty(returnUrl))
             {

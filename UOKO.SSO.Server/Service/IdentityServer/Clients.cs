@@ -8,7 +8,7 @@ namespace UOKO.SSO.Server.Service.IdentityServer
     public class Clients
     {
         private static string configPath = HttpContext.Current.Server.MapPath("~/Configs/IdentityServer/ClientsConfig.json");
-        public static IEnumerable<Client> Get()
+        public static IEnumerable<ClientExtention> Get()
         {
 //            return new[]
 //                   {
@@ -74,7 +74,12 @@ namespace UOKO.SSO.Server.Service.IdentityServer
 //                                           }
 //                       }
 //                   };
-            return JsonConfigHelper<List<Client>>.Load(configPath);
+            return JsonConfigHelper<List<ClientExtention>>.Load(configPath);
         }
+    }
+
+    public class ClientExtention : Client
+    {
+        public string Description { get; set;}
     }
 }
