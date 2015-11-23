@@ -1,22 +1,67 @@
 [
-  {
+    {
+        "Enabled": true,
+        "ClientId": "etadmin",
+        "ClientSecrets": [ ],
+        "ClientName": "波多新系统",
+        "ClientUri": "http://etadmin.uoko.ioc/",
+        "Description": "UOKO-波多野结1号(新)",
+        "LogoUri": null,
+        "RequireConsent": false,
+        "AllowRememberConsent": true,
+        "Flow": 1,
+        "AllowClientCredentialsOnly": false,
+        "RedirectUris": [
+            "http://etadmin.uoko.ioc/"
+
+        ],
+        "PostLogoutRedirectUris": [
+            "http://etadmin.uoko.ioc/"
+        ],
+        "AllowAccessToAllScopes": false,
+        "AllowedScopes": [
+            "openid",
+            "profile",
+            "roles",
+            "sampleApi"
+        ],
+        "IdentityTokenLifetime": 300,
+        "AccessTokenLifetime": 3600,
+        "AuthorizationCodeLifetime": 300,
+        "AbsoluteRefreshTokenLifetime": 2592000,
+        "SlidingRefreshTokenLifetime": 1296000,
+        "RefreshTokenUsage": 0,
+        "UpdateAccessTokenClaimsOnRefresh": false,
+        "RefreshTokenExpiration": 1,
+        "AccessTokenType": 0,
+        "EnableLocalLogin": true,
+        "IdentityProviderRestrictions": [ ],
+        "IncludeJwtId": false,
+        "Claims": [ ],
+        "AlwaysSendClientClaims": false,
+        "PrefixClientClaims": true,
+        "AllowAccessToAllCustomGrantTypes": false,
+        "AllowedCustomGrantTypes": [ ],
+        "AllowedCorsOrigins": [ ]
+    },
+    {
     "Enabled": true,
-    "ClientId": "etadmin",
+    "ClientId": "everetadmin",
     "ClientSecrets": [ ],
-    "ClientName": "波多系统",
-    "ClientUri": "http://etadmin.uoko.ioc/",
-    "Description": "波多野结系统",
+    "ClientName": "波多老系统",
+    "ClientUri": "http://everetadmin.uoko.ioc/",
+    "Description": "UOKO-波多野结1号(老)",
     "LogoUri": null,
     "RequireConsent": false,
     "AllowRememberConsent": true,
     "Flow": 1,
     "AllowClientCredentialsOnly": false,
     "RedirectUris": [
-      "http://etadmin.uoko.ioc/"
+      "http://everetadmin.uoko.ioc/"
 
     ],
     "PostLogoutRedirectUris": [
-      "http://etadmin.uoko.ioc/"
+      "http://everetadmin.uoko.ioc/"
     ],
     "AllowAccessToAllScopes": false,
     "AllowedScopes": [
@@ -44,7 +89,7 @@
     "AllowedCustomGrantTypes": [ ],
     "AllowedCorsOrigins": [ ]
   },
- {
+    {
     "Enabled": true,
     "ClientId": "uoko-sso",
     "ClientSecrets": [],
@@ -88,7 +133,7 @@
     "AllowedCustomGrantTypes": [],
     "AllowedCorsOrigins": []
    },
-   {
+    {
     "Enabled": true,
     "ClientId": "mvc_service",
     "ClientSecrets": [
