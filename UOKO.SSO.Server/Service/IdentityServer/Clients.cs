@@ -8,12 +8,12 @@ namespace UOKO.SSO.Server.Service.IdentityServer
     public class Clients
     {
         private static string configPath = HttpContext.Current.Server.MapPath("~/Configs/IdentityServer/ClientsConfig.json");
-        public static IEnumerable<Client> Get()
+        public static IEnumerable<ClientExtention> Get()
         {
             // todo: after-remove 调试方便, 先不走配置
-            return new[]
+            return new List<ClientExtention>()
                    {
-                       new Client
+                       new ClientExtention
                        {
 
                            ClientName = "波多系统",
@@ -46,7 +46,7 @@ namespace UOKO.SSO.Server.Service.IdentityServer
                        },
 
 
-                       new Client
+                       new ClientExtention
                        {
                            ClientName = "系统配置权限系统",
                            ClientId = "systemset",
@@ -63,7 +63,7 @@ namespace UOKO.SSO.Server.Service.IdentityServer
                                            },
                        },
 
-                       new Client
+                       new ClientExtention
                        {
                            ClientName = "系统配置权限系统-api",
                            ClientId = "systemset-api",
@@ -76,8 +76,14 @@ namespace UOKO.SSO.Server.Service.IdentityServer
                        }
                    };
 
-            var clients = JsonConfigHelper<List<Client>>.Load(configPath);
+            var clients = JsonConfigHelper<List<ClientExtention>>.Load(configPath);
             return clients;
+
         }
+    }
+
+    public class ClientExtention : Client
+    {
+        public string Description { get; set;}
     }
 }

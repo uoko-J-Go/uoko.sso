@@ -4,6 +4,7 @@ using RequireJsNet;
 using UOKO.SSO.Core;
 using UOKO.SSO.Server.Service;
 using UOKO.SSO.Server.Utils;
+using System.Web;
 
 namespace UOKO.SSO.Server.Controllers
 {
@@ -60,6 +61,11 @@ namespace UOKO.SSO.Server.Controllers
             {
                 throw new UITipException("我只是一个可怜的UI异常...", ex);
             }
+        }
+        public ActionResult Logout()
+        {
+            Request.GetOwinContext().Authentication.SignOut();
+            return Redirect("/");
         }
     }
 }

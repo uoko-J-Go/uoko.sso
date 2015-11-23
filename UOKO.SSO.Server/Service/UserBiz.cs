@@ -53,55 +53,61 @@ namespace UOKO.SSO.Server.Service
 
         public static IEnumerable<AppInfo> GetUserAppInfo(string alias)
         {
-            return new List<AppInfo>()
-                   {
-                       new AppInfo()
-                       {
-                           Name = "UOKO-波多野结1号",
-                           Url = "http://etadmin.uoko.cn/",
-                           Description = "优客逸家会员登录系统"
-                       }
-                   };
 
-            var client = new HttpClient { Timeout = TimeSpan.FromSeconds(5) };
-            var getAppInfoApiUrl = string.Format("{0}/AppSystem/GetAppSystemByAlias/{1}", PermissApiUrl, alias);
-            var result =
-                JsonConvert.DeserializeObject<ApiResult<IEnumerable<AppSystemInfo>>>(
-                                                                                     client.GetAsync(getAppInfoApiUrl)
-                                                                                           .Result.Content
-                                                                                           .ReadAsStringAsync()
-                                                                                           .Result);
-            if (result != null)
+            var appList = new List<AppInfo>();
+            var clients = Clients.Get().Where(x => x.Enabled && !string.IsNullOrEmpty(x.ClientUri));
+
+            foreach (var client in clients)
             {
-                if (result.Code == "200" && result.Data != null)
+                appList.Add(new AppInfo()
                 {
+                    Name = client.ClientName,
+                    Url = client.ClientUri,
+                    Description = client.Description
+                });
 
-                    var appList = result.Data.Select(item =>
-                                                     {
-                                                         var appInfo =
-                                                             new AppInfo
-                                                             {
-                                                                 Name = item.AppName,
-                                                                 Url = item.Url,
-                                                                 Description = item.Remark,
-                                                             };
-                                                         return appInfo;
-                                                     })
-                                        .ToList();
+            }
+            return appList;
 
-                    return appList;
-                }
-                else
-                {
-                    // 吞掉异常... 哎 code smell
-                    //throw new Exception(result.Message);
-                    return null;
-                }
-            }
-            else
-            {
-                throw new Exception("api return null");
-            }
+            //var client = new HttpClient { Timeout = TimeSpan.FromSeconds(5) };
+            //var getAppInfoApiUrl = string.Format("{0}/AppSystem/GetAppSystemByAlias/{1}", PermissApiUrl, alias);
+            //var result =
+            //    JsonConvert.DeserializeObject<ApiResult<IEnumerable<AppSystemInfo>>>(
+            //                                                                         client.GetAsync(getAppInfoApiUrl)
+            //                                                                               .Result.Content
+            //                                                                               .ReadAsStringAsync()
+            //                                                                               .Result);
+            //if (result != null)
+            //{
+            //    if (result.Code == "200" && result.Data != null)
+            //    {
+
+            //        var appList = result.Data.Select(item =>
+            //                                         {
+            //                                             var appInfo =
+            //                                                 new AppInfo
+            //                                                 {
+            //                                                     Name = item.AppName,
+            //                                                     Url = item.Url,
+            //                                                     Description = item.Remark,
+            //                                                 };
+            //                                             return appInfo;
+            //                                         })
+            //                            .ToList();
+
+            //        return appList;
+            //    }
+            //    else
+            //    {
+            //        // 吞掉异常... 哎 code smell
+            //        //throw new Exception(result.Message);
+            //        return null;
+            //    }
+            //}
+            //else
+            //{
+            //    throw new Exception("api return null");
+            //}
         }
 
         public static CustomUser CheckLogin(string userName, string password)
