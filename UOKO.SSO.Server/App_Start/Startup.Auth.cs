@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Security.Claims;
@@ -28,6 +29,8 @@ namespace UOKO.SSO.Server
 {
     public partial class Startup
     {
+
+        private string ssoUrl = ConfigurationManager.AppSettings["sso.url"];
         // 有关配置身份验证的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
@@ -60,10 +63,11 @@ namespace UOKO.SSO.Server
                                                        Factory = factory,
 
                                                        AuthenticationOptions = new AuthenticationOptions
-                                                                               {
-                                                                                   EnablePostSignOutAutoRedirect = true,
-                                                                                   //IdentityProviders = ConfigureIdentityProviders
-                                                                               }
+                                                       {
+                                                           EnablePostSignOutAutoRedirect = true,
+                                                           EnableSignOutPrompt =false
+                                                           //IdentityProviders = ConfigureIdentityProviders
+                                                       }
                                                    });
                     });
 
@@ -77,12 +81,12 @@ namespace UOKO.SSO.Server
 
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
-                Authority = "http://sso.uoko.ioc/identity",
+                Authority = ssoUrl.TrimEnd('/')+"/identity",
 
                 ClientId = "uoko-sso",
                 Scope = "openid profile roles sampleApi",
                 ResponseType = "id_token token",
-                RedirectUri = "http://sso.uoko.ioc/",
+                RedirectUri = ssoUrl,
 
                 SignInAsAuthenticationType = OpenIdConnectAuthenticationDefaults.AuthenticationType,
                 UseTokenLifetime = false,
