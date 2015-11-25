@@ -327,12 +327,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="idsrv3test.pfx" />
-    <None Include="Configs\IdentityServer\ClientsConfig.json">
+    <Content Include="Configs\IdentityServer\ClientsConfig.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\IdentityServer\ScopesConfig.json">
+    </Content>
+    <Content Include="Configs\IdentityServer\ScopesConfig.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
