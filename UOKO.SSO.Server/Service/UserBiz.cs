@@ -146,12 +146,14 @@ namespace UOKO.SSO.Server.Service
                     user.Claims = new List<Claim>()
                         {
                             new Claim(Constants.ClaimTypes.Name, user.LoginName),
+                            new Claim(Constants.ClaimTypes.NickName,user.NickName),
                             new Claim(Constants.ClaimTypes.Role, "admin")
                         };
                 }
                 else
                 {
                     user.Claims.Add(new Claim(Constants.ClaimTypes.Name, user.LoginName));
+                    user.Claims.Add(new Claim(Constants.ClaimTypes.NickName, user.NickName));
                     user.Claims.Add(new Claim(Constants.ClaimTypes.Role, "admin"));
                 }
             }

@@ -22,9 +22,6 @@
             @Html.ActionLink("UOKO-SSO", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("主页", "Index", "Home")</li>
-            </ul>
             @Html.Partial("_LoginPartial")
         </div>
     </div>
@@ -33,12 +30,14 @@
     @RenderBody()
     <hr/>
     <footer>
-        <p>&copy; @DateTime.Now.Year - <a href="//uoko.com" target="_blank">UOKO.COM</a>
+        <p>&copy; @DateTime.Now.Year - <a href="//www.uoko.com" target="_blank">UOKO.COM</a>
         </p>
     </footer>
 </div>
 
 <section name="scripts">
+    @Scripts.Render("~/bundles/jquery");
+    @Scripts.Render("~/bundles/bootstrap");
     @RenderSection("scripts", false)
 </section>
 

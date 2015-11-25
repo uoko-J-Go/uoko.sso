@@ -291,6 +291,7 @@
     <Compile Include="Service\IdentityServer\Clients.cs" />
     <Compile Include="Service\IdentityServer\CustomService\UOKOUserService.cs" />
     <Compile Include="Service\IdentityServer\CustomService\UOKOViewService.cs" />
+    <Compile Include="Service\IdentityServer\IdentityUOKOExtensions.cs" />
     <Compile Include="Service\IdentityServer\Scopes.cs" />
     <Compile Include="Service\IdentityServer\Users.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -307,7 +308,7 @@
     <Compile Include="Utils\WebApiProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\app\app.css" />
+    <Content Include="Content\app.css" />
     <Content Include="Content\app\app.js" />
     <Content Include="Content\app\consent.html" />
     <Content Include="Content\app\error.html" />

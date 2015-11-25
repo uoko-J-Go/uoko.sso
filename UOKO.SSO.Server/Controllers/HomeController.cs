@@ -16,7 +16,6 @@ namespace UOKO.SSO.Server.Controllers
         {
             var userAlias = SSOInfo.UserIdentity.UserAlias;
             var appList = UserBiz.GetUserAppInfo(userAlias);
-             
             RequireJsOptions.Add("appList", appList);
 
             return View();

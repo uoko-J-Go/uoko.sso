@@ -1,16 +1,10 @@
 {
     "paths": {
-        "bootstrap": "bootstrap.min",
-        "jquery": "jquery-1.10.2.min",
         "lodash": "utils/lodash/lodash",
         "angular": "utils/angular/angular",
         "commonModule": "Modules/angular/commonModule"
     },
     "shim": {
-        "bootstrap": {
-            "deps": [ "jquery" ]
-        },
-
         "angular": {
             "exports": "angular"
         }
