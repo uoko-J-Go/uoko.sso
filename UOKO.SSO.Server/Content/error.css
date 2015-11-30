@@ -1,0 +1,18 @@
+﻿div.page-error 
+{
+ margin:10px;   
+}
+.page-error .request-id {
+  font-size: 80%;
+  font-weight: bold;
+}
+.page-error .request-id span {
+  font-weight: normal;
+}
+
+.page-error .main-form-error {
+  padding: 15px;
+  background-color: #f2dede;
+  border-radius: 3px;
+  color: #333;
+}

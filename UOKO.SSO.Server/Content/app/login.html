@@ -1,61 +1,26 @@
-﻿<div class="page-header">
-    <h1>登录</h1>
+﻿
+<div class="main-title">
+    <span class="main-title-zh">登录</span> <span class="main-title-en">LOGIN</span>
 </div>
-<div class="row" ng-show="model.errorMessage">
-    <div class="col-md-12 col-sm-12">
-        <div class="alert alert-danger">
-            <strong>Error:</strong>
-            {{model.errorMessage}}
-        </div>
+<form class="main-form" method="post" action="{{model.loginUrl}}">
+    <anti-forgery-token token="model.antiForgery"></anti-forgery-token>
+    <div class="main-form-error" ng-show="model.errorMessage">
+        {{model.errorMessage}}
     </div>
-</div>
-<div class="row">
-    <div class="col-md-6 col-sm-6" ng-show="model.loginUrl">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">本地登录</h3>
-            </div>
-            <div class="panel-body">
-                <form name="form" method="post" action="{{model.loginUrl}}">
-                    <anti-forgery-token token="model.antiForgery"></anti-forgery-token>
-                    <fieldset>
-                        <div class="form-group">
-                            <label for="username">用户名</label>
-                            <input required name="username" autofocus id="username" type="text" class="form-control" placeholder="用户名" ng-model="model.username" maxlength="100">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">密  码</label>
-                            <input required id="password" name="password" type="password" class="form-control" placeholder="密  码" ng-model="model.password" maxlength="100" autocomplete="off">
-                        </div>
-                        <div class="form-group login-remember" ng-show="model.allowRememberMe">
-                            <label for="rememberMe">
-                                <input type="checkbox" id="rememberMe" name="rememberMe" ng-model="model.rememberMe" value="true">
-                                <strong>记住登录</strong>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary" ng-disabled="form.$invalid">登 录</button>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-            <ul class="list-unstyled">
-                <li ng-repeat="link in model.additionalLinks"><a ng-href="{{link.href}}">{{link.text}}</a></li>
-            </ul>
-        </div>
+    <div class="main-form-ctrl main-form-ctrl-blur main-form-ctrl-user">
+        <div class="main-form-input-icon user-icon user-icon-blur"></div>
+        <input class="main-form-input-text" required type="text"  id="username" name="username" autofocus ng-model="model.username" maxlength="100" placeholder="用户名"/>
     </div>
-    <div class="col-md-6 col-sm-6 external-providers" ng-show="model.externalProviders.length">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">扩展登录</h3>
-            </div>
-            <div class="panel-body">
-                <ul class="list-inline">
-                    <li ng-repeat="provider in model.externalProviders">
-                        <a class="btn btn-default" href="{{provider.href}}">{{provider.text}}</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <div class="main-form-ctrl main-form-ctrl-blur main-form-ctrl-pwd">
+        <div class="main-form-input-icon pwd-icon pwd-icon-blur"></div>
+        <input class="main-form-input-pwd" required type="password" id="password" name="password" ng-model="model.password" maxlength="100" autocomplete="off" placeholder="密码"/>
     </div>
-</div>
+    <input class="main-form-button" value="登录" type="submit" ng-disabled="form.$invalid"/>
+    <div class="main-form-saving" ng-show="model.allowRememberMe">
+        <label>
+            <input class="main-form-saving-checkbox" type="checkbox" id="rememberMe" name="rememberMe" ng-model="model.rememberMe" value="true"/>
+            <span class="main-form-saving-text">记住登录</span>
+        </label>
+    </div>
+    
+</form>

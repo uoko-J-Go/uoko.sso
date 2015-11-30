@@ -1,0 +1,119 @@
+div.page-login {
+    margin: 0 auto;
+    margin-top: 62px;
+    width: 440px;
+    background-color: #fff;
+    border: 1px solid #EDF1F4;
+    border-radius: 2px;
+    box-shadow: 0 0 10px 1px #e6e6e6;
+}
+
+div.main-title {
+    margin: 0 48px;
+    height: 90px;
+    line-height: 102px;
+    border-bottom: 1px solid #ddd;
+}
+
+span.main-title-zh {
+    font-size: 18px;
+    color: #212121;
+}
+
+span.main-title-en {
+    font-size: 14px;
+    color: #bdbdbd;
+}
+
+form.main-form {
+    margin: 30px 0 0 48px;
+}
+
+div.main-form-ctrl {
+    position: relative;
+    margin-bottom: 20px;
+    width: 344px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.main-form-ctrl-blur {
+    border: 1px solid #BDBDBD;
+}
+
+.main-form-ctrl-focus {
+    border: 1px solid #99a3b4;
+}
+
+div.main-form-input-icon {
+    position: absolute;
+    width: 57px;
+    height: 100%;
+}
+
+.user-icon-blur {
+    background: url(../image/icon/icon_1_b.png) no-repeat 50% 50%;
+}
+
+.user-icon-focus {
+    background: url(../image/icon/icon_1_f.png) no-repeat 50% 50%;
+}
+
+.pwd-icon-blur {
+    background: url(../image/icon/icon_2_b.png) no-repeat 50% 50%;
+}
+
+.pwd-icon-focus {
+    background: url(../image/icon/icon_2_f.png) no-repeat 50% 50%;
+}
+
+input.main-form-input-text,
+input.main-form-input-pwd {
+    display: block;
+    margin-left: 57px;
+    width: 287px;
+    height: 96%;
+    border: 0px;
+    border-radius: 5px;
+    outline: none;
+}
+
+input.main-form-button {
+    width: 344px;
+    height: 50px;
+    color: #fff;
+    font-size: 16px;
+    border: 1px solid #3fccbf;
+    border-radius: 5px;
+    background-color: #3fccbf;
+    cursor: pointer;
+}
+
+div.main-form-saving {
+    position: relative;
+    margin: 20px 0 43px 0;
+}
+
+div.main-form-error {
+  padding: 15px;
+  background-color: #f2dede;
+  width: 317px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+input.main-form-saving-checkbox {
+    width: 18px;
+    height: 18px;
+}
+
+span.main-form-saving-text {
+    position: absolute;
+    left: 30px;
+    top: 1px;
+    color: #212121;
+    font-size: 15px;
+}
+
+

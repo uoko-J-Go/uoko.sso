@@ -23,8 +23,7 @@ namespace UOKO.SSO.Server
                       "~/Scripts/respond.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/common.css"));
         }
     }
 }
