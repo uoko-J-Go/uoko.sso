@@ -10,7 +10,7 @@
 <body lang="zh-cn">
     <header>
         <a href="/"><span class="sso-logo"></span><span class="sso-name">sso</span></a>
-        <span class="sso-user" ng-show="model.currentUser">{{model.currentUser}}<span class="sso-user-dropdown"></span></span>
+        <span class="sso-user" ng-show="model.currentUser"><span class="sso-user-name">{{model.currentUser}}</span><span class="sso-user-dropdown"></span></span>
         <div class="sso-user-action sso-user-action-hidden" focus="false">
             <a href="{{model.logoutUrl}}" class="sso-user-logout">退出</a>
         </div>

@@ -55,13 +55,23 @@ span.sso-user-dropdown {
     display: block;
     position: absolute;
     top: 5px;
-    left: 48px;
+    right: 40px;
     width: 16px;
     height: 11px;
     background: url(../image/icon/icon_5.png) no-repeat;
     cursor: pointer;
 }
-
+span.sso-user-name{
+      display: block;
+      position: absolute;
+      top: 2px;
+      right: 62px;
+      width: 200px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      text-align: right;
+}
 div.sso-user-action {
     z-index: 1000;
     position: absolute;
@@ -80,7 +90,6 @@ div.sso-user-action {
 
 div.sso-user-action a {
     display: block;
-    position: absolute;
     width: 100%;
     height: 40px;
     line-height: 40px;
