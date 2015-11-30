@@ -8,8 +8,13 @@
         "Emphasize": false,
         "Type": 0,
         "Claims": [
-            {
-                "Name": "role",
+          {
+            "Name": "role",
+            "Description": "",
+            "AlwaysIncludeInIdToken": false
+          },
+          {
+                "Name": "userid",
                 "Description": "",
                 "AlwaysIncludeInIdToken": false
             }
