@@ -35,7 +35,9 @@ namespace UOKO.SSO.Server.Service.IdentityServer
     public class CustomUser
     {
         public string UserId { get; set; }
+
         public string LoginName { get; set; }
+
         public string UserName { get; set; }
 
         public string NickName { get; set; }
@@ -44,6 +46,10 @@ namespace UOKO.SSO.Server.Service.IdentityServer
 
         public string Password { get; set; }
 
+        public string CityId { get; set; }
+
+        public string Email { get; set; }
+        
         public List<Claim> Claims { get; set; }
     }
 }
