@@ -147,7 +147,11 @@ namespace UOKO.SSO.Server.Service
                         {
                             new Claim(Constants.ClaimTypes.Name, user.LoginName),
                             new Claim(Constants.ClaimTypes.NickName,user.NickName),
-                            new Claim(Constants.ClaimTypes.Role, "admin")
+                            new Claim(Constants.ClaimTypes.Role, "admin"),
+                            new Claim("UserId", user.UserId),
+                            new Claim("CityId", user.CityId),
+                            new Claim("Email", user.Email),
+                            new Claim("UserName", user.UserName),
                         };
                 }
                 else
@@ -155,6 +159,10 @@ namespace UOKO.SSO.Server.Service
                     user.Claims.Add(new Claim(Constants.ClaimTypes.Name, user.LoginName));
                     user.Claims.Add(new Claim(Constants.ClaimTypes.NickName, user.NickName));
                     user.Claims.Add(new Claim(Constants.ClaimTypes.Role, "admin"));
+                    user.Claims.Add(new Claim("UserId", user.UserId));
+                    user.Claims.Add(new Claim("CityId", user.CityId));
+                    user.Claims.Add(new Claim("Email", user.Email));
+                    user.Claims.Add(new Claim("UserName", user.UserName));
                 }
             }
         }
