@@ -1,7 +1,7 @@
 ﻿@using UOKO.SSO.Server.Service.IdentityServer
 @if (Request.IsAuthenticated)
 {
-        <span class="sso-user"><span class="sso-user-name">@User.Identity.GetNickName()</span><span class="sso-user-dropdown"></span></span>
+        <span class="sso-user"><span class="sso-user-name" title="@User.Identity.GetNickName()">@User.Identity.GetNickName()</span><span class="sso-user-dropdown"></span></span>
         <div class="sso-user-action sso-user-action-hidden" focus="false">
             <a href="@Url.Action("Logout", "Home")" class="sso-user-logout">退出</a>
         </div>
