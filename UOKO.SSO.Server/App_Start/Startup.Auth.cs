@@ -18,6 +18,7 @@ using Microsoft.IdentityModel.Protocols;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OpenIdConnect;
 using Owin;
 using UOKO.SSO.Core;
@@ -65,7 +66,7 @@ namespace UOKO.SSO.Server
                                                        AuthenticationOptions = new AuthenticationOptions
                                                        {
                                                            EnablePostSignOutAutoRedirect = true,
-                                                           EnableSignOutPrompt =false
+                                                           EnableSignOutPrompt =false,
                                                            //IdentityProviders = ConfigureIdentityProviders
                                                        }
                                                    });
@@ -133,7 +134,6 @@ namespace UOKO.SSO.Server
                 }
             });
         }
-
     }
 
 

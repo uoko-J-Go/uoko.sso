@@ -1,0 +1,30 @@
+﻿.page-permissions .page-header {
+  margin-bottom: 10px;
+}
+.page-permissions .permissions .permission {
+  margin-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+}
+.page-permissions .permissions .permission img {
+  width: 100px;
+  height: 100px;
+}
+.page-permissions .permissions .permission .permission-clientname {
+  font-size: 140%;
+  font-weight: bold;
+}
+.page-permissions .permissions .permission .permission-type {
+  font-size: 120%;
+  font-weight: bold;
+}
+.page-permissions .permissions .permission li {
+  list-style-type: none;
+  display: inline;
+}
+.page-permissions .permissions .permission li:after {
+  content: ', ';
+}
+.page-permissions .permissions .permission li:last-child:after {
+  content: '';
+}
