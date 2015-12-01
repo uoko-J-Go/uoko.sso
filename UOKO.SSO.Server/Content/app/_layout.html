@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html ng-app="app" ng-controller="LayoutCtrl">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{siteName}</title>
+    <link href="/Scripts/Utils/angular/angular-csp.css" rel="stylesheet"/>
+    <link href="/content/common.css" rel="stylesheet">
+    <link href="/content/{pageName}.css" rel="stylesheet">
+</head>
+<body lang="zh-cn">
+    <header>
+        <a href="/"><span class="sso-logo"></span><span class="sso-name">sso</span></a>
+        <span class="sso-user" ng-show="model.currentUser"><span class="sso-user-name" title="{{model.currentUser}}">{{model.currentUser}}</span><span class="sso-user-dropdown"></span></span>
+        <div class="sso-user-action sso-user-action-hidden" focus="false">
+            <a href="{{model.logoutUrl}}" class="sso-user-logout">退出</a>
+        </div>
+    </header>
+    <div class='main page-{pageName}'>
+        {pageContent}
+    </div>
+    <footer>
+        2012-2015 © Uoko.com. by ET.
+    </footer>
+
+    <script id='modelJson' type='application/json'>
+        {model}
+    </script>
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="/Scripts/common.js"></script>
+    <script src="/Scripts/Utils/angular/angular.min.js"></script>
+    <script src="/Scripts/Utils/encoder/encoder.min.js"></script>
+    <script src="/content/app/app.js"></script>
+   
+</body>
+</html>
+

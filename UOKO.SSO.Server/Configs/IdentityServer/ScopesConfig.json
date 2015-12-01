@@ -1,0 +1,26 @@
+[
+    {
+        "Enabled": true,
+        "Name": "roles",
+        "DisplayName": null,
+        "Description": null,
+        "Required": false,
+        "Emphasize": false,
+        "Type": 0,
+        "Claims": [
+          {
+            "Name": "role",
+            "Description": "",
+            "AlwaysIncludeInIdToken": false
+          },
+          {
+                "Name": "userid",
+                "Description": "",
+                "AlwaysIncludeInIdToken": false
+            }
+        ],
+        "IncludeAllClaimsForUser": false,
+        "ClaimsRule": null,
+        "ShowInDiscoveryDocument": true
+    },
+]

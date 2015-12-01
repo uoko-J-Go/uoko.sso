@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOKO.SSO.Core", "UOKO.SSO.Core\UOKO.SSO.Core.csproj", "{6E2956F2-2C9F-4FEE-9B9E-097E7E4522F2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOKO.SSO.Client", "UOKO.SSO.Client\UOKO.SSO.Client.csproj", "{80AD3EBB-D0B5-4841-82F3-553D9B81D794}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D0BDA06D-0612-41BD-88D9-D8F9CEE9A08F}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
@@ -14,13 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D0BDA0
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOKO.SSO.Client.MVC", "UOKO.SSO.Client.MVC\UOKO.SSO.Client.MVC.csproj", "{17DFBD9E-F701-4679-A7C7-9A34CDAA8015}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOKO.SSO.SiteDemo", "UOKO.SSO.SiteDemo\UOKO.SSO.SiteDemo.csproj", "{14CBDCA7-EE60-4DA9-A149-7E6A13BAEC56}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOKO.SSO.Server", "UOKO.SSO.Server\UOKO.SSO.Server.csproj", "{177FF651-01B1-4D89-9134-81B6A42B55ED}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOKO.SSO.Client.MVC.SRP", "UOKO.SSO.Client.MVC.SRP\UOKO.SSO.Client.MVC.SRP.csproj", "{F65F9164-0400-4065-BD61-DBB07F5AE6C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,18 +20,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6E2956F2-2C9F-4FEE-9B9E-097E7E4522F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E2956F2-2C9F-4FEE-9B9E-097E7E4522F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E2956F2-2C9F-4FEE-9B9E-097E7E4522F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E2956F2-2C9F-4FEE-9B9E-097E7E4522F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80AD3EBB-D0B5-4841-82F3-553D9B81D794}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80AD3EBB-D0B5-4841-82F3-553D9B81D794}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80AD3EBB-D0B5-4841-82F3-553D9B81D794}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80AD3EBB-D0B5-4841-82F3-553D9B81D794}.Release|Any CPU.Build.0 = Release|Any CPU
-		{17DFBD9E-F701-4679-A7C7-9A34CDAA8015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17DFBD9E-F701-4679-A7C7-9A34CDAA8015}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{17DFBD9E-F701-4679-A7C7-9A34CDAA8015}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{17DFBD9E-F701-4679-A7C7-9A34CDAA8015}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14CBDCA7-EE60-4DA9-A149-7E6A13BAEC56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14CBDCA7-EE60-4DA9-A149-7E6A13BAEC56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14CBDCA7-EE60-4DA9-A149-7E6A13BAEC56}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -48,10 +28,6 @@ Global
 		{177FF651-01B1-4D89-9134-81B6A42B55ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{177FF651-01B1-4D89-9134-81B6A42B55ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{177FF651-01B1-4D89-9134-81B6A42B55ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F65F9164-0400-4065-BD61-DBB07F5AE6C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F65F9164-0400-4065-BD61-DBB07F5AE6C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F65F9164-0400-4065-BD61-DBB07F5AE6C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F65F9164-0400-4065-BD61-DBB07F5AE6C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

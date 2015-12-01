@@ -3,7 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
     <title>@ViewBag.Title - UOKO</title>
 
     @Styles.Render("~/Content/css")
@@ -11,34 +12,21 @@
     @RenderSection("head", false)
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            @Html.ActionLink("UOKO-SSO", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("主页", "Index", "Home")</li>
-            </ul>
-            @Html.Partial("_LoginPartial")
-        </div>
+
+    <header>
+        <a href="@Url.Action("Index","Home")"><span class="sso-logo"></span><span class="sso-name">sso</span></a>
+        @Html.Partial("_LoginPartial")
+    </header>
+    <div class="main">
+        @RenderBody()
     </div>
-</div>
-<div class="container body-content">
-    @RenderBody()
-    <hr/>
     <footer>
-        <p>&copy; @DateTime.Now.Year - <a href="//uoko.com" target="_blank">UOKO.COM</a>
-        </p>
+        2012-2015 © Uoko.com. by ET.
     </footer>
-</div>
 
 <section name="scripts">
+    @Scripts.Render("~/bundles/jquery");
+    <script src="@Url.Content("~/Scripts/common.js")"></script>
     @RenderSection("scripts", false)
 </section>
 

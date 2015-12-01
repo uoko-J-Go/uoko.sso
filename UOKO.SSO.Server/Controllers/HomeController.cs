@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Web.Mvc;
 using RequireJsNet;
-using UOKO.Framework.Core.Logging;
-using UOKO.SSO.Core;
 using UOKO.SSO.Server.Service;
 using UOKO.SSO.Server.Utils;
+using System.Web;
 
 namespace UOKO.SSO.Server.Controllers
 {
-    [Authorize]
     public class HomeController : BaseController
     {
 
         public ActionResult Index()
         {
-            var userAlias = SSOInfo.UserIdentity.UserAlias;
-            var appList = UserBiz.GetUserAppInfo(userAlias);
-             
+            var appList = UserBiz.GetUserAppInfo();
             RequireJsOptions.Add("appList", appList);
 
             return View();
@@ -25,11 +21,9 @@ namespace UOKO.SSO.Server.Controllers
 
         public ActionResult Test()
         {
-            var userAlias = SSOInfo.UserIdentity.UserAlias;
-            var appList = UserBiz.GetUserAppInfo(userAlias);
+            var appList = UserBiz.GetUserAppInfo();
 
             var ex = new Exception("just a test log error");
-            Logger.Log("title-jiajun-test",LogLevel.Error, ex.ToString());
 
             NLog.LogManager.GetCurrentClassLogger().Log(NLog.LogLevel.Error, ex);
 
@@ -62,6 +56,11 @@ namespace UOKO.SSO.Server.Controllers
             {
                 throw new UITipException("我只是一个可怜的UI异常...", ex);
             }
+        }
+        public ActionResult Logout()
+        {
+            Request.GetOwinContext().Authentication.SignOut();
+            return Redirect("/");
         }
     }
 }

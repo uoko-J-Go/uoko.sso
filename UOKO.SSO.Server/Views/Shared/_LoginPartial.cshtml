@@ -1,19 +1,8 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using UOKO.SSO.Server.Service.IdentityServer
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-        @Html.AntiForgeryToken()
-
-        <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">@User.Identity.GetUserName()</a></li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">注销</a></li>
-        </ul>
-    }
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("登录", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+        <span class="sso-user"><span class="sso-user-name" title="@User.Identity.GetNickName()">@User.Identity.GetNickName()</span><span class="sso-user-dropdown"></span></span>
+        <div class="sso-user-action sso-user-action-hidden" focus="false">
+            <a href="@Url.Action("Logout", "Home")" class="sso-user-logout">退出</a>
+        </div>
 }

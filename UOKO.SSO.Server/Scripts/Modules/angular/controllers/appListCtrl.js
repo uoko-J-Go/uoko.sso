@@ -1,4 +1,4 @@
-﻿define(['commonModule', 'lodash', 'jquery'], function (commonModule, _, $) {
+﻿define(['commonModule', 'lodash'], function (commonModule, _, $) {
 
     commonModule.app.controller('AppListController', [
         '$scope', 'requireConfig', function($scope, requireConfig) {

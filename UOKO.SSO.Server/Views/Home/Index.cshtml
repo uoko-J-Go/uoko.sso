@@ -2,17 +2,17 @@
     ViewBag.Title = "系统资源列表";
 }
 
-<div class="jumbotron">
-    <h1>以下是您所能访问的系统:</h1>
-</div>
+@section head
+{
+    <link href="@Url.Content("~/Content/main.css")" rel="stylesheet" type="text/css"/>
+}
 
-<div class="row">
-    <div class="col-md-12" ng-controller="AppListController">
-        <div class="list-group">
-            <a ng-href="{{app.Url}}" class="list-group-item" ng-repeat="app in appList">
-                <h4 class="list-group-item-heading" ng-bind="app.Name"></h4>
-                <p class="list-group-item-text" ng-bind="app.Description || app.Name"></p>
-            </a>
-        </div>
-    </div>
+<div class="main-title">
+    <span class="main-title-icon"></span> <span class="main-title-text">以下是您能访问的系统：</span>
+</div>
+<div class="main-content" ng-controller="AppListController">
+    <a ng-href="{{app.Url}}" class="system-item" ng-repeat="app in appList">
+        <span class="system-item-name">{{app.Name}}</span>
+        <span class="system-item-desc">{{app.Description || app.Name}}</span>
+    </a>
 </div>

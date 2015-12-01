@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Claims;
+using IdentityServer3.Core;
 using Newtonsoft.Json;
 using UOKO.SSO.Models;
+using UOKO.SSO.Server.Service.IdentityServer;
+using UOKO.SSO.Server.Utils;
 
 namespace UOKO.SSO.Server.Service
 {
@@ -47,56 +51,109 @@ namespace UOKO.SSO.Server.Service
         }
 
 
-        public static IEnumerable<AppInfo> GetUserAppInfo(string alias)
+        public static IEnumerable<AppInfo> GetUserAppInfo()
         {
-            return new List<AppInfo>()
-                   {
-                       new AppInfo()
-                       {
-                           Name = "UOKO-波多野结1号",
-                           Url = "http://etadmin.uoko.cn/",
-                           Description = "优客逸家会员登录系统"
-                       }
-                   };
+            var appList = Clients.Get().Where(x => x.Enabled && !string.IsNullOrEmpty(x.ClientUri))
+                                 .Select(client => new AppInfo()
+                                                   {
+                                                       Name = client.ClientName,
+                                                       Url = client.ClientUri,
+                                                       Description = client.Description
+                                                   });
+            return appList;
 
-            var client = new HttpClient { Timeout = TimeSpan.FromSeconds(5) };
-            var getAppInfoApiUrl = string.Format("{0}/AppSystem/GetAppSystemByAlias/{1}", PermissApiUrl, alias);
-            var result =
-                JsonConvert.DeserializeObject<ApiResult<IEnumerable<AppSystemInfo>>>(
-                                                                                     client.GetAsync(getAppInfoApiUrl)
-                                                                                           .Result.Content
-                                                                                           .ReadAsStringAsync()
-                                                                                           .Result);
-            if (result != null)
+            //var client = new HttpClient { Timeout = TimeSpan.FromSeconds(5) };
+            //var getAppInfoApiUrl = string.Format("{0}/AppSystem/GetAppSystemByAlias/{1}", PermissApiUrl, alias);
+            //var result =
+            //    JsonConvert.DeserializeObject<ApiResult<IEnumerable<AppSystemInfo>>>(
+            //                                                                         client.GetAsync(getAppInfoApiUrl)
+            //                                                                               .Result.Content
+            //                                                                               .ReadAsStringAsync()
+            //                                                                               .Result);
+            //if (result != null)
+            //{
+            //    if (result.Code == "200" && result.Data != null)
+            //    {
+
+            //        var appList = result.Data.Select(item =>
+            //                                         {
+            //                                             var appInfo =
+            //                                                 new AppInfo
+            //                                                 {
+            //                                                     Name = item.AppName,
+            //                                                     Url = item.Url,
+            //                                                     Description = item.Remark,
+            //                                                 };
+            //                                             return appInfo;
+            //                                         })
+            //                            .ToList();
+
+            //        return appList;
+            //    }
+            //    else
+            //    {
+            //        // 吞掉异常... 哎 code smell
+            //        //throw new Exception(result.Message);
+            //        return null;
+            //    }
+            //}
+            //else
+            //{
+            //    throw new Exception("api return null");
+            //}
+        }
+
+        public static CustomUser CheckLogin(string userName, string password)
+        {
+            var url = ConfigurationManager.AppSettings["system.api.url"];
+            var getCustomUserApiUrl = string.Format("{0}/api/User/{1}/{2}", url, Uri.EscapeUriString(userName), Uri.EscapeUriString(password));
+            var result = new WebApiProvider().PostAsync(getCustomUserApiUrl, default(HttpResponseMessage)).Result;
+            if (result.IsSuccessStatusCode)
             {
-                if (result.Code == "200" && result.Data != null)
+                var user = result.Content.ReadAsAsync<CustomUser>().Result;
+                if (user.StateCode != 4)
                 {
+                    HandleUserClaims(user);
+                    return user;
+                }            
+            }
+            return null;
+        }
+        public static CustomUser GetUserInfoById(string userId)
+        {
+            var url = ConfigurationManager.AppSettings["system.api.url"];
+            var getCustomUserApiUrl = string.Format("{0}/api/UserOld/{1}", url, Uri.EscapeUriString(userId));
+            var result = new WebApiProvider().GetAsync(getCustomUserApiUrl).Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var user = result.Content.ReadAsAsync<CustomUser>().Result;
+                HandleUserClaims(user);
+                return user;
+            }
+            return null;
+        }
 
-                    var appList = result.Data.Select(item =>
-                                                     {
-                                                         var appInfo =
-                                                             new AppInfo
-                                                             {
-                                                                 Name = item.AppName,
-                                                                 Url = item.Url,
-                                                                 Description = item.Remark,
-                                                             };
-                                                         return appInfo;
-                                                     })
-                                        .ToList();
-
-                    return appList;
+        private static void HandleUserClaims(CustomUser user)
+        {
+            if (user != null)
+            {
+                if (user.Claims == null)
+                {
+                    user.Claims = new List<Claim>()
+                        {
+                            new Claim(Constants.ClaimTypes.Name, user.LoginName),
+                            new Claim(Constants.ClaimTypes.NickName,user.NickName),
+                            new Claim(Constants.ClaimTypes.Role, "admin"),
+                            new Claim("userid", user.UserId)
+                        };
                 }
                 else
                 {
-                    // 吞掉异常... 哎 code smell
-                    //throw new Exception(result.Message);
-                    return null;
+                    user.Claims.Add(new Claim(Constants.ClaimTypes.Name, user.LoginName));
+                    user.Claims.Add(new Claim(Constants.ClaimTypes.NickName, user.NickName));
+                    user.Claims.Add(new Claim(Constants.ClaimTypes.Role, "admin"));
+                    user.Claims.Add(new Claim("userid", user.UserId));
                 }
-            }
-            else
-            {
-                throw new Exception("api return null");
             }
         }
 

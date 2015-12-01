@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #EFF2F7;
+    font-family: "微软雅黑", "宋体";
+}
+
+header {
+    position: relative;
+    width: auto;
+    height: 68px;
+    background-color: #2a3641;
+}
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 12px;
+    color: #bdbdbd;
+}
+
+span.sso-logo {
+    display: block;
+    position: absolute;
+    width: 96px;
+    height: 28px;
+    top: 16px;
+    left: 25px;
+    background: url(../image/icon/icon_4.png) no-repeat;
+}
+
+span.sso-name {
+    display: block;
+    position: absolute;
+    width: 96px;
+    height: 28px;
+    top: 5px;
+    left: 135px;
+    color: RGB(242, 252, 251);
+    font-size: 35px;
+    font-weight: bolder;
+}
+
+span.sso-user {
+    display: block;
+    position: absolute;
+    height: 28px;
+    top: 20px;
+    right: 82px;
+    color: RGB(242, 252, 251);
+    font-size: 15px;
+}
+
+span.sso-user-dropdown {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 40px;
+    width: 16px;
+    height: 11px;
+    background: url(../image/icon/icon_5.png) no-repeat;
+    cursor: pointer;
+}
+span.sso-user-name{
+      display: block;
+      position: absolute;
+      top: 2px;
+      right: 62px;
+      width: 200px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      text-align: right;
+}
+div.sso-user-action {
+    z-index: 1000;
+    position: absolute;
+    width: 192px;
+    right: 56px;
+    top: 46px;
+}
+
+.sso-user-action-hidden {
+    visibility: hidden;
+}
+
+.sso-user-action-visible {
+    visibility: visible;
+}
+
+div.sso-user-action a {
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #ccd1d2;
+    text-indent: 26px;
+    color: #333;
+    text-decoration: none;
+}
+
+div.sso-user-action a:hover {
+    background-color: #fff;
+    color: #333;
+    text-decoration: none;
+}
