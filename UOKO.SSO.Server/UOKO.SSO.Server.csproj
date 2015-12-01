@@ -224,10 +224,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="UOKO.SSO.Core, Version=1.0.5637.31392, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UOKO.SSO.Core.1.0.5637.31392\lib\net45\UOKO.SSO.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -278,7 +274,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -304,7 +299,6 @@
     <Compile Include="Utils\UITipException.cs" />
     <Compile Include="Utils\JsonCustomerResult.cs" />
     <Compile Include="Utils\CustomerErrorHandleAttribute.cs" />
-    <Compile Include="Utils\CacheTickets.cs" />
     <Compile Include="Utils\WebApiProvider.cs" />
   </ItemGroup>
   <ItemGroup>
