@@ -113,7 +113,7 @@ namespace UOKO.SSO.Server.Service
         public static CustomUser CheckLogin(string userName, string password)
         {
             var url = ConfigurationManager.AppSettings["system.api.url"];
-            var getCustomUserApiUrl = string.Format("{0}/User/{1}/{2}", url, Uri.EscapeUriString(userName), Uri.EscapeUriString(password));
+            var getCustomUserApiUrl = string.Format("{0}/api/User/{1}/{2}", url, Uri.EscapeUriString(userName), Uri.EscapeUriString(password));
             var result = new WebApiProvider().PostAsync(getCustomUserApiUrl, default(HttpResponseMessage)).Result;
             if (result.IsSuccessStatusCode)
             {
@@ -129,7 +129,7 @@ namespace UOKO.SSO.Server.Service
         public static CustomUser GetUserInfoById(string userId)
         {
             var url = ConfigurationManager.AppSettings["system.api.url"];
-            var getCustomUserApiUrl = string.Format("{0}/UserOld/{1}", url, Uri.EscapeUriString(userId));
+            var getCustomUserApiUrl = string.Format("{0}/api/UserOld/{1}", url, Uri.EscapeUriString(userId));
             var result = new WebApiProvider().GetAsync(getCustomUserApiUrl).Result;
             if (result.IsSuccessStatusCode)
             {
