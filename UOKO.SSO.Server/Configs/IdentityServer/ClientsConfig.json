@@ -179,6 +179,51 @@
     "AllowedCorsOrigins": []
    },
     {
+        "Enabled": true,
+        "ClientId": "ShopAdmin",
+        "ClientSecrets": [ ],
+        "ClientName": "电商后台",
+        "ClientUri": "http://etadmin.uoko.ioc/ShopAdmin",
+        "Description": "电商后台管理",
+        "LogoUri": null,
+        "RequireConsent": false,
+        "AllowRememberConsent": true,
+        "Flow": 1,
+        "AllowClientCredentialsOnly": false,
+        "RedirectUris": [
+            "http://etadmin.uoko.ioc/ShopAdmin"
+
+        ],
+        "PostLogoutRedirectUris": [
+            "http://etadmin.uoko.ioc/ShopAdmin"
+        ],
+        "AllowAccessToAllScopes": false,
+        "AllowedScopes": [
+            "openid",
+            "profile",
+            "roles",
+            "sampleApi"
+        ],
+        "IdentityTokenLifetime": 300,
+        "AccessTokenLifetime": 3600,
+        "AuthorizationCodeLifetime": 300,
+        "AbsoluteRefreshTokenLifetime": 2592000,
+        "SlidingRefreshTokenLifetime": 1296000,
+        "RefreshTokenUsage": 0,
+        "UpdateAccessTokenClaimsOnRefresh": false,
+        "RefreshTokenExpiration": 1,
+        "AccessTokenType": 0,
+        "EnableLocalLogin": true,
+        "IdentityProviderRestrictions": [ ],
+        "IncludeJwtId": false,
+        "Claims": [ ],
+        "AlwaysSendClientClaims": false,
+        "PrefixClientClaims": true,
+        "AllowAccessToAllCustomGrantTypes": false,
+        "AllowedCustomGrantTypes": [ ],
+        "AllowedCorsOrigins": [ ]
+    },
+    {
     "Enabled": true,
     "ClientId": "mvc_service",
     "ClientSecrets": [
