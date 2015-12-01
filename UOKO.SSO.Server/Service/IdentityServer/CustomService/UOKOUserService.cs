@@ -57,7 +57,7 @@ namespace UOKO.SSO.Server.IdentityServer.CustomService
 
             var user = UserBiz.GetUserInfoById(subject);
 
-            context.IsActive = (user != null) && user.StateCode==3;
+            context.IsActive = (user != null) && user.StateCode!=4;
 
             return Task.FromResult(0);
         }

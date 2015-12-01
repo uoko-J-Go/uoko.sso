@@ -118,8 +118,11 @@ namespace UOKO.SSO.Server.Service
             if (result.IsSuccessStatusCode)
             {
                 var user = result.Content.ReadAsAsync<CustomUser>().Result;
-                HandleUserClaims(user);
-                return user;
+                if (user.StateCode != 4)
+                {
+                    HandleUserClaims(user);
+                    return user;
+                }            
             }
             return null;
         }
