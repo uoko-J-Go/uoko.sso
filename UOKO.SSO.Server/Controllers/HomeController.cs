@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Web.Mvc;
 using RequireJsNet;
-using UOKO.SSO.Core;
 using UOKO.SSO.Server.Service;
 using UOKO.SSO.Server.Utils;
 using System.Web;
 
 namespace UOKO.SSO.Server.Controllers
 {
-    [Authorize]
     public class HomeController : BaseController
     {
 
         public ActionResult Index()
         {
-            var userAlias = SSOInfo.UserIdentity.UserAlias;
-            var appList = UserBiz.GetUserAppInfo(userAlias);
+            var appList = UserBiz.GetUserAppInfo();
             RequireJsOptions.Add("appList", appList);
 
             return View();
@@ -24,8 +21,7 @@ namespace UOKO.SSO.Server.Controllers
 
         public ActionResult Test()
         {
-            var userAlias = SSOInfo.UserIdentity.UserAlias;
-            var appList = UserBiz.GetUserAppInfo(userAlias);
+            var appList = UserBiz.GetUserAppInfo();
 
             var ex = new Exception("just a test log error");
 

@@ -51,22 +51,15 @@ namespace UOKO.SSO.Server.Service
         }
 
 
-        public static IEnumerable<AppInfo> GetUserAppInfo(string alias)
+        public static IEnumerable<AppInfo> GetUserAppInfo()
         {
-
-            var appList = new List<AppInfo>();
-            var clients = Clients.Get().Where(x => x.Enabled && !string.IsNullOrEmpty(x.ClientUri));
-
-            foreach (var client in clients)
-            {
-                appList.Add(new AppInfo()
-                {
-                    Name = client.ClientName,
-                    Url = client.ClientUri,
-                    Description = client.Description
-                });
-
-            }
+            var appList = Clients.Get().Where(x => x.Enabled && !string.IsNullOrEmpty(x.ClientUri))
+                                 .Select(client => new AppInfo()
+                                                   {
+                                                       Name = client.ClientName,
+                                                       Url = client.ClientUri,
+                                                       Description = client.Description
+                                                   });
             return appList;
 
             //var client = new HttpClient { Timeout = TimeSpan.FromSeconds(5) };

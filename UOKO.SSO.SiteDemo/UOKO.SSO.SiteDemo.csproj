@@ -201,20 +201,6 @@
     </Content>
     <None Include="Project_Readme.html" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UOKO.SSO.Client.MVC\UOKO.SSO.Client.MVC.csproj">
-      <Project>{17dfbd9e-f701-4679-a7c7-9a34cdaa8015}</Project>
-      <Name>UOKO.SSO.Client.MVC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UOKO.SSO.Client\UOKO.SSO.Client.csproj">
-      <Project>{80AD3EBB-D0B5-4841-82F3-553D9B81D794}</Project>
-      <Name>UOKO.SSO.Client</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UOKO.SSO.Core\UOKO.SSO.Core.csproj">
-      <Project>{6E2956F2-2C9F-4FEE-9B9E-097E7E4522F2}</Project>
-      <Name>UOKO.SSO.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

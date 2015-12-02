@@ -4,24 +4,18 @@ using System.Configuration;
 using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Security.Claims;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Helpers;
 using IdentityModel.Client;
 using IdentityServer3.Core;
 using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Services;
-using IdentityServer3.Core.Services.InMemory;
 using IdentityServer3.Host.Config;
 using Microsoft.IdentityModel.Protocols;
-using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OpenIdConnect;
 using Owin;
-using UOKO.SSO.Core;
 using UOKO.SSO.Server.IdentityServer.CustomService;
 using UOKO.SSO.Server.Service.IdentityServer;
 using AuthenticationOptions = IdentityServer3.Core.Configuration.AuthenticationOptions;
@@ -31,12 +25,11 @@ namespace UOKO.SSO.Server
     public partial class Startup
     {
 
-        private string ssoUrl = ConfigurationManager.AppSettings["sso.url"];
+        private readonly string _ssoUrl = ConfigurationManager.AppSettings["sso.url"];
+
         // 有关配置身份验证的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
-            //app.UseSSOAuth();
-
             //AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;
 
             AntiForgeryConfig.UniqueClaimTypeIdentifier = Constants.ClaimTypes.Subject;
@@ -51,10 +44,8 @@ namespace UOKO.SSO.Server
 
                         factory.ViewService = new Registration<IViewService>(typeof (UOKOViewService));
 
-                        //var userService = new InMemoryUserService(Users.Get());
                         var userService = new UOKOUserService();
                         factory.UserService = new Registration<IUserService>(resolver => userService);
-
 
                         idsrvApp.UseIdentityServer(new IdentityServerOptions
                                                    {
@@ -72,7 +63,6 @@ namespace UOKO.SSO.Server
                                                    });
                     });
 
-            // app.UseResourceAuthorization(new AuthorizationManager());
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
                                         {
@@ -82,12 +72,12 @@ namespace UOKO.SSO.Server
 
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
-                Authority = ssoUrl.TrimEnd('/')+"/identity",
+                Authority = _ssoUrl.TrimEnd('/')+"/identity",
 
                 ClientId = "uoko-sso",
-                Scope = "openid profile roles sampleApi",
+                Scope = "openid profile",
                 ResponseType = "id_token token",
-                RedirectUri = ssoUrl,
+                RedirectUri = _ssoUrl,
 
                 SignInAsAuthenticationType = OpenIdConnectAuthenticationDefaults.AuthenticationType,
                 UseTokenLifetime = false,
@@ -136,37 +126,4 @@ namespace UOKO.SSO.Server
         }
     }
 
-
-    public static class SSOAuthExtension
-    {
-        public static void UseSSOAuth(this IAppBuilder app)
-        {
-            app.Use(typeof (SSOAuthenticationMiddleware));
-        }
-    }
-
-    public class SSOAuthenticationMiddleware : OwinMiddleware
-    {
-        public SSOAuthenticationMiddleware(OwinMiddleware next) : base(next)
-        {
-
-        }
-
-
-        public override async Task Invoke(IOwinContext context)
-        {
-            var cookieInfo = SSOAuthentication.GetAuthCookieInfo(ServerConfig.CookieName);
-
-            if (cookieInfo != null
-                && !string.IsNullOrWhiteSpace(cookieInfo.Alias))
-            {
-                // 有身份信息,构建基础身份信息
-                var userInfo = SSOAuthentication.GenerateClaimsPrincipal(cookieInfo);
-                context.Authentication.User = userInfo;
-                Thread.CurrentPrincipal = userInfo;
-            }
-
-            await this.Next.Invoke(context);
-        }
-    }
 }
