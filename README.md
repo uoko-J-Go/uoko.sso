@@ -86,6 +86,7 @@ if (!Request.IsAuthenticated)
 (1):获取登录账号名称:`var userName = User.Identity.Name`      
 (2):获取其他用户信息:
 <pre><code>
-var user = User as ClaimsPrincipal;
-var userid = user.Claims.FirstOrDefault(r => r.Type == "userid").Value; //userid是服务端提供的,获取之前需要跟服务端确认提供了哪些用户信息
+    var user = User as ClaimsPrincipal;
+    //获取Claim信息
+    var userid = user.FindFirst("userid").Value; //userid是服务端提供的Claim信息,获取之前需要跟服务端确认提供了哪些用户信息
 <code></pre>
