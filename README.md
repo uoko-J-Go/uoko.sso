@@ -1,6 +1,7 @@
 # SSO接入使用说明
 * 如何接入
 * 常见问题
+
 ---
 ## 一:如何接入
 1. 找庆攀,志平先配置服务端的client信息,提供要接入网站的`ClientId`,`ClientName`,`ClientUri`,`Description`必要信息.  
