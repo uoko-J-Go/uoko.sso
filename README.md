@@ -5,7 +5,7 @@
 ---
 ## 一:如何接入
 1. 找庆攀,志平先配置服务端的client信息,提供要接入网站的`ClientId`,`ClientName`,`ClientUri`,`Description`必要信息.  
-2. 在自己的网站添加owin的Startup启动类,添加如下代码:
+2. 在自己的网站添加`owin`的`Startup`启动类,添加如下代码:
 <pre><code>
  public void Configuration(IAppBuilder app)
         {
