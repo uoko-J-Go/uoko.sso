@@ -106,8 +106,8 @@ namespace UOKO.SSO.Server.Service
         public static CustomUser CheckLogin(string userName, string password)
         {
             var url = ConfigurationManager.AppSettings["system.api.url"];
-            var getCustomUserApiUrl = string.Format("{0}/api/User/{1}/{2}", url, Uri.EscapeUriString(userName), Uri.EscapeUriString(password));
-            var result = new WebApiProvider().PostAsync(getCustomUserApiUrl, default(HttpResponseMessage)).Result;
+            var getCustomUserApiUrl = string.Format("{0}/api/UserOld/PostLogin", url);
+            var result = new WebApiProvider().PostAsync(getCustomUserApiUrl,new CustomUser() { LoginName=userName,Password=password}).Result;
             if (result.IsSuccessStatusCode)
             {
                 var user = result.Content.ReadAsAsync<CustomUser>().Result;

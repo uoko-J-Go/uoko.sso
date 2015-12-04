@@ -388,6 +388,7 @@
     <Content Include="Scripts\Utils\angular\angular.min.js" />
     <Content Include="Scripts\Utils\angular\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\Utils\lodash\lodash.js" />
+    <Content Include="Scripts\Utils\lodash\lodash.min.js" />
     <Content Include="Scripts\Utils\requirejs\r.js" />
     <Content Include="Scripts\Utils\requirejs\require.js" />
     <Content Include="RequireJs.json" />
