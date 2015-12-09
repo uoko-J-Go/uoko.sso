@@ -4,7 +4,7 @@
     "ClientId": "esb_mgmt",
     "ClientSecrets": [ ],
     "ClientName": "ESB管理平台",
-    "ClientUri": "http://localhost:5000/",
+    "ClientUri": "http://esb.uoko.ioc/",
     "Description": "用户中心",
     "LogoUri": null,
     "RequireConsent": false,
@@ -12,11 +12,11 @@
     "Flow": 1,
     "AllowClientCredentialsOnly": false,
     "RedirectUris": [
-      "http://localhost:5000/signin-oidc"
+      "http://esb.uoko.ioc/signin-oidc"
 
     ],
     "PostLogoutRedirectUris": [
-      "http://localhost:5000/"
+      "http://esb.uoko.ioc/"
     ],
     "AllowAccessToAllScopes": false,
     "AllowedScopes": [
