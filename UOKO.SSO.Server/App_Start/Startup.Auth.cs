@@ -10,6 +10,7 @@ using IdentityModel.Client;
 using IdentityServer3.Core;
 using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Services;
+using IdentityServer3.Core.Validation;
 using IdentityServer3.Host.Config;
 using Microsoft.IdentityModel.Protocols;
 using Microsoft.Owin.Security;
@@ -47,13 +48,20 @@ namespace UOKO.SSO.Server
                         var userService = new UOKOUserService();
                         factory.UserService = new Registration<IUserService>(resolver => userService);
 
+                        factory.SecretValidators = new List<Registration<ISecretValidator>>()
+                                                   {
+                                                       new Registration<ISecretValidator,HashedSharedSecretValidator>(),
+                                                       new Registration<ISecretValidator,X509CertificateThumbprintSecretValidator>(),
+                                                       new Registration<ISecretValidator,PlainTextSharedSecretValidator>(),
+                                                   };
+
                         idsrvApp.UseIdentityServer(new IdentityServerOptions
                                                    {
                                                        SiteName = "UOKO-SSO",
                                                        SigningCertificate = Cert.Load(),
                                                        RequireSsl = false,
                                                        Factory = factory,
-
+                                                       
                                                        AuthenticationOptions = new AuthenticationOptions
                                                        {
                                                            EnablePostSignOutAutoRedirect = true,
