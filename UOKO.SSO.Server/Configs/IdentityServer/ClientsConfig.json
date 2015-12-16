@@ -266,7 +266,7 @@
         "ClientId": "grafana-uoko",
         "ClientSecrets": [ { Value: "uoko-grafana" }, ],
         "ClientName": "Grafana",
-        "ClientUri": "http://localhost:3000/",
+        "ClientUri": "http://localhost:3000/login/uoko",
         "Description": "Grafana",
         "LogoUri": null,
         "RequireConsent": false,
