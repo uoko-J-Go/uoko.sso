@@ -24,7 +24,6 @@
             "profile",
             "roles",
             "email",
-            "sampleApi"
         ],
         "IdentityTokenLifetime": 300,
         "AccessTokenLifetime": 3600,
@@ -67,6 +66,7 @@
         "AllowedScopes": [
             "openid",
             "profile",
+            "roles"
         ],
         "IdentityTokenLifetime": 300,
         "AccessTokenLifetime": 3600,
@@ -110,6 +110,7 @@
         "AllowedScopes": [
             "openid",
             "profile",
+            "roles"
         ],
         "IdentityTokenLifetime": 300,
         "AccessTokenLifetime": 3600,
@@ -156,6 +157,7 @@
         "AllowedScopes": [
             "openid",
             "profile",
+            "roles"
         ],
         "IdentityTokenLifetime": 300,
         "AccessTokenLifetime": 3600,
@@ -241,6 +243,7 @@
         "AllowedScopes": [
             "openid",
             "profile",
+            "roles"
         ],
         "IdentityTokenLifetime": 300,
         "AccessTokenLifetime": 3600,
