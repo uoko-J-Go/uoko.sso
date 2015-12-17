@@ -137,23 +137,11 @@ namespace UOKO.SSO.Server.Service
         {
             if (user != null)
             {
-                if (user.Claims == null)
-                {
-                    user.Claims = new List<Claim>()
-                        {
-                            new Claim(Constants.ClaimTypes.Name, user.LoginName),
-                            new Claim(Constants.ClaimTypes.NickName,user.NickName),
-                            new Claim(Constants.ClaimTypes.Role, "admin"),
-                            new Claim("userid", user.UserId)
-                        };
-                }
-                else
-                {
-                    user.Claims.Add(new Claim(Constants.ClaimTypes.Name, user.LoginName));
-                    user.Claims.Add(new Claim(Constants.ClaimTypes.NickName, user.NickName));
-                    user.Claims.Add(new Claim(Constants.ClaimTypes.Role, "admin"));
-                    user.Claims.Add(new Claim("userid", user.UserId));
-                }
+                user.Claims = user.Claims ?? new List<Claim>();
+                user.Claims.Add(new Claim(Constants.ClaimTypes.Name, user.LoginName));
+                user.Claims.Add(new Claim(Constants.ClaimTypes.NickName, user.NickName));
+                user.Claims.Add(new Claim(Constants.ClaimTypes.Email,user.Email));
+                user.Claims.Add(new Claim("userid", user.UserId));
             }
         }
 
