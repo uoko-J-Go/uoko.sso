@@ -269,7 +269,7 @@
         "ClientId": "grafana-uoko",
         "ClientSecrets": [ { Value: "uoko-grafana" }, ],
         "ClientName": "Grafana",
-        "ClientUri": "http://localhost:3000/login/uoko",
+        "ClientUri": "http://grafana.uoko.com/login/uoko",
         "Description": "Grafana",
         "LogoUri": null,
         "RequireConsent": false,
@@ -277,7 +277,7 @@
         "Flow": 0,
         "AllowClientCredentialsOnly": false,
         "RedirectUris": [
-            "http://localhost:3000/login/uoko"
+            "http://grafana.uoko.com/login/uoko"
         ],
         "PostLogoutRedirectUris": [
         ],
