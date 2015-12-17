@@ -116,8 +116,8 @@
       "roles",
       "sampleApi"
     ],
-    "IdentityTokenLifetime": 300,
-    "AccessTokenLifetime": 3600,
+    "IdentityTokenLifetime": 5,
+    "AccessTokenLifetime": 1,
     "AuthorizationCodeLifetime": 300,
     "AbsoluteRefreshTokenLifetime": 2592000,
     "SlidingRefreshTokenLifetime": 1296000,

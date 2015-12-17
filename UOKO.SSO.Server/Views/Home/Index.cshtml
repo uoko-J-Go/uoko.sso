@@ -12,7 +12,7 @@
 </div>
 <div class="main-content" ng-controller="AppListController">
     <a ng-href="{{app.Url}}" class="system-item" ng-repeat="app in appList">
-        <span class="system-item-name">{{app.Name}}</span>
-        <span class="system-item-desc">{{app.Description || app.Name}}</span>
+        <span class="system-item-name" ng-bind="app.Name"></span>
+        <span class="system-item-desc" ng-bind="app.Description || app.Name"></span>
     </a>
 </div>

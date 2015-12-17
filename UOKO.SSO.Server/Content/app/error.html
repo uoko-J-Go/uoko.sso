@@ -2,6 +2,6 @@
         <h1>错误</h1>
 </div>
 <div class="main-form-error">
-    <div ng-show="model.errorMessage">{{model.errorMessage}}</div>
+    <div ng-show="model.errorMessage" ng-bind="model.errorMessage"></div>
 </div>
 <div class="request-id">Request Id: <span ng-bind="model.requestId"></span></div>
