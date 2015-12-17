@@ -54,19 +54,20 @@ namespace UOKO.SSO.Server
                                                        new Registration<ISecretValidator,X509CertificateThumbprintSecretValidator>(),
                                                        new Registration<ISecretValidator,PlainTextSharedSecretValidator>(),
                                                    };
-
+                        
                         idsrvApp.UseIdentityServer(new IdentityServerOptions
                                                    {
                                                        SiteName = "UOKO-SSO",
                                                        SigningCertificate = Cert.Load(),
                                                        RequireSsl = false,
                                                        Factory = factory,
-                                                       
+                                                        
                                                        AuthenticationOptions = new AuthenticationOptions
                                                        {
                                                            EnablePostSignOutAutoRedirect = true,
-                                                           EnableSignOutPrompt =false,
+                                                           EnableSignOutPrompt = false,
                                                            //IdentityProviders = ConfigureIdentityProviders
+                                                           InvalidSignInRedirectUrl = _ssoUrl
                                                        }
                                                    });
                     });
@@ -74,10 +75,11 @@ namespace UOKO.SSO.Server
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
                                         {
-                                            AuthenticationType = OpenIdConnectAuthenticationDefaults.AuthenticationType
+                                            AuthenticationType = OpenIdConnectAuthenticationDefaults.AuthenticationType,
+                                             
                                         });
 
-
+            
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
                 Authority = _ssoUrl.TrimEnd('/')+"/identity",
@@ -86,7 +88,7 @@ namespace UOKO.SSO.Server
                 Scope = "openid profile",
                 ResponseType = "id_token token",
                 RedirectUri = _ssoUrl,
-
+                 
                 SignInAsAuthenticationType = OpenIdConnectAuthenticationDefaults.AuthenticationType,
                 UseTokenLifetime = false,
 

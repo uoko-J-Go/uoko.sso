@@ -4,8 +4,7 @@
 </div>
 <form class="main-form" method="post" action="{{model.loginUrl}}">
     <anti-forgery-token token="model.antiForgery"></anti-forgery-token>
-    <div class="main-form-error" ng-show="model.errorMessage">
-        {{model.errorMessage}}
+    <div class="main-form-error" ng-show="model.errorMessage" ng-bind="model.errorMessage">
     </div>
     <div class="main-form-ctrl main-form-ctrl-blur main-form-ctrl-user">
         <div class="main-form-input-icon user-icon user-icon-blur"></div>
