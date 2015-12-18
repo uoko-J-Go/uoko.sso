@@ -65,8 +65,9 @@
         ],
         "AllowAccessToAllScopes": false,
         "AllowedScopes": [
-            "openid",
-            "profile",
+          "openid",
+          "profile",
+          "roles"
         ],
         "IdentityTokenLifetime": 300,
         "AccessTokenLifetime": 3600,
@@ -109,7 +110,7 @@
         "AllowAccessToAllScopes": false,
         "AllowedScopes": [
             "openid",
-            "profile",
+            "profile"
         ],
         "IdentityTokenLifetime": 300,
         "AccessTokenLifetime": 3600,
@@ -149,13 +150,10 @@
         "PostLogoutRedirectUris": [
             "http://everetadmin.uoko.ioc/"
         ],
-        "PostLogoutRedirectUris": [
-            "http://everetadmin.uoko.ioc/"
-        ],
         "AllowAccessToAllScopes": false,
         "AllowedScopes": [
             "openid",
-            "profile",
+            "profile"
         ],
         "IdentityTokenLifetime": 300,
         "AccessTokenLifetime": 3600,
@@ -197,7 +195,7 @@
         "AllowAccessToAllScopes": false,
         "AllowedScopes": [
             "openid",
-            "profile",
+            "profile"
         ],
         "IdentityTokenLifetime": 300,
         "AccessTokenLifetime": 3600,
@@ -240,7 +238,7 @@
         "AllowAccessToAllScopes": false,
         "AllowedScopes": [
             "openid",
-            "profile",
+            "profile"
         ],
         "IdentityTokenLifetime": 300,
         "AccessTokenLifetime": 3600,
@@ -264,7 +262,7 @@
     {
         "Enabled": true,
         "ClientId": "grafana-uoko",
-        "ClientSecrets": [ { Value: "uoko-grafana" }, ],
+        "ClientSecrets": [ { Value: "uoko-grafana" }],
         "ClientName": "Grafana",
         "ClientUri": "http://localhost:3000/login/uoko",
         "Description": "Grafana",
@@ -282,7 +280,7 @@
         "AllowedScopes": [
             "openid",
             "email",
-            "profile",
+            "profile"
         ],
         "IdentityTokenLifetime": 3600,
         "AccessTokenLifetime": 3600,
@@ -303,5 +301,5 @@
         "AllowAccessToAllCustomGrantTypes": false,
         "AllowedCustomGrantTypes": [ ],
         "AllowedCorsOrigins": [ ]
-    },
+    }
 ]
