@@ -91,7 +91,7 @@ namespace UOKO.SSO.Server
                  
                 SignInAsAuthenticationType = OpenIdConnectAuthenticationDefaults.AuthenticationType,
                 UseTokenLifetime = false,
-
+                
                 Notifications = new OpenIdConnectAuthenticationNotifications
                 {
                     SecurityTokenValidated = async n =>
@@ -129,6 +129,18 @@ namespace UOKO.SSO.Server
                             }
                         }
 
+                        return Task.FromResult(0);
+                    },
+
+                    AuthenticationFailed = faildMsg =>
+                    {
+                        if (faildMsg.Exception is OpenIdConnectProtocolInvalidNonceException)
+                        {
+                            if (faildMsg.Exception.Message.Contains("IDX10311"))
+                            {
+                                faildMsg.SkipToNextMiddleware();
+                            }
+                        }
                         return Task.FromResult(0);
                     }
                 }
