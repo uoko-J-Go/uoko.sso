@@ -13,6 +13,7 @@ using IdentityServer3.Core.Services;
 using IdentityServer3.Core.Validation;
 using IdentityServer3.Host.Config;
 using Microsoft.IdentityModel.Protocols;
+using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
@@ -128,6 +129,14 @@ namespace UOKO.SSO.Server
                                 n.ProtocolMessage.IdTokenHint = idTokenHint.Value;
                             }
                         }
+
+                        if (n.ProtocolMessage.RequestType == OpenIdConnectRequestType.AuthenticationRequest)
+                        {
+                            if (n.Response.StatusCode == 401 && IsAjaxRequest(n.Request))
+                            {
+                                n.HandleResponse();
+                            }
+                        }
                          
                         return Task.FromResult(0);
                     },
@@ -142,10 +151,21 @@ namespace UOKO.SSO.Server
                             }
                         }
                         return Task.FromResult(0);
-                    }
+                    },
                 }
             });
         }
+        private static bool IsAjaxRequest(IOwinRequest request)
+        {
+            var query = request.Query;
+            if ((query != null) && (query["X-Requested-With"] == "XMLHttpRequest"))
+            {
+                return true;
+            }
+            var headers = request.Headers;
+            return ((headers != null) && (headers["X-Requested-With"] == "XMLHttpRequest"));
+        }
     }
+
 
 }
