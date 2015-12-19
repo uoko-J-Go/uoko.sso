@@ -128,7 +128,7 @@ namespace UOKO.SSO.Server
                                 n.ProtocolMessage.IdTokenHint = idTokenHint.Value;
                             }
                         }
-
+                         
                         return Task.FromResult(0);
                     },
 
