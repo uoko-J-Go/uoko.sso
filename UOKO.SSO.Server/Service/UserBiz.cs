@@ -106,8 +106,8 @@ namespace UOKO.SSO.Server.Service
         public static CustomUser CheckLogin(string userName, string password)
         {
             var url = ConfigurationManager.AppSettings["system.api.url"];
-            var getCustomUserApiUrl = string.Format("{0}/api/User/{1}/{2}", url, Uri.EscapeUriString(userName), Uri.EscapeUriString(password));
-            var result = new WebApiProvider().PostAsync(getCustomUserApiUrl, default(HttpResponseMessage)).Result;
+            var getCustomUserApiUrl = string.Format("{0}/api/UserOld/PostLogin", url);
+            var result = new WebApiProvider().PostAsync(getCustomUserApiUrl,new CustomUser() { LoginName=userName,Password=password}).Result;
             if (result.IsSuccessStatusCode)
             {
                 var user = result.Content.ReadAsAsync<CustomUser>().Result;
@@ -137,23 +137,11 @@ namespace UOKO.SSO.Server.Service
         {
             if (user != null)
             {
-                if (user.Claims == null)
-                {
-                    user.Claims = new List<Claim>()
-                        {
-                            new Claim(Constants.ClaimTypes.Name, user.LoginName),
-                            new Claim(Constants.ClaimTypes.NickName,user.NickName),
-                            new Claim(Constants.ClaimTypes.Role, "admin"),
-                            new Claim("userid", user.UserId)
-                        };
-                }
-                else
-                {
-                    user.Claims.Add(new Claim(Constants.ClaimTypes.Name, user.LoginName));
-                    user.Claims.Add(new Claim(Constants.ClaimTypes.NickName, user.NickName));
-                    user.Claims.Add(new Claim(Constants.ClaimTypes.Role, "admin"));
-                    user.Claims.Add(new Claim("userid", user.UserId));
-                }
+                user.Claims = user.Claims ?? new List<Claim>();
+                user.Claims.Add(new Claim(Constants.ClaimTypes.Name, user.LoginName));
+                user.Claims.Add(new Claim(Constants.ClaimTypes.NickName, user.NickName));
+                user.Claims.Add(new Claim(Constants.ClaimTypes.Email,user.Email));
+                user.Claims.Add(new Claim("userid", user.UserId));
             }
         }
 

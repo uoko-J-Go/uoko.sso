@@ -1,7 +1,7 @@
 {
     "paths": {
-        "lodash": "utils/lodash/lodash",
-        "angular": "utils/angular/angular",
+        "lodash": "utils/lodash/lodash.min",
+        "angular": "utils/angular/angular.min",
         "commonModule": "Modules/angular/commonModule"
     },
     "shim": {

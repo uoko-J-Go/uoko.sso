@@ -10,8 +10,10 @@ using IdentityModel.Client;
 using IdentityServer3.Core;
 using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Services;
+using IdentityServer3.Core.Validation;
 using IdentityServer3.Host.Config;
 using Microsoft.IdentityModel.Protocols;
+using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
@@ -47,18 +49,26 @@ namespace UOKO.SSO.Server
                         var userService = new UOKOUserService();
                         factory.UserService = new Registration<IUserService>(resolver => userService);
 
+                        factory.SecretValidators = new List<Registration<ISecretValidator>>()
+                                                   {
+                                                       new Registration<ISecretValidator,HashedSharedSecretValidator>(),
+                                                       new Registration<ISecretValidator,X509CertificateThumbprintSecretValidator>(),
+                                                       new Registration<ISecretValidator,PlainTextSharedSecretValidator>(),
+                                                   };
+                        
                         idsrvApp.UseIdentityServer(new IdentityServerOptions
                                                    {
                                                        SiteName = "UOKO-SSO",
                                                        SigningCertificate = Cert.Load(),
                                                        RequireSsl = false,
                                                        Factory = factory,
-
+                                                        
                                                        AuthenticationOptions = new AuthenticationOptions
                                                        {
                                                            EnablePostSignOutAutoRedirect = true,
-                                                           EnableSignOutPrompt =false,
+                                                           EnableSignOutPrompt = false,
                                                            //IdentityProviders = ConfigureIdentityProviders
+                                                           InvalidSignInRedirectUrl = _ssoUrl
                                                        }
                                                    });
                     });
@@ -66,10 +76,11 @@ namespace UOKO.SSO.Server
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
                                         {
-                                            AuthenticationType = OpenIdConnectAuthenticationDefaults.AuthenticationType
+                                            AuthenticationType = OpenIdConnectAuthenticationDefaults.AuthenticationType,
+                                             
                                         });
 
-
+            
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
                 Authority = _ssoUrl.TrimEnd('/')+"/identity",
@@ -78,10 +89,10 @@ namespace UOKO.SSO.Server
                 Scope = "openid profile",
                 ResponseType = "id_token token",
                 RedirectUri = _ssoUrl,
-
+                 
                 SignInAsAuthenticationType = OpenIdConnectAuthenticationDefaults.AuthenticationType,
                 UseTokenLifetime = false,
-
+                
                 Notifications = new OpenIdConnectAuthenticationNotifications
                 {
                     SecurityTokenValidated = async n =>
@@ -119,11 +130,42 @@ namespace UOKO.SSO.Server
                             }
                         }
 
+                        if (n.ProtocolMessage.RequestType == OpenIdConnectRequestType.AuthenticationRequest)
+                        {
+                            if (n.Response.StatusCode == 401 && IsAjaxRequest(n.Request))
+                            {
+                                n.HandleResponse();
+                            }
+                        }
+                         
                         return Task.FromResult(0);
-                    }
+                    },
+
+                    AuthenticationFailed = faildMsg =>
+                    {
+                        if (faildMsg.Exception is OpenIdConnectProtocolInvalidNonceException)
+                        {
+                            if (faildMsg.Exception.Message.Contains("IDX10311"))
+                            {
+                                faildMsg.SkipToNextMiddleware();
+                            }
+                        }
+                        return Task.FromResult(0);
+                    },
                 }
             });
         }
+        private static bool IsAjaxRequest(IOwinRequest request)
+        {
+            var query = request.Query;
+            if ((query != null) && (query["X-Requested-With"] == "XMLHttpRequest"))
+            {
+                return true;
+            }
+            var headers = request.Headers;
+            return ((headers != null) && (headers["X-Requested-With"] == "XMLHttpRequest"));
+        }
     }
+
 
 }
