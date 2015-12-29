@@ -264,7 +264,7 @@
     {
         "Enabled": true,
         "ClientId": "grafana-uoko",
-        "ClientSecrets": [ { Value: "uoko-grafana" }],
+        "ClientSecrets": [ { Value: "uoko-grafana" } ],
         "ClientName": "Grafana",
         "ClientUri": "http://grafana.uoko.com/login/uoko",
         "Description": "Grafana",
@@ -303,5 +303,28 @@
         "AllowAccessToAllCustomGrantTypes": false,
         "AllowedCustomGrantTypes": [ ],
         "AllowedCorsOrigins": [ ]
-    }
+    },
+    {
+        "ClientId": "api-systemset",
+        "ClientName": "系统配置权限系统-api",
+        "Description": "系统配置权限系统-api",
+        "ClientSecrets": [ { Value: "secret-for-systemset-api" } ],
+        "Flow": 2, //3
+        "AllowedScopes": [
+            "api-systemset",
+        ],
+    },
+    {
+        "ClientId": "systemset",
+        "ClientName": "系统配置权限系统",
+        "Description": "系统配置权限系统",
+        "Flow": 2,
+        "RequireConsent": false,
+        "AllowedScopes": [
+            "api-systemset",
+        ],
+        "RedirectUris": [
+            "http://mgmt.test.uoko.ioc/"
+        ],
+    },
 ]
