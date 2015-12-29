@@ -309,7 +309,7 @@
         "ClientName": "系统配置权限系统-api",
         "Description": "系统配置权限系统-api",
         "ClientSecrets": [ { Value: "secret-for-systemset-api" } ],
-        "Flow": 2, //3
+        "Flow": 3,
         "AllowedScopes": [
             "api-systemset",
         ],
@@ -321,6 +321,9 @@
         "Flow": 2,
         "RequireConsent": false,
         "AllowedScopes": [
+            "openid",
+            "email",
+            "profile",
             "api-systemset",
         ],
         "RedirectUris": [
