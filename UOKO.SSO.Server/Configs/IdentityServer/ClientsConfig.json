@@ -1,6 +1,51 @@
 ﻿[
     {
         "Enabled": true,
+        "ClientId": "finance",
+        "ClientSecrets": [ ],
+        "ClientName": "财务系统",
+        "ClientUri": "http://finance.uoko.ioc/",
+        "Description": "新财务系统及第三方金融",
+        "LogoUri": null,
+        "RequireConsent": false,
+        "AllowRememberConsent": true,
+        "Flow": 1,
+        "AllowClientCredentialsOnly": false,
+        "RedirectUris": [
+            "http://finance.uoko.ioc/"
+
+        ],
+        "PostLogoutRedirectUris": [
+            "http://finance.uoko.ioc/"
+        ],
+        "AllowAccessToAllScopes": false,
+        "AllowedScopes": [
+            "openid",
+            "profile",
+            "roles",
+            "email"
+        ],
+        "IdentityTokenLifetime": 300,
+        "AccessTokenLifetime": 3600,
+        "AuthorizationCodeLifetime": 300,
+        "AbsoluteRefreshTokenLifetime": 2592000,
+        "SlidingRefreshTokenLifetime": 1296000,
+        "RefreshTokenUsage": 0,
+        "UpdateAccessTokenClaimsOnRefresh": false,
+        "RefreshTokenExpiration": 1,
+        "AccessTokenType": 0,
+        "EnableLocalLogin": true,
+        "IdentityProviderRestrictions": [ ],
+        "IncludeJwtId": false,
+        "Claims": [ ],
+        "AlwaysSendClientClaims": false,
+        "PrefixClientClaims": true,
+        "AllowAccessToAllCustomGrantTypes": false,
+        "AllowedCustomGrantTypes": [ ],
+        "AllowedCorsOrigins": [ ]
+    },
+    {
+        "Enabled": true,
         "ClientId": "esb_mgmt",
         "ClientSecrets": [ ],
         "ClientName": "ESB管理平台",
@@ -23,7 +68,7 @@
             "openid",
             "profile",
             "roles",
-            "email",
+            "email"
         ],
         "IdentityTokenLifetime": 300,
         "AccessTokenLifetime": 3600,
@@ -264,7 +309,7 @@
     {
         "Enabled": true,
         "ClientId": "grafana-uoko",
-        "ClientSecrets": [ { Value: "uoko-grafana" }],
+        "ClientSecrets": [ { "Value": "uoko-grafana" } ],
         "ClientName": "Grafana",
         "ClientUri": "http://grafana.uoko.com/login/uoko",
         "Description": "Grafana",
@@ -303,5 +348,31 @@
         "AllowAccessToAllCustomGrantTypes": false,
         "AllowedCustomGrantTypes": [ ],
         "AllowedCorsOrigins": [ ]
+    },
+    {
+        "ClientId": "api-systemset",
+        "ClientName": "系统配置权限系统-api",
+        "Description": "系统配置权限系统-api",
+        "ClientSecrets": [ { "Value": "secret-for-systemset-api" } ],
+        "Flow": 3,
+        "AllowedScopes": [
+            "api-systemset"
+        ]
+    },
+    {
+        "ClientId": "systemset",
+        "ClientName": "系统配置权限系统",
+        "Description": "系统配置权限系统",
+        "Flow": 2,
+        "RequireConsent": false,
+        "AllowedScopes": [
+            "openid",
+            "email",
+            "profile",
+            "api-systemset"
+        ],
+        "RedirectUris": [
+            "http://mgmt.test.uoko.ioc/"
+        ]
     }
 ]

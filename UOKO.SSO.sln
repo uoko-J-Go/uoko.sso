@@ -10,8 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D0BDA0
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOKO.SSO.SiteDemo", "UOKO.SSO.SiteDemo\UOKO.SSO.SiteDemo.csproj", "{14CBDCA7-EE60-4DA9-A149-7E6A13BAEC56}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOKO.SSO.Server", "UOKO.SSO.Server\UOKO.SSO.Server.csproj", "{177FF651-01B1-4D89-9134-81B6A42B55ED}"
 EndProject
 Global
@@ -20,10 +18,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{14CBDCA7-EE60-4DA9-A149-7E6A13BAEC56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14CBDCA7-EE60-4DA9-A149-7E6A13BAEC56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14CBDCA7-EE60-4DA9-A149-7E6A13BAEC56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14CBDCA7-EE60-4DA9-A149-7E6A13BAEC56}.Release|Any CPU.Build.0 = Release|Any CPU
 		{177FF651-01B1-4D89-9134-81B6A42B55ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{177FF651-01B1-4D89-9134-81B6A42B55ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{177FF651-01B1-4D89-9134-81B6A42B55ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
