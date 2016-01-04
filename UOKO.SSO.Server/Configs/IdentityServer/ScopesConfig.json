@@ -1,4 +1,4 @@
-[
+﻿[
     {
         "Enabled": true,
         "Name": "roles",
@@ -8,17 +8,30 @@
         "Emphasize": false,
         "Type": 0,
         "Claims": [
-          {
-            "Name": "role",
-            "Description": "",
-            "AlwaysIncludeInIdToken": false
-          },
-          {
+            {
+                "Name": "role",
+                "Description": "",
+                "AlwaysIncludeInIdToken": false
+            },
+            {
                 "Name": "userid",
                 "Description": "",
                 "AlwaysIncludeInIdToken": false
             }
         ],
+        "IncludeAllClaimsForUser": false,
+        "ClaimsRule": null,
+        "ShowInDiscoveryDocument": true
+    },
+        {
+        "Enabled": true,
+        "Name": "api-systemset",
+        "DisplayName": "systemset-api",
+        "Description": "系统权限配置管理 api",
+        "Required": true,
+        "Emphasize": false,
+        "Type": 1,
+        "Claims": [],
         "IncludeAllClaimsForUser": false,
         "ClaimsRule": null,
         "ShowInDiscoveryDocument": true
