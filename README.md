@@ -91,4 +91,22 @@ if (!Request.IsAuthenticated)
     var user = User as ClaimsPrincipal;
     //获取Claim信息
     var userid = user.FindFirst("userid").Value; //userid是服务端提供的Claim信息,获取之前需要跟服务端确认提供了哪些用户信息
-<code></pre>
+</code></pre>  
+
+6. 登出:  
+(1)MVC网站:  
+<pre><code>
+  public ActionResult Logout()
+        {
+            Request.GetOwinContext().Authentication.SignOut();
+            return Redirect("/");
+        }
+</code></pre>  
+(2)webform网站:  
+<pre><code>
+protected void Logout(object sender, EventArgs e)
+        {
+            Request.GetOwinContext().Authentication.SignOut();
+            Response.Redirect(Request.Url.ToString());
+        }
+</code></pre>
