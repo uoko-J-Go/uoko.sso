@@ -65,8 +65,10 @@
             });
         }
 </code></pre>
+3. 添加相关nuget包:
+Microsoft.Owin.Host.SystemWeb  
 
-3. 启动SSO:  
+4. 启动SSO:  
 (1):MVC网站:在拦截器类`RegisterGlobalFilters`里面添加全局校验`filters.Add(new AuthorizeAttribute());`, 如果特殊的不想校验则添加`[AllowAnonymous]`  
 (2):Webforms网站:由于Webforms的实现机制,需要这样来做:在`OnPreInit`事件里面添加如下代码:  
 <pre><code>
@@ -82,7 +84,7 @@ if (!Request.IsAuthenticated)
         }
 </code></pre>
 
-4. 获取用户信息:  
+5. 获取用户信息:  
 (1):获取登录账号名称:`var userName = User.Identity.Name`      
 (2):获取其他用户信息:
 <pre><code>
