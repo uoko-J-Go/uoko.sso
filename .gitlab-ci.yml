@@ -1,20 +1,32 @@
-image: ruby:2.1
-services:
-  - postgres
 
+
+variables:
+  Solution: UOKO.SSO.sln
 before_script:
-  - bundle_install
-
+  - 'echo off'
 stages:
+  - nugetrestore
   - build
-  - test
-  - deploy
-
-job1:
-  stage: build
+nugetrestore:
+  stage: nugetrestore
   script:
-    - execute-script-for-job1
+     - 'cd .nuget'
+     - 'echo restoring..'
+     - 'nuget restore "../%Solution%"'
+     - 'cd ..'
+     - 'echo restored'
   only:
     - master
   tags:
-    - docker
+    - zhipingrunner
+
+build:
+  stage: build
+  script:
+     - 'echo building..'
+     - '"%SystemRoot%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe" "%Solution%" /t:Build /property:Configuration=Debug /p:VisualStudioVersion=12.0'
+  only:
+    - master
+  tags:
+    - zhipingrunner
+
