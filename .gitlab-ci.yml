@@ -13,14 +13,10 @@ nugetrestore:
      - 'nuget restore "../%Solution%"'
      - 'cd ..'
      - 'echo restored'
-  only:
-    - master
 
 build:
   stage: build
   script:
      - 'echo building..'
      - '"%SystemRoot%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe" "%Solution%" /t:Build /property:Configuration=Debug /p:VisualStudioVersion=12.0'
-  only:
-    - master
 
