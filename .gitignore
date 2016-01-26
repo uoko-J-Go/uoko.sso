@@ -161,3 +161,4 @@ $RECYCLE.BIN/
 
 # framework log dir
 UOKO.SSO.Server/Logs/
+/.vs/config
