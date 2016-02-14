@@ -396,7 +396,7 @@
     "ClientName": "逸生活CMS",
     "ClientUri": "http://snow.uoko.ioc/",
     "Description": "逸生活CMS",
-    "Flow": 2,
+    "Flow": 1,
     "RequireConsent": false,
     "AllowedScopes": [
       "openid",
