@@ -402,6 +402,7 @@
       "openid",
       "email",
       "profile",
+      "roles",
     ],
     "RedirectUris": [
       "http://snow.uoko.ioc/"
