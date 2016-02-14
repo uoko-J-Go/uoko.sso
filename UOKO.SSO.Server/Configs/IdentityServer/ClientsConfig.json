@@ -391,4 +391,23 @@
       "http://gitlab.uoko.ioc:12015/users/auth/gitlab/callback"
     ],
   },
+  {
+    "ClientId": "easylife",
+    "ClientName": "逸生活CMS",
+    "ClientUri": "http://snow.uoko.ioc/",
+    "Description": "逸生活CMS",
+    "Flow": 2,
+    "RequireConsent": false,
+    "AllowedScopes": [
+      "openid",
+      "email",
+      "profile",
+    ],
+    "RedirectUris": [
+      "http://snow.uoko.ioc/"
+    ],
+    "PostLogoutRedirectUris": [
+      "http://snow.uoko.ioc/"
+    ],
+  },
 ]
