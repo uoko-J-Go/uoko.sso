@@ -77,7 +77,7 @@ namespace UOKO.SSO.Server
             app.UseCookieAuthentication(new CookieAuthenticationOptions
                                         {
                                             AuthenticationType = OpenIdConnectAuthenticationDefaults.AuthenticationType,
-                                             
+                                              
                                         });
 
             

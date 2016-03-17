@@ -14,42 +14,6 @@ namespace UOKO.SSO.Server.Service
 {
     public class UserBiz
     {
-        public static UserInfo GetUserInfo(string userName, string pwd)
-        {
-            return new UserInfo()
-                   {
-                       Alias = "1",
-                       Name = "admin"
-                   };
-            var client = new HttpClient {Timeout = TimeSpan.FromSeconds(5)};
-            var getUserInfoApiUrl = string.Format("{0}/User/GetUserDtoByLogin/{1}/{2}", PermissApiUrl, userName, pwd);
-            var result = JsonConvert.DeserializeObject<ApiResult<UserData>>(client.GetAsync(getUserInfoApiUrl).Result.Content.ReadAsStringAsync().Result);
-
-            if (result != null)
-            {
-                if (result.Code == "200" && result.Data != null)
-                {
-
-                    var userInfo = new UserInfo()
-                                   {
-                                       Alias = result.Data.Alias,
-                                       Name = result.Data.UserName
-                                   };
-                    return userInfo;
-                }
-                else
-                {
-                    // 吞掉异常... 哎 code smell
-                    // throw new Exception(result.Message);
-                    return null;
-                }
-            }
-            else
-            {
-                throw new Exception("api return null");
-            }
-        }
-
 
         public static IEnumerable<AppInfo> GetUserAppInfo()
         {
@@ -142,15 +106,6 @@ namespace UOKO.SSO.Server.Service
                 user.Claims.Add(new Claim(Constants.ClaimTypes.NickName, user.NickName));
                 user.Claims.Add(new Claim(Constants.ClaimTypes.Email,user.Email));
                 user.Claims.Add(new Claim("userid", user.UserId));
-            }
-        }
-
-        private static string PermissApiUrl
-        {
-            get
-            {
-                var url = ConfigurationManager.AppSettings["permission.api.url"];
-                return url;
             }
         }
 

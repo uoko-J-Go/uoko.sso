@@ -1,0 +1,404 @@
+﻿[
+	{
+        "Enabled": true,
+        "ClientId": "finance",
+        "ClientSecrets": [ ],
+        "ClientName": "财务系统",
+        "ClientUri": "http://finance.youkeyijia.com/",
+        "Description": "新财务系统及第三方金融",
+        "LogoUri": null,
+        "RequireConsent": false,
+        "AllowRememberConsent": true,
+        "Flow": 1,
+        "AllowClientCredentialsOnly": false,
+        "RedirectUris": [
+            "http://finance.youkeyijia.com/"
+
+        ],
+        "PostLogoutRedirectUris": [
+            "http://finance.youkeyijia.com/"
+        ],
+        "AllowAccessToAllScopes": false,
+        "AllowedScopes": [
+            "openid",
+            "profile",
+            "roles",
+            "email"
+        ],
+        "IdentityTokenLifetime": 300,
+        "AccessTokenLifetime": 3600,
+        "AuthorizationCodeLifetime": 300,
+        "AbsoluteRefreshTokenLifetime": 2592000,
+        "SlidingRefreshTokenLifetime": 1296000,
+        "RefreshTokenUsage": 0,
+        "UpdateAccessTokenClaimsOnRefresh": false,
+        "RefreshTokenExpiration": 1,
+        "AccessTokenType": 0,
+        "EnableLocalLogin": true,
+        "IdentityProviderRestrictions": [ ],
+        "IncludeJwtId": false,
+        "Claims": [ ],
+        "AlwaysSendClientClaims": false,
+        "PrefixClientClaims": true,
+        "AllowAccessToAllCustomGrantTypes": false,
+        "AllowedCustomGrantTypes": [ ],
+        "AllowedCorsOrigins": [ ]
+    },
+	{
+        "Enabled": true,
+        "ClientId": "oa",
+        "ClientSecrets": [ ],
+        "ClientName": "oa系统系统",
+        "ClientUri": "http://oa.youkeyijia.com/",
+        "Description": "uoko-oa系统系统",
+        "LogoUri": null,
+        "RequireConsent": false,
+        "AllowRememberConsent": true,
+        "Flow": 1,
+        "AllowClientCredentialsOnly": false,
+        "RedirectUris": [
+            "http://oa.youkeyijia.com/"
+
+        ],
+        "PostLogoutRedirectUris": [
+            "http://oa.youkeyijia.com/"
+        ],
+        "AllowAccessToAllScopes": false,
+        "AllowedScopes": [
+            "openid",
+            "profile",
+            "roles",
+            "email"
+        ],
+        "IdentityTokenLifetime": 300,
+        "AccessTokenLifetime": 3600,
+        "AuthorizationCodeLifetime": 300,
+        "AbsoluteRefreshTokenLifetime": 2592000,
+        "SlidingRefreshTokenLifetime": 1296000,
+        "RefreshTokenUsage": 0,
+        "UpdateAccessTokenClaimsOnRefresh": false,
+        "RefreshTokenExpiration": 1,
+        "AccessTokenType": 0,
+        "EnableLocalLogin": true,
+        "IdentityProviderRestrictions": [ ],
+        "IncludeJwtId": false,
+        "Claims": [ ],
+        "AlwaysSendClientClaims": false,
+        "PrefixClientClaims": true,
+        "AllowAccessToAllCustomGrantTypes": false,
+        "AllowedCustomGrantTypes": [ ],
+        "AllowedCorsOrigins": [ ]
+    },
+ {
+    "Enabled": true,
+    "ClientId": "esb_mgmt",
+    "ClientSecrets": [ ],
+    "ClientName": "ESB管理平台",
+	 "ClientUri": "http://esb.youkeyijia.com/",
+    "Description": "ESB管理平台",
+    "LogoUri": null,
+    "RequireConsent": false,
+    "AllowRememberConsent": true,
+    "Flow": 1,
+    "AllowClientCredentialsOnly": false,
+    "RedirectUris": [
+      "http://esb.youkeyijia.com/signin-oidc"
+    ],
+    "PostLogoutRedirectUris": [
+      "http://esb.youkeyijia.com/"
+    ],
+    "AllowAccessToAllScopes": false,
+    "AllowedScopes": [
+      "openid",
+      "profile",
+      "roles",
+      "email",
+      "sampleApi"
+    ],
+    "IdentityTokenLifetime": 3000,
+    "AccessTokenLifetime": 36000,
+    "AuthorizationCodeLifetime": 3000,
+    "AbsoluteRefreshTokenLifetime": 2592000,
+    "SlidingRefreshTokenLifetime": 1296000,
+    "RefreshTokenUsage": 0,
+    "UpdateAccessTokenClaimsOnRefresh": false,
+    "RefreshTokenExpiration": 1,
+    "AccessTokenType": 0,
+    "EnableLocalLogin": true,
+    "IdentityProviderRestrictions": [ ],
+    "IncludeJwtId": false,
+    "Claims": [ ],
+    "AlwaysSendClientClaims": false,
+    "PrefixClientClaims": true,
+    "AllowAccessToAllCustomGrantTypes": false,
+    "AllowedCustomGrantTypes": [ ],
+    "AllowedCorsOrigins": [ ]
+  },
+    {
+        "Enabled": true,
+        "ClientId": "etadmin",
+        "ClientSecrets": [ ],
+        "ClientName": "波多新系统",
+        "ClientUri": "http://etadmin.youkeyijia.com/",
+        "Description": "UOKO-波多野结1号(新)",
+        "LogoUri": null,
+        "RequireConsent": false,
+        "AllowRememberConsent": true,
+        "Flow": 1,
+        "AllowClientCredentialsOnly": false,
+        "RedirectUris": [
+            "http://etadmin.youkeyijia.com/"
+
+        ],
+        "PostLogoutRedirectUris": [
+            "http://etadmin.youkeyijia.com/"
+        ],
+        "AllowAccessToAllScopes": false,
+        "AllowedScopes": [
+            "openid",
+            "profile",
+            "roles",
+            "sampleApi"
+        ],
+        "IdentityTokenLifetime": 43200,
+        "AccessTokenLifetime": 43200,
+        "AuthorizationCodeLifetime": 300,
+        "AbsoluteRefreshTokenLifetime": 2592000,
+        "SlidingRefreshTokenLifetime": 1296000,
+        "RefreshTokenUsage": 0,
+        "UpdateAccessTokenClaimsOnRefresh": false,
+        "RefreshTokenExpiration": 1,
+        "AccessTokenType": 0,
+        "EnableLocalLogin": true,
+        "IdentityProviderRestrictions": [ ],
+        "IncludeJwtId": false,
+        "Claims": [ ],
+        "AlwaysSendClientClaims": false,
+        "PrefixClientClaims": true,
+        "AllowAccessToAllCustomGrantTypes": false,
+        "AllowedCustomGrantTypes": [ ],
+        "AllowedCorsOrigins": [ ]
+    },
+    {
+        "Enabled": true,
+        "ClientId": "everetadmin",
+        "ClientSecrets": [ ],
+        "ClientName": "波多老系统",
+        "ClientUri": "http://oldetadmin.youkeyijia.com/",
+        "Description": "UOKO-波多野结1号(老)",
+        "LogoUri": null,
+        "RequireConsent": false,
+        "AllowRememberConsent": true,
+        "Flow": 1,
+        "AllowClientCredentialsOnly": false,
+        "RedirectUris": [
+            "http://oldetadmin.youkeyijia.com/"
+
+        ],
+        "PostLogoutRedirectUris": [
+            "http://oldetadmin.youkeyijia.com/"
+        ],
+        "AllowAccessToAllScopes": false,
+        "AllowedScopes": [
+            "openid",
+            "profile",
+            "roles",
+            "sampleApi"
+        ],
+        "IdentityTokenLifetime": 43200,
+        "AccessTokenLifetime": 43200,
+        "AuthorizationCodeLifetime": 300,
+        "AbsoluteRefreshTokenLifetime": 2592000,
+        "SlidingRefreshTokenLifetime": 1296000,
+        "RefreshTokenUsage": 0,
+        "UpdateAccessTokenClaimsOnRefresh": false,
+        "RefreshTokenExpiration": 1,
+        "AccessTokenType": 0,
+        "EnableLocalLogin": true,
+        "IdentityProviderRestrictions": [ ],
+        "IncludeJwtId": false,
+        "Claims": [ ],
+        "AlwaysSendClientClaims": false,
+        "PrefixClientClaims": true,
+        "AllowAccessToAllCustomGrantTypes": false,
+        "AllowedCustomGrantTypes": [ ],
+        "AllowedCorsOrigins": [ ]
+    },
+    {
+    "Enabled": true,
+    "ClientId": "uoko-sso",
+    "ClientSecrets": [],
+    "ClientName": "UOKO-SSO",
+    "ClientUri": "http://ids.youkeyijia.com/",
+    "Description": "优客单点登录平台",
+    "LogoUri": null,
+    "RequireConsent": false,
+    "AllowRememberConsent": true,
+    "Flow": 1,
+    "AllowClientCredentialsOnly": false,
+    "RedirectUris": [
+        "http://ids.youkeyijia.com/"
+    ],
+    "PostLogoutRedirectUris": [
+      "http://ids.youkeyijia.com/"
+    ],
+    "AllowAccessToAllScopes": false,
+    "AllowedScopes": [
+        "openid",
+        "profile",
+        "roles",
+        "sampleApi"
+    ],
+    "IdentityTokenLifetime": 43200,
+    "AccessTokenLifetime": 43200,
+    "AuthorizationCodeLifetime": 300,
+    "AbsoluteRefreshTokenLifetime": 2592000,
+    "SlidingRefreshTokenLifetime": 1296000,
+    "RefreshTokenUsage": 0,
+    "UpdateAccessTokenClaimsOnRefresh": false,
+    "RefreshTokenExpiration": 1,
+    "AccessTokenType": 0,
+    "EnableLocalLogin": true,
+    "IdentityProviderRestrictions": [],
+    "IncludeJwtId": false,
+    "Claims": [],
+    "AlwaysSendClientClaims": false,
+    "PrefixClientClaims": true,
+    "AllowAccessToAllCustomGrantTypes": false,
+    "AllowedCustomGrantTypes": [],
+    "AllowedCorsOrigins": []
+   },
+    {
+        "Enabled": true,
+        "ClientId": "ShopAdmin",
+        "ClientSecrets": [ ],
+        "ClientName": "电商后台",
+        "ClientUri": "http://etadmin.youkeyijia.com/ShopAdmin",
+        "Description": "电商后台管理",
+        "LogoUri": null,
+        "RequireConsent": false,
+        "AllowRememberConsent": true,
+        "Flow": 1,
+        "AllowClientCredentialsOnly": false,
+        "RedirectUris": [
+            "http://etadmin.youkeyijia.com/ShopAdmin"
+
+        ],
+        "PostLogoutRedirectUris": [
+            "http://etadmin.youkeyijia.com/ShopAdmin"
+        ],
+        "AllowAccessToAllScopes": false,
+        "AllowedScopes": [
+            "openid",
+            "profile",
+            "roles",
+            "sampleApi"
+        ],
+        "IdentityTokenLifetime": 300,
+        "AccessTokenLifetime": 3600,
+        "AuthorizationCodeLifetime": 300,
+        "AbsoluteRefreshTokenLifetime": 2592000,
+        "SlidingRefreshTokenLifetime": 1296000,
+        "RefreshTokenUsage": 0,
+        "UpdateAccessTokenClaimsOnRefresh": false,
+        "RefreshTokenExpiration": 1,
+        "AccessTokenType": 0,
+        "EnableLocalLogin": true,
+        "IdentityProviderRestrictions": [ ],
+        "IncludeJwtId": false,
+        "Claims": [ ],
+        "AlwaysSendClientClaims": false,
+        "PrefixClientClaims": true,
+        "AllowAccessToAllCustomGrantTypes": false,
+        "AllowedCustomGrantTypes": [ ],
+        "AllowedCorsOrigins": [ ]
+    },
+    {
+    "Enabled": true,
+    "ClientId": "mvc_service",
+    "ClientSecrets": [
+        {
+            "Description": null,
+            "Value": "K7gNU3sdo+OL0wNhqoVWhr3g6s1xYv72ol/pe/Unols=",
+            "Expiration": null,
+            "Type": "SharedSecret"
+        }
+    ],
+    "ClientName": "MVC Client (service communication)",
+    "ClientUri": null,
+    "LogoUri": null,
+    "RequireConsent": true,
+    "AllowRememberConsent": true,
+    "Flow": 3,
+    "AllowClientCredentialsOnly": false,
+    "RedirectUris": [],
+    "PostLogoutRedirectUris": [],
+    "AllowAccessToAllScopes": false,
+    "AllowedScopes": [
+        "sampleApi"
+    ],
+    "IdentityTokenLifetime": 43200,
+    "AccessTokenLifetime": 43200,
+    "AuthorizationCodeLifetime": 300,
+    "AbsoluteRefreshTokenLifetime": 2592000,
+    "SlidingRefreshTokenLifetime": 1296000,
+    "RefreshTokenUsage": 1,
+    "UpdateAccessTokenClaimsOnRefresh": false,
+    "RefreshTokenExpiration": 1,
+    "AccessTokenType": 0,
+    "EnableLocalLogin": true,
+    "IdentityProviderRestrictions": [],
+    "IncludeJwtId": false,
+    "Claims": [],
+    "AlwaysSendClientClaims": false,
+    "PrefixClientClaims": true,
+    "AllowAccessToAllCustomGrantTypes": false,
+    "AllowedCustomGrantTypes": [],
+    "AllowedCorsOrigins": []
+    },
+	{
+        "Enabled": true,
+        "ClientId": "usercenter",
+        "ClientSecrets": [ ],
+        "ClientName": "用户中心",
+        "ClientUri": "http://usercenter.youkeyijia.com/",
+        "Description": "用户中心",
+        "LogoUri": null,
+        "RequireConsent": false,
+        "AllowRememberConsent": true,
+        "Flow": 1,
+        "AllowClientCredentialsOnly": false,
+        "RedirectUris": [
+            "http://usercenter.youkeyijia.com/"
+
+        ],
+    "PostLogoutRedirectUris": [
+      "http://usercenter.youkeyijia.com/"
+    ],
+        "AllowAccessToAllScopes": false,
+        "AllowedScopes": [
+            "openid",
+            "profile",
+            "roles",
+            "sampleApi"
+        ],
+        "IdentityTokenLifetime": 300,
+        "AccessTokenLifetime": 3600,
+        "AuthorizationCodeLifetime": 300,
+        "AbsoluteRefreshTokenLifetime": 2592000,
+        "SlidingRefreshTokenLifetime": 1296000,
+        "RefreshTokenUsage": 0,
+        "UpdateAccessTokenClaimsOnRefresh": false,
+        "RefreshTokenExpiration": 1,
+        "AccessTokenType": 0,
+        "EnableLocalLogin": true,
+        "IdentityProviderRestrictions": [ ],
+        "IncludeJwtId": false,
+        "Claims": [ ],
+        "AlwaysSendClientClaims": false,
+        "PrefixClientClaims": true,
+        "AllowAccessToAllCustomGrantTypes": false,
+        "AllowedCustomGrantTypes": [ ],
+        "AllowedCorsOrigins": [ ]
+    }
+]
