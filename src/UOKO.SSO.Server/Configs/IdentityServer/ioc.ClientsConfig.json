@@ -406,11 +406,13 @@
       "roles",
     ],
     "RedirectUris": [
-      "http://fire.local.uoko.ioc/"
+      "http://fire.local.uoko.ioc/",
+      "http://fire.uoko.ioc/"
     ],
     "PostLogoutRedirectUris": [
       "http://fire.local.uoko.ioc/",
-    ],
+       "http://fire.uoko.ioc/"
+    ]
   },
   {
     "ClientId": "easylife",

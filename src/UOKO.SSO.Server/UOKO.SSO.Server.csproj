@@ -327,6 +327,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <EmbeddedResource Include="idsrv3test.pfx" />
     <Content Include="image\icon\icon_1_b.png" />
     <Content Include="image\icon\icon_1_f.png" />
     <Content Include="image\icon\icon_2_b.png" />
