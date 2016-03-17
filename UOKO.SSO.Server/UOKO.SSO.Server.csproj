@@ -339,10 +339,22 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="idsrv3test.pfx" />
-    <Content Include="Configs\IdentityServer\ClientsConfig.json">
+    <Content Include="Configs\IdentityServer\ioc.ClientsConfig.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Configs\IdentityServer\ScopesConfig.json">
+    <Content Include="Configs\IdentityServer\ioc.ScopesConfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configs\IdentityServer\pre.ClientsConfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configs\IdentityServer\pre.ScopesConfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configs\IdentityServer\online.ClientsConfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configs\IdentityServer\online.ScopesConfig.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="NLog.xsd">
