@@ -1,21 +1,20 @@
 variables:
-  Solution: UOKO.SSO.sln
-before_script:
-  - 'echo off'
-stages:
-  - nugetrestore
-  - build
-nugetrestore:
-  stage: nugetrestore
-  script:
-     - 'cd .nuget'
-     - 'echo restoring..'
-     - 'nuget restore "../%Solution%"'
-     - 'cd ..'
-     - 'echo restored'
+#  slnFile: Uoko.FireProj.sln # 如果有多个则可以进行指定
 
-build:
+
+before_script:
+  - 'chcp 65001'
+
+# 每次 package 包都放入缓存中，这样方便快速还原，这个维度是以 branch 为基础的  
+cache:
+  key: "$CI_BUILD_REF_NAME"
+  paths:
+    - packages/
+   
+stages:
+  - build
+
+execFakeScript:
   stage: build
   script:
-     - 'echo building..'
-     - '"%SystemRoot%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe" "%Solution%" /t:Build /property:Configuration=Debug /p:VisualStudioVersion=12.0'
+     - Fake.exe build.fsx
