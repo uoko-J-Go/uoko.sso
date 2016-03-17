@@ -225,7 +225,6 @@
     "ClientId": "uoko-sso",
     "ClientSecrets": [ ],
     "ClientName": "UOKO-SSO",
-    "ClientUri": "http://sso.uoko.ioc/",
     "Description": "优客单点登录平台",
     "LogoUri": null,
     "RequireConsent": false,
@@ -377,7 +376,7 @@
   },
   {
     "ClientId": "gitlab",
-    "ClientSecrets": [ { Value: "secret-for-gitlab-uoko" } ],
+    "ClientSecrets": [ { "Value": "secret-for-gitlab-uoko" } ],
     "ClientName": "gitlab",
     "Description": "gitlab",
     "Flow": 0,
@@ -385,10 +384,29 @@
     "AllowedScopes": [
       "openid",
       "email",
-      "profile",
+      "profile"
     ],
     "RedirectUris": [
       "http://gitlab.uoko.ioc:12015/users/auth/gitlab/callback"
+    ]
+  },
+  {
+    "ClientId": "fire",
+    "ClientSecrets": [ ],
+    "ClientName": "Fire Project",
+    "Description": "Let's File Project!",
+    "Flow": 1,
+    "RequireConsent": false,
+    "AllowedScopes": [
+      "openid",
+      "email",
+      "profile"
+    ],
+    "RedirectUris": [
+      "http://fire.local.uoko.ioc/"
+    ],
+    "PostLogoutRedirectUris": [
+      "http://fire.local.uoko.ioc/",
     ],
   },
   {
@@ -402,13 +420,13 @@
       "openid",
       "email",
       "profile",
-      "roles",
+      "roles"
     ],
     "RedirectUris": [
       "http://snow.uoko.ioc/"
     ],
     "PostLogoutRedirectUris": [
       "http://snow.uoko.ioc/"
-    ],
-  },
+    ]
+  }
 ]
