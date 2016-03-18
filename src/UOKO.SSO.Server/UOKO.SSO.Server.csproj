@@ -338,10 +338,10 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Configs\IdentityServer\ioc.ClientsConfig.json">
+    <Content Include="Configs\IdentityServer\test.ClientsConfig.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Configs\IdentityServer\ioc.ScopesConfig.json">
+    <Content Include="Configs\IdentityServer\test.ScopesConfig.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Configs\IdentityServer\pre.ClientsConfig.json">
@@ -359,7 +359,6 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\PublishProfiles\sso.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\common.js" />
@@ -409,6 +408,7 @@
     <Content Include="Scripts\Utils\requirejs\r.js" />
     <Content Include="Scripts\Utils\requirejs\require.js" />
     <Content Include="RequireJs.json" />
+    <None Include="Properties\PublishProfiles\ids.test.uoko.com.pubxml" />
     <None Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -448,10 +448,10 @@
     <None Include="Web.ids.uoko.com.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <None Include="Web.ids.youkeyijia.com.config">
+    <None Include="Web.ids.pre.uoko.com.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <None Include="Web.sso.uoko.ioc.config">
+    <None Include="Web.ids.test.uoko.com.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
@@ -469,10 +469,10 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'sso.uoko.ioc|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ids.test.uoko.com|AnyCPU'">
     <OutputPath>bin\</OutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ids.youkeyijia.com|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ids.pre.uoko.com|AnyCPU'">
     <OutputPath>bin\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ids.uoko.com|AnyCPU'">
@@ -496,7 +496,7 @@
           <IISUrl>http://localhost:11982/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>True</UseCustomServer>
-          <CustomServerUrl>http://sso.uoko.ioc/</CustomServerUrl>
+          <CustomServerUrl>http://ids.local.uoko.com/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

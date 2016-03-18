@@ -1,29 +1,29 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UOKO.SSO.Server", "src\UOKO.SSO.Server\UOKO.SSO.Server.csproj", "{177FF651-01B1-4D89-9134-81B6A42B55ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		ids.pre.uoko.com|Any CPU = ids.pre.uoko.com|Any CPU
+		ids.test.uoko.com|Any CPU = ids.test.uoko.com|Any CPU
 		ids.uoko.com|Any CPU = ids.uoko.com|Any CPU
-		ids.youkeyijia.com|Any CPU = ids.youkeyijia.com|Any CPU
 		Release|Any CPU = Release|Any CPU
-		sso.uoko.ioc|Any CPU = sso.uoko.ioc|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{177FF651-01B1-4D89-9134-81B6A42B55ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{177FF651-01B1-4D89-9134-81B6A42B55ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{177FF651-01B1-4D89-9134-81B6A42B55ED}.ids.pre.uoko.com|Any CPU.ActiveCfg = ids.pre.uoko.com|Any CPU
+		{177FF651-01B1-4D89-9134-81B6A42B55ED}.ids.pre.uoko.com|Any CPU.Build.0 = ids.pre.uoko.com|Any CPU
+		{177FF651-01B1-4D89-9134-81B6A42B55ED}.ids.test.uoko.com|Any CPU.ActiveCfg = ids.test.uoko.com|Any CPU
+		{177FF651-01B1-4D89-9134-81B6A42B55ED}.ids.test.uoko.com|Any CPU.Build.0 = ids.test.uoko.com|Any CPU
 		{177FF651-01B1-4D89-9134-81B6A42B55ED}.ids.uoko.com|Any CPU.ActiveCfg = ids.uoko.com|Any CPU
 		{177FF651-01B1-4D89-9134-81B6A42B55ED}.ids.uoko.com|Any CPU.Build.0 = ids.uoko.com|Any CPU
-		{177FF651-01B1-4D89-9134-81B6A42B55ED}.ids.youkeyijia.com|Any CPU.ActiveCfg = ids.youkeyijia.com|Any CPU
-		{177FF651-01B1-4D89-9134-81B6A42B55ED}.ids.youkeyijia.com|Any CPU.Build.0 = ids.youkeyijia.com|Any CPU
 		{177FF651-01B1-4D89-9134-81B6A42B55ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{177FF651-01B1-4D89-9134-81B6A42B55ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{177FF651-01B1-4D89-9134-81B6A42B55ED}.sso.uoko.ioc|Any CPU.ActiveCfg = sso.uoko.ioc|Any CPU
-		{177FF651-01B1-4D89-9134-81B6A42B55ED}.sso.uoko.ioc|Any CPU.Build.0 = sso.uoko.ioc|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

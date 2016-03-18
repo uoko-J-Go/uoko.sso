@@ -1,10 +1,143 @@
 ﻿[
   {
     "Enabled": true,
+    "ClientId": "finance",
+    "ClientSecrets": [ ],
+    "ClientName": "财务系统",
+    "ClientUri": "http://finance.uoko.ioc/",
+    "Description": "新财务系统及第三方金融",
+    "LogoUri": null,
+    "RequireConsent": false,
+    "AllowRememberConsent": true,
+    "Flow": 1,
+    "AllowClientCredentialsOnly": false,
+    "RedirectUris": [
+      "http://finance.uoko.ioc/"
+
+    ],
+    "PostLogoutRedirectUris": [
+      "http://finance.uoko.ioc/"
+    ],
+    "AllowAccessToAllScopes": false,
+    "AllowedScopes": [
+      "openid",
+      "profile",
+      "roles",
+      "email"
+    ],
+    "IdentityTokenLifetime": 300,
+    "AccessTokenLifetime": 3600,
+    "AuthorizationCodeLifetime": 300,
+    "AbsoluteRefreshTokenLifetime": 2592000,
+    "SlidingRefreshTokenLifetime": 1296000,
+    "RefreshTokenUsage": 0,
+    "UpdateAccessTokenClaimsOnRefresh": false,
+    "RefreshTokenExpiration": 1,
+    "AccessTokenType": 0,
+    "EnableLocalLogin": true,
+    "IdentityProviderRestrictions": [ ],
+    "IncludeJwtId": false,
+    "Claims": [ ],
+    "AlwaysSendClientClaims": false,
+    "PrefixClientClaims": true,
+    "AllowAccessToAllCustomGrantTypes": false,
+    "AllowedCustomGrantTypes": [ ],
+    "AllowedCorsOrigins": [ ]
+  },
+  {
+    "Enabled": true,
+    "ClientId": "esb_mgmt",
+    "ClientSecrets": [ ],
+    "ClientName": "ESB管理平台",
+    "ClientUri": "http://esb.uoko.ioc/",
+    "Description": "ESB管理平台",
+    "LogoUri": null,
+    "RequireConsent": false,
+    "AllowRememberConsent": true,
+    "Flow": 1,
+    "AllowClientCredentialsOnly": false,
+    "RedirectUris": [
+      "http://esb.uoko.ioc/signin-oidc"
+
+    ],
+    "PostLogoutRedirectUris": [
+      "http://esb.uoko.ioc/"
+    ],
+    "AllowAccessToAllScopes": false,
+    "AllowedScopes": [
+      "openid",
+      "profile",
+      "roles",
+      "email"
+    ],
+    "IdentityTokenLifetime": 300,
+    "AccessTokenLifetime": 3600,
+    "AuthorizationCodeLifetime": 300,
+    "AbsoluteRefreshTokenLifetime": 2592000,
+    "SlidingRefreshTokenLifetime": 1296000,
+    "RefreshTokenUsage": 0,
+    "UpdateAccessTokenClaimsOnRefresh": false,
+    "RefreshTokenExpiration": 1,
+    "AccessTokenType": 0,
+    "EnableLocalLogin": true,
+    "IdentityProviderRestrictions": [ ],
+    "IncludeJwtId": false,
+    "Claims": [ ],
+    "AlwaysSendClientClaims": false,
+    "PrefixClientClaims": true,
+    "AllowAccessToAllCustomGrantTypes": false,
+    "AllowedCustomGrantTypes": [ ],
+    "AllowedCorsOrigins": [ ]
+  },
+  {
+    "Enabled": true,
+    "ClientId": "usercenter",
+    "ClientSecrets": [ ],
+    "ClientName": "用户中心",
+    "ClientUri": "http://usercenter.uoko.ioc/",
+    "Description": "用户中心",
+    "LogoUri": null,
+    "RequireConsent": false,
+    "AllowRememberConsent": true,
+    "Flow": 1,
+    "AllowClientCredentialsOnly": false,
+    "RedirectUris": [
+      "http://usercenter.uoko.ioc/"
+    ],
+    "PostLogoutRedirectUris": [
+      "http://usercenter.uoko.ioc/"
+    ],
+    "AllowAccessToAllScopes": false,
+    "AllowedScopes": [
+      "openid",
+      "profile",
+      "roles"
+    ],
+    "IdentityTokenLifetime": 300,
+    "AccessTokenLifetime": 3600,
+    "AuthorizationCodeLifetime": 300,
+    "AbsoluteRefreshTokenLifetime": 2592000,
+    "SlidingRefreshTokenLifetime": 1296000,
+    "RefreshTokenUsage": 0,
+    "UpdateAccessTokenClaimsOnRefresh": false,
+    "RefreshTokenExpiration": 1,
+    "AccessTokenType": 0,
+    "EnableLocalLogin": true,
+    "IdentityProviderRestrictions": [ ],
+    "IncludeJwtId": false,
+    "Claims": [ ],
+    "AlwaysSendClientClaims": false,
+    "PrefixClientClaims": true,
+    "AllowAccessToAllCustomGrantTypes": false,
+    "AllowedCustomGrantTypes": [ ],
+    "AllowedCorsOrigins": [ ]
+  },
+  {
+    "Enabled": true,
     "ClientId": "etadmin",
     "ClientSecrets": [ ],
     "ClientName": "波多新系统",
-    "ClientUri": "http://etadmin.uoko.com/",
+    "ClientUri": "http://etadmin.uoko.ioc/",
     "Description": "UOKO-波多野结1号(新)",
     "LogoUri": null,
     "RequireConsent": false,
@@ -12,18 +145,17 @@
     "Flow": 1,
     "AllowClientCredentialsOnly": false,
     "RedirectUris": [
-      "http://etadmin.uoko.com/"
+      "http://etadmin.uoko.ioc/"
 
     ],
     "PostLogoutRedirectUris": [
-      "http://etadmin.uoko.com/"
+      "http://etadmin.uoko.ioc/"
     ],
     "AllowAccessToAllScopes": false,
     "AllowedScopes": [
       "openid",
       "profile",
-      "roles",
-      "sampleApi"
+      "roles"
     ],
     "IdentityTokenLifetime": 300,
     "AccessTokenLifetime": 3600,
@@ -49,7 +181,7 @@
     "ClientId": "everetadmin",
     "ClientSecrets": [ ],
     "ClientName": "波多老系统",
-    "ClientUri": "http://everetadmin.uoko.com/",
+    "ClientUri": "http://everetadmin.uoko.ioc/",
     "Description": "UOKO-波多野结1号(老)",
     "LogoUri": null,
     "RequireConsent": false,
@@ -57,18 +189,17 @@
     "Flow": 1,
     "AllowClientCredentialsOnly": false,
     "RedirectUris": [
-      "http://everetadmin.uoko.com/"
+      "http://everetadmin.uoko.ioc/"
 
     ],
     "PostLogoutRedirectUris": [
-      "http://everetadmin.uoko.com/"
+      "http://everetadmin.uoko.ioc/"
     ],
     "AllowAccessToAllScopes": false,
     "AllowedScopes": [
       "openid",
       "profile",
-      "roles",
-      "sampleApi"
+      "roles"
     ],
     "IdentityTokenLifetime": 300,
     "AccessTokenLifetime": 3600,
@@ -93,7 +224,7 @@
     "Enabled": true,
     "ClientId": "uoko-sso",
     "ClientSecrets": [ ],
-    "ClientName": "UOKO-SSO",
+    "ClientName": "UOKO-IDS",
     "Description": "优客单点登录平台",
     "LogoUri": null,
     "RequireConsent": false,
@@ -101,10 +232,12 @@
     "Flow": 1,
     "AllowClientCredentialsOnly": false,
     "RedirectUris": [
-      "http://ids.uoko.com/"
+      "http://ids.test.uoko.com/",
+      "http://ids.local.uoko.com/"
     ],
     "PostLogoutRedirectUris": [
-      "http://ids.uoko.com/"
+      "http://ids.test.uoko.com/",
+      "http://ids.local.uoko.com/"
     ],
     "AllowAccessToAllScopes": false,
     "AllowedScopes": [
@@ -135,7 +268,7 @@
     "ClientId": "ShopAdmin",
     "ClientSecrets": [ ],
     "ClientName": "电商后台",
-    "ClientUri": "http://etadmin.uoko.com/ShopAdmin",
+    "ClientUri": "http://etadmin.uoko.ioc/ShopAdmin",
     "Description": "电商后台管理",
     "LogoUri": null,
     "RequireConsent": false,
@@ -143,106 +276,17 @@
     "Flow": 1,
     "AllowClientCredentialsOnly": false,
     "RedirectUris": [
-      "http://etadmin.uoko.com/ShopAdmin"
+      "http://etadmin.uoko.ioc/ShopAdmin"
 
     ],
     "PostLogoutRedirectUris": [
-      "http://etadmin.uoko.com/ShopAdmin"
+      "http://etadmin.uoko.ioc/ShopAdmin"
     ],
     "AllowAccessToAllScopes": false,
     "AllowedScopes": [
       "openid",
       "profile",
-      "roles",
-      "sampleApi"
-    ],
-    "IdentityTokenLifetime": 300,
-    "AccessTokenLifetime": 3600,
-    "AuthorizationCodeLifetime": 300,
-    "AbsoluteRefreshTokenLifetime": 2592000,
-    "SlidingRefreshTokenLifetime": 1296000,
-    "RefreshTokenUsage": 0,
-    "UpdateAccessTokenClaimsOnRefresh": false,
-    "RefreshTokenExpiration": 1,
-    "AccessTokenType": 0,
-    "EnableLocalLogin": true,
-    "IdentityProviderRestrictions": [ ],
-    "IncludeJwtId": false,
-    "Claims": [ ],
-    "AlwaysSendClientClaims": false,
-    "PrefixClientClaims": true,
-    "AllowAccessToAllCustomGrantTypes": false,
-    "AllowedCustomGrantTypes": [ ],
-    "AllowedCorsOrigins": [ ]
-  },
-  {
-    "Enabled": true,
-    "ClientId": "mvc_service",
-    "ClientSecrets": [
-      {
-        "Description": null,
-        "Value": "K7gNU3sdo+OL0wNhqoVWhr3g6s1xYv72ol/pe/Unols=",
-        "Expiration": null,
-        "Type": "SharedSecret"
-      }
-    ],
-    "ClientName": "MVC Client (service communication)",
-    "ClientUri": null,
-    "LogoUri": null,
-    "RequireConsent": true,
-    "AllowRememberConsent": true,
-    "Flow": 3,
-    "AllowClientCredentialsOnly": false,
-    "RedirectUris": [ ],
-    "PostLogoutRedirectUris": [ ],
-    "AllowAccessToAllScopes": false,
-    "AllowedScopes": [
-      "sampleApi"
-    ],
-    "IdentityTokenLifetime": 300,
-    "AccessTokenLifetime": 3600,
-    "AuthorizationCodeLifetime": 300,
-    "AbsoluteRefreshTokenLifetime": 2592000,
-    "SlidingRefreshTokenLifetime": 1296000,
-    "RefreshTokenUsage": 1,
-    "UpdateAccessTokenClaimsOnRefresh": false,
-    "RefreshTokenExpiration": 1,
-    "AccessTokenType": 0,
-    "EnableLocalLogin": true,
-    "IdentityProviderRestrictions": [ ],
-    "IncludeJwtId": false,
-    "Claims": [ ],
-    "AlwaysSendClientClaims": false,
-    "PrefixClientClaims": true,
-    "AllowAccessToAllCustomGrantTypes": false,
-    "AllowedCustomGrantTypes": [ ],
-    "AllowedCorsOrigins": [ ]
-  },
-  {
-    "Enabled": true,
-    "ClientId": "usercenter",
-    "ClientSecrets": [ ],
-    "ClientName": "用户中心",
-    "ClientUri": "http://usercenter.uoko.com/",
-    "Description": "UOKO-波多野结1号(新)",
-    "LogoUri": null,
-    "RequireConsent": false,
-    "AllowRememberConsent": true,
-    "Flow": 1,
-    "AllowClientCredentialsOnly": false,
-    "RedirectUris": [
-      "http://usercenter.uoko.com/"
-
-    ],
-    "PostLogoutRedirectUris": [
-      "http://usercenter.uoko.com/"
-    ],
-    "AllowAccessToAllScopes": false,
-    "AllowedScopes": [
-      "openid",
-      "profile",
-      "roles",
-      "sampleApi"
+      "roles"
     ],
     "IdentityTokenLifetime": 300,
     "AccessTokenLifetime": 3600,
@@ -267,9 +311,9 @@
     "Enabled": true,
     "ClientId": "grafana-uoko",
     "ClientSecrets": [ { "Value": "uoko-grafana" } ],
-    "ClientName": "Grafana 统一监控平台",
+    "ClientName": "Grafana",
     "ClientUri": "http://grafana.uoko.com/login/uoko",
-    "Description": "Grafana 统一监控平台",
+    "Description": "Grafana",
     "LogoUri": null,
     "RequireConsent": false,
     "AllowRememberConsent": true,
@@ -286,7 +330,7 @@
       "email",
       "profile"
     ],
-    "IdentityTokenLifetime": 300,
+    "IdentityTokenLifetime": 3600,
     "AccessTokenLifetime": 3600,
     "AuthorizationCodeLifetime": 300,
     "AbsoluteRefreshTokenLifetime": 2592000,
@@ -307,114 +351,30 @@
     "AllowedCorsOrigins": [ ]
   },
   {
-    "Enabled": true,
-    "ClientId": "esb_mgmt",
-    "ClientSecrets": [ ],
-    "ClientName": "API-Gateway 管理平台",
-    "ClientUri": "http://esb.uoko.com/",
-    "Description": "API-Gateway 管理平台",
-    "LogoUri": null,
-    "RequireConsent": false,
-    "AllowRememberConsent": true,
-    "Flow": 1,
-    "AllowClientCredentialsOnly": false,
-    "RedirectUris": [
-      "http://esb.uoko.com/signin-oidc"
-
-    ],
-    "PostLogoutRedirectUris": [
-      "http://esb.uoko.com/"
-    ],
-    "AllowAccessToAllScopes": false,
+    "ClientId": "api-systemset",
+    "ClientName": "系统配置权限系统-api",
+    "Description": "系统配置权限系统-api",
+    "ClientSecrets": [ { "Value": "secret-for-systemset-api" } ],
+    "Flow": 3,
     "AllowedScopes": [
-      "openid",
-      "profile",
-      "roles",
-      "email"
-    ],
-    "IdentityTokenLifetime": 300,
-    "AccessTokenLifetime": 3600,
-    "AuthorizationCodeLifetime": 300,
-    "AbsoluteRefreshTokenLifetime": 2592000,
-    "SlidingRefreshTokenLifetime": 1296000,
-    "RefreshTokenUsage": 0,
-    "UpdateAccessTokenClaimsOnRefresh": false,
-    "RefreshTokenExpiration": 1,
-    "AccessTokenType": 0,
-    "EnableLocalLogin": true,
-    "IdentityProviderRestrictions": [ ],
-    "IncludeJwtId": false,
-    "Claims": [ ],
-    "AlwaysSendClientClaims": false,
-    "PrefixClientClaims": true,
-    "AllowAccessToAllCustomGrantTypes": false,
-    "AllowedCustomGrantTypes": [ ],
-    "AllowedCorsOrigins": [ ]
+      "api-systemset"
+    ]
   },
   {
-    "ClientId": "easylife",
-    "ClientName": "逸生活CMS",
-    "ClientUri": "http://snow.uoko.com/",
-    "Description": "逸生活CMS",
-    "Flow": 1,
+    "ClientId": "systemset",
+    "ClientName": "系统配置权限系统",
+    "Description": "系统配置权限系统",
+    "Flow": 2,
     "RequireConsent": false,
     "AllowedScopes": [
       "openid",
       "email",
       "profile",
-      "roles"
+      "api-systemset"
     ],
     "RedirectUris": [
-      "http://snow.uoko.com/"
-    ],
-    "PostLogoutRedirectUris": [
-      "http://snow.uoko.com/"
+      "http://mgmt.test.uoko.ioc/"
     ]
-  },
-  {
-    "Enabled": true,
-    "ClientId": "finance",
-    "ClientSecrets": [ ],
-    "ClientName": "财务系统",
-    "ClientUri": "http://finance.uoko.com/",
-    "Description": "财务系统及第三方金融",
-    "LogoUri": null,
-    "RequireConsent": false,
-    "AllowRememberConsent": true,
-    "Flow": 1,
-    "AllowClientCredentialsOnly": false,
-    "RedirectUris": [
-      "http://finance.uoko.com/"
-
-    ],
-    "PostLogoutRedirectUris": [
-      "http://finance.uoko.com/"
-    ],
-    "AllowAccessToAllScopes": false,
-    "AllowedScopes": [
-      "openid",
-      "profile",
-      "roles",
-      "email"
-    ],
-    "IdentityTokenLifetime": 300,
-    "AccessTokenLifetime": 3600,
-    "AuthorizationCodeLifetime": 300,
-    "AbsoluteRefreshTokenLifetime": 2592000,
-    "SlidingRefreshTokenLifetime": 1296000,
-    "RefreshTokenUsage": 0,
-    "UpdateAccessTokenClaimsOnRefresh": false,
-    "RefreshTokenExpiration": 1,
-    "AccessTokenType": 0,
-    "EnableLocalLogin": true,
-    "IdentityProviderRestrictions": [ ],
-    "IncludeJwtId": false,
-    "Claims": [ ],
-    "AlwaysSendClientClaims": false,
-    "PrefixClientClaims": true,
-    "AllowAccessToAllCustomGrantTypes": false,
-    "AllowedCustomGrantTypes": [ ],
-    "AllowedCorsOrigins": [ ]
   },
   {
     "ClientId": "gitlab",
@@ -432,6 +392,26 @@
       "http://gitlab.uoko.ioc:12015/users/auth/gitlab/callback"
     ]
   },
+  {
+    "ClientId": "easylife",
+    "ClientName": "逸生活CMS",
+    "ClientUri": "http://snow.uoko.ioc/",
+    "Description": "逸生活CMS",
+    "Flow": 1,
+    "RequireConsent": false,
+    "AllowedScopes": [
+      "openid",
+      "email",
+      "profile",
+      "roles"
+    ],
+    "RedirectUris": [
+      "http://snow.uoko.ioc/"
+    ],
+    "PostLogoutRedirectUris": [
+      "http://snow.uoko.ioc/"
+    ]
+  },
 
   {
     "ClientId": "fire",
@@ -447,11 +427,10 @@
       "roles"
     ],
     "RedirectUris": [
-      "http://fire.uoko.com/"
+      "http://fire.local.uoko.com/"
     ],
     "PostLogoutRedirectUris": [
-      "http://fire.uoko.com/"
+      "http://fire.local.uoko.com/"
     ]
   },
-
 ]
