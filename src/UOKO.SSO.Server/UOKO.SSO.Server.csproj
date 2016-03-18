@@ -408,6 +408,7 @@
     <Content Include="Scripts\Utils\requirejs\r.js" />
     <Content Include="Scripts\Utils\requirejs\require.js" />
     <Content Include="RequireJs.json" />
+    <None Include="Properties\PublishProfiles\ids.pre.uoko.com.pubxml" />
     <None Include="Properties\PublishProfiles\ids.test.uoko.com.pubxml" />
     <None Include="Scripts\_references.js" />
     <Content Include="Web.config">
